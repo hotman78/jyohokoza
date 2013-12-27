@@ -1,0 +1,27 @@
+<cities>
+	<city>
+		<name>東京</name>
+		<place hokui="35.680909" toukei="139.767372" />
+	</city>
+	<city>
+		<name>京都</name>
+		<place hokui="35.009129" toukei="135.754807" />
+	</city>
+	<city>
+		<name>青森</name>
+		<place hokui="40.824589" toukei="140.755203" />
+	</city>
+	<city>
+		<name>名古屋</name>
+		<place hokui="35.154919" toukei="136.920593" />
+	</city>
+	<city>
+		<name>大阪</name>
+		<place hokui="34.702509" toukei="135.496505" />
+	</city>
+	<city>
+		<name>福岡</name>
+		<place hokui="33.579788" toukei="130.402405" />
+	</city>
+</cities>
+

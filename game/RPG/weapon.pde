@@ -1,10 +1,16 @@
-class weapon{
+// 武器のデータを読み込んだもの
+// 管轄はdata
+
+class Weapon{
   String name;
   int at,df,cr;
-  weapon(int id){
+  Weapon(int id){
     name="testsord";
     at=50;
     df=20;
     cr=20;
+  }
+  
+  void load_file(){
   }
 }
