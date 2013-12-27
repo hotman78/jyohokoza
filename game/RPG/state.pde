@@ -10,14 +10,35 @@ class State{
   Flag[] flag_state;
   
   State(){
+    event = new Event[1];
   }
   
   void init(Game g){
     player_x = 100;
     player_y = 100;
+    map_id = 0;
+    event[0] = new Event(g.data.maps[0].map_transition[0].x,
+      g.data.maps[0].map_transition[0].y, 
+      0, 
+      g.data.maps[0].map_transition[0].id);
   }
   
   void update(Game g){
+    for(int i=0; i<event.length; i++){
+      if(event[0].trigger(g)==1){
+        // map transition
+        if(event[0].type==0){
+          int next_map = g.data.maps[map_id].map_transition[event[0].id].next_map;
+          map_id = next_map;
+          event[0] = new Event(g.data.maps[map_id].map_transition[0].x,
+            g.data.maps[map_id].map_transition[0].y, 
+            0, 
+            g.data.maps[map_id].map_transition[0].id);
+        }
+      }
+    }
+    
+    
     if(g.key_state.key_up>=1){
       player_y -= 1;
     }

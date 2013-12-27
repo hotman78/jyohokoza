@@ -24,6 +24,7 @@ class Display{
   }
   
   void draw_map(Game g){
+    g.data.maps[g.state.map_id].draw(g);
     
   }
   
@@ -40,7 +41,6 @@ class Display{
   }
   
   void draw_menu(Game g){
-    
   }
   
   void draw_title(Game g){
