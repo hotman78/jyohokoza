@@ -25,7 +25,7 @@ class Key{
     if(mouse_left>=1) mouse_left++;
   }
   
-  void keyPressed(int key, int keyCode){
+  void keyPressed(){
     if(key==CODED){
       if(keyCode==UP) key_up = 1;
       if(keyCode==DOWN) key_down = 1;
@@ -38,7 +38,7 @@ class Key{
     }
   }
   
-  void keyReleased(int key, int keyCode){
+  void keyReleased(){
     if(key==CODED){
       if(keyCode==UP) key_up = 0;
       if(keyCode==DOWN) key_down = 0;

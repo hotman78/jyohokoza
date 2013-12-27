@@ -7,8 +7,8 @@ class Game{
   Game(){
     display = new Display();
     state = new State();
-    event = new Event();
     data = new Data();
+    key_state = new Key();
 
     // ファイルに書かれたデータを読み込む
     data.load_all();
