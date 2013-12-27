@@ -3,8 +3,8 @@ class weapon{
   int at,df,cr;
   weapon(int id){
     name="testsord";
-    at="50";
-    df="20";
-    cr="20";
+    at=50;
+    df=20;
+    cr=20;
   }
 }
