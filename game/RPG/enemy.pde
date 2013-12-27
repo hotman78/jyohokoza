@@ -37,7 +37,7 @@ class Enemy{
   
   void draw(Game g){
     imageMode(CENTER);
-    image(img, x, y);
+    if(hp>0)image(img, x, y);
   }
   
  // void load_file(){
