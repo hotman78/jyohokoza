@@ -2,7 +2,6 @@
 // dataで管理
 
 class Enemy{
-//<<<<<<< HEAD
   int AI_id,w_id,hp,mp,at,df;
   int x,y;
   String name;
@@ -43,10 +42,6 @@ class Enemy{
   
  // void load_file(){
 
-  /*int x,y;
-  int img_id,AI_id,w_id,hp,mp,at,df;
-  String name;
-  Weapon w;*/
   Enemy(String _name,PImage _img,int _AI_id,int _w_id, int _hp, int _mp, int _at, int _df){
     name = _name;
     img = _img;
@@ -60,6 +55,14 @@ class Enemy{
   
   Enemy copy(){
     return new Enemy(name,img,AI_id,w_id,hp,mp,at,df);
+  }
+  
+  Enemy copy2(){
+    Enemy e;
+    e= new Enemy(name,img,AI_id,w_id,hp,mp,at,df);
+    e.x=x;
+    e.y=y;
+    return e;
   }
     
   
