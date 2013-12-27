@@ -2,12 +2,10 @@
 // dataで管理
 
 class Enemy{
-  int x,y;
   int img_id,AI_id,w_id,hp,mp,at,df;
   String name;
   Weapon w;
   Enemy(int id){
-    x=
     img_id=3;
     AI_id=4;
     w_id=2;
