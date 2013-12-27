@@ -6,7 +6,7 @@ class Event{
   int y;
   int type; // 0: trans 1:enemy
   int id;   //
-  Trans[] map_transition;
+  Trans map_transition;
   
   Event(int x0, int y0, int type0, int id0){
     x = x0;
@@ -15,15 +15,15 @@ class Event{
     id = id0;
   }
   
-  void debug(){
-    map_transition = new Trans[1];
-    if(debug==0){
-      background = loadImage("./data/image/map_1_bg.png");
+  void debug0(Map map,int map_id,int event_id){
+    map_transition = new Trans();
+    if(id==0){
+      map.background = loadImage("./data/image/map_1_bg.png");
 //      event_list[0] = new Event(0);
-      map_transition[0] = new Trans(0);
+      map_transition = new Trans(map_id,event_id);
     }else{
-      background = loadImage("./data/image/map_2_bg.png");
-      map_transition[0] = new Trans(1);
+      map.background = loadImage("./data/image/map_2_bg.png");
+      map_transition = new Trans(map_id,event_id);
     }
   }
   

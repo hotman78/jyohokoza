@@ -17,10 +17,10 @@ class State{
     player_x = 100;
     player_y = 100;
     map_id = 0;
-    event[0] = new Event(g.data.maps[0].map_transition[0].x,
-      g.data.maps[0].map_transition[0].y, 
+    event[0] = new Event(g.data.maps[0].event_list[0].map_transition[0].x,
+      g.data.maps[0].event_list[0].map_transition[0].y, 
       0, 
-      g.data.maps[0].map_transition[0].id);
+      g.data.maps[0].event_list[0].map_transition[0],id);
   }
   
   void update(Game g){

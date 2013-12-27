@@ -11,10 +11,11 @@ class Map{
     map_transition = new Trans[1];
   }
   
-  Map(int debug){
+  Map(int map_id){
     event_list = new Event[1];
-    for(int i=0;i<event_list/length;i++){
-      event_list[0]=new Event()
+    for(int i=0;i<event_list.length;i++){
+      event_list[i].debug0(this,map_id,i);
+//      event_list[0]=new Event();
     }
   }
   

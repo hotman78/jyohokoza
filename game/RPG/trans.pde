@@ -11,13 +11,13 @@ class Trans{
     
   }
   
-  Trans(int id){
-    if(id==0){
+  Trans(int map_id,int event_id){
+    if(map_id==0){
       next_map = 1;
       img = loadImage("./data/image/transition.png");
       x = 314;
       y = 159;
-    }else if(id==1){
+    }else if(map_id==1){
       next_map = 0;
       img = loadImage("./data/image/transition.png");
       x = 265;
