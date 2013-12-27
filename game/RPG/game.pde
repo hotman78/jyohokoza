@@ -21,6 +21,8 @@ class Game{
   void update(){
     state.update(this);
     display.draw(this);
+    data.make_enemies(1,0,0);
+    println(data.enemies.size());
   }
   
 }

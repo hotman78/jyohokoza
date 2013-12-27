@@ -23,6 +23,12 @@ class Display{
     }
   }
   
+ 
+    
+  
+  
+  
+  
   void draw_map(Game g){
     g.data.maps[g.state.map_id].draw(g);
     
