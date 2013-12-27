@@ -16,9 +16,12 @@ class Data{
   
   void load_all(Game g){
     set_enemy();
-    maps[0] = new Map(0,g);
-    maps[1] = new Map(1,g);
-  
+//    maps[0] = new Map(0,g);
+//    maps[1] = new Map(1,g);
+    maps[0] = new Map();
+    maps[1] = new Map();
+    maps[0].load_file("map_1.xml", g);
+    maps[1].load_file("map_2.xml", g);
   }
  /* void make_enemies(int id,int x, int y){
       Enemy en = o_enemies[id];

@@ -12,6 +12,15 @@ class Trans{
     
   }
   
+  Trans(int n0, int x0, int y0, int px0, int py0){
+    img = loadImage("./data/image/transition.png");
+    next_map = n0;
+    x = x0;
+    y = y0;
+    px = px0;
+    py = py0;
+  }
+  
   Trans(int debug){
     if(debug==0){
 

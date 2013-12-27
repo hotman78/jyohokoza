@@ -36,8 +36,29 @@ class Map{
     }
   }
   
-  void load_file(){
+  void load_file(String filename, Game g){
+    XML xml = loadXML("./data/map/" + filename);
+    background = loadImage("./data/image/"+xml.getChild("img_bg").getContent());
+//    mask = loadImage("./data/image/"+xml.getChild("img_mask").getContent());
     
+    map_transition = new Trans[1];
+    XML[] xml_tr = xml.getChildren("trans");
+    for(int i=0; i<xml_tr.length; i++){
+      map_transition[i] = new Trans(xml_tr[i].getInt("next"),
+                                    xml_tr[i].getInt("x"),
+                                    xml_tr[i].getInt("y"),
+                                    xml_tr[i].getInt("px"),
+                                    xml_tr[i].getInt("py"));
+    }
+    
+    map_enemy=new ArrayList();
+    XML[] xml_enemies = xml.getChildren("enemy");
+    for(int i=0; i<xml_enemies.length; i++){
+      Enemy en = g.data.o_enemies[xml_enemies[i].getInt("id")].copy();
+      en.x = xml_enemies[i].getInt("x");
+      en.y = xml_enemies[i].getInt("y");
+      map_enemy.add(en);
+    }
   }
   
   void draw(Game g){
