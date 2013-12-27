@@ -3,16 +3,15 @@
 
 class Map{
   PImage background, mask;
-  Event[] event_list;
   Trans[] map_transition;
+  Enemy[] map_enemy;
   
   Map(){
-    event_list = new Event[0];
     map_transition = new Trans[1];
+    map_enemy=new Enemy[1];
   }
   
-  Map(int debug){
-    event_list = new Event[0];
+  Map(int debug,Game g){
     map_transition = new Trans[1];
     if(debug==0){
       background = loadImage("./data/image/map_1_bg.png");
@@ -21,6 +20,17 @@ class Map{
     }else{
       background = loadImage("./data/image/map_2_bg.png");
       map_transition[0] = new Trans(1);
+    }
+    
+    map_enemy=new Enemy[1];
+    if(debug==0){
+      map_enemy[0]=g.data.o_enemies[0].copy();
+      map_enemy[0].x=300;
+      map_enemy[0].y=200;
+    }else{
+      map_enemy[0]=g.data.o_enemies[1].copy();
+      map_enemy[0].x=100;
+      map_enemy[0].y=300;
     }
   }
   
@@ -31,12 +41,7 @@ class Map{
   void draw(Game g){
     imageMode(CORNERS);
     image(background, 0, 0);
-    for(int i=0; i<event_list.length; i++){
-//      event_list[i].draw(g);
-    }
-    for(int i=0; i<map_transition.length; i++){
-      map_transition[i].draw(g);
-    }
+
   }
   
 }

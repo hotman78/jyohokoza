@@ -26,11 +26,15 @@ class Display{
   
   void draw_map(Game g){
     g.data.maps[g.state.map_id].draw(g);
-    
   }
   
   void draw_event(Game g){
-    
+    for(int i=0; i<g.data.maps[g.state.map_id].map_transition.length; i++){
+      g.data.maps[g.state.map_id].map_transition[i].draw(g);
+    }
+    for(int i=0; i<g.state.enemy.length; i++){
+      g.state.enemy[i].draw(g);
+    }
   }
   
   void draw_player(Game g){

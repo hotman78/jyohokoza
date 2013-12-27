@@ -5,36 +5,57 @@ class State{
   
   int map_id;
   int player_x, player_y;
-  Event[] event;
+  Trans[] trans;
+  Enemy[] enemy;
+
   
   Flag[] flag_state;
   
   State(){
-    event = new Event[1];
+    trans = new Trans[1];
+    enemy=new Enemy[1];
   }
   
   void init(Game g){
     player_x = 100;
     player_y = 100;
     map_id = 0;
-    event[0] = new Event(g.data.maps[0].map_transition[0].x,
+/*    trans[0] = new Trans(g.data.maps[0].map_transition[0].px,
+      g.data.maps[0].map_transition[0].py, 
       g.data.maps[0].map_transition[0].y, 
-      0, 
-      g.data.maps[0].map_transition[0].id);
+      g.data.maps[0].map_transition[0].id);*/
+    for(int i=0;i<enemy.length;i++){
+      enemy[i]=g.data.maps[map_id].map_enemy[i].copy2();
+    }
   }
   
   void update(Game g){
-    for(int i=0; i<event.length; i++){
-      if(event[0].trigger(g)==1){
+    Trans[] t=g.data.maps[map_id].map_transition;
+    for(int i=0; i<t.length; i++){
+      if(t[0].trigger(g)==1){
         // map transition
-        if(event[0].type==0){
-          int next_map = g.data.maps[map_id].map_transition[0].next_map;
-          map_id = next_map;
-          event[0] = new Event(g.data.maps[map_id].map_transition[0].x,
-            g.data.maps[map_id].map_transition[0].y, 
-            0, 
-            g.data.maps[map_id].map_transition[0].id);
+        map_id = t[0].next_map;
+        player_x=t[0].px;
+        player_y=t[0].py;
+        enemy = new Enemy[1];        
+        for(int j=0;j<enemy.length;j++){
+          enemy[j]=g.data.maps[map_id].map_enemy[j].copy2();
         }
+      /*    trans[0] = new Trans(g.data.maps[map_id].map_transition[0].px,
+            g.data.maps[map_id].map_transition[0].py, 
+            g.data.maps[map_id].map_transition[0].map_id, 
+            g.data.maps[map_id].map_transition[0].id);*/
+
+      }
+    }
+    
+    for(int i=0;i<enemy.length;i++){
+      int vx,vy;
+      vx=(int)random(-5,5);
+      vy=(int)random(-5,5);
+      if(dist(player_x, player_y, enemy[i].x+vx, enemy[i].y+vy)<dist(player_x, player_y, enemy[i].x, enemy[i].y)){
+        enemy[i].x+=vx;
+        enemy[i].y+=vy;
       }
     }
     
