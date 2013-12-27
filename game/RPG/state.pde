@@ -5,6 +5,7 @@ class State{
   
   int map_id;
   int player_x, player_y;
+  int time,trans_num;
   Trans[] trans;
   Enemy[] enemy;
 
@@ -35,6 +36,8 @@ class State{
           map_id = t[0].next_map;
           player_x=t[0].px;
           player_y=t[0].py;
+          trans_num++;
+          if(trans_num>=5)game_state=2;
           enemy = new Enemy[1];        
           for(int j=0;j<enemy.length;j++){
             Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
@@ -71,6 +74,12 @@ class State{
       if(g.key_state.key_c>=1){
         game_state=0;
         println("a");
+      }
+    }
+    else if(game_state==2){
+      time++;
+      if(time>200){
+        exit();
       }
     }
   }

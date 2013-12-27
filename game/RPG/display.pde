@@ -1,8 +1,9 @@
 class Display{
-  PImage player_img,title_img;
+  PImage player_img,title_img,end_img;
   Display(){
     player_img = loadImage("./data/image/BIANCA_0_small.png");
     title_img=loadImage("./data/image/title.png");
+    end_img=loadImage("./data/image/end.png");
   }
   
   void draw(Game g){
@@ -51,11 +52,13 @@ class Display{
   }
   
   void draw_title(Game g){
+    imageMode(CORNERS);
     image(title_img,0,0,600,500);
   }
   
   void draw_ending(Game g){
-    
+    imageMode(CORNERS);
+    image(end_img,0,0,600,500);
   }
   
 }
