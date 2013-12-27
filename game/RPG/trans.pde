@@ -14,6 +14,7 @@ class Trans{
   
   Trans(int debug){
     if(debug==0){
+
       next_map = 1;
       img = loadImage("./data/image/transition.png");
       x = 314;

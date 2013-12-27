@@ -6,6 +6,7 @@ class State{
   int map_id;
   int player_x, player_y;
   Trans[] trans;
+
   
   Flag[] flag_state;
   
@@ -35,6 +36,26 @@ class State{
             g.data.maps[map_id].map_transition[0].py, 
             g.data.maps[map_id].map_transition[0].map_id, 
             g.data.maps[map_id].map_transition[0].id);*/
+/*=======
+    event[0] = new Event(g.data.maps[0].map_transition[0].x,
+      g.data.maps[0].map_transition[0].y, 
+      0, 
+      g.data.maps[0].map_transition[0].id);
+  }
+  
+  void update(Game g){
+    for(int i=0; i<event.length; i++){
+      if(event[0].trigger(g)==1){
+        // map transition
+        if(event[0].type==0){
+          int next_map = g.data.maps[map_id].map_transition[0].next_map;
+          map_id = next_map;
+          event[0] = new Event(g.data.maps[map_id].map_transition[0].x,
+            g.data.maps[map_id].map_transition[0].y, 
+            0, 
+            g.data.maps[map_id].map_transition[0].id);
+        }
+>>>>>>> blueman*/
       }
     }
     

@@ -11,7 +11,7 @@ class Map{
     map_enemy=new Enemy[1];
   }
   
-  Map(int debug){
+  Map(int debug,Game g){
     map_transition = new Trans[1];
     if(debug==0){
       background = loadImage("./data/image/map_1_bg.png");
@@ -24,9 +24,13 @@ class Map{
     
     map_enemy=new Enemy[1];
     if(debug==0){
-      map_enemy[0]=new Enemy(0);
+      map_enemy[0]=g.data.o_enemies[0].copy();
+      map_enemy[0].x=300;
+      map_enemy[0].y=200;
     }else{
-      map_enemy[0]=new Enemy(1);
+      map_enemy[0]=g.data.o_enemies[1].copy();
+      map_enemy[0].x=100;
+      map_enemy[0].y=300;
     }
   }
   
@@ -37,6 +41,7 @@ class Map{
   void draw(Game g){
     imageMode(CORNERS);
     image(background, 0, 0);
+
   }
   
 }
