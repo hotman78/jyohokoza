@@ -1,0 +1,14 @@
+<weapons>
+	<weapon id="0">
+		<name>–³ŠŽ</name>
+		<state at="0" df="0" cr="0" />
+	</weapon>
+	<weapon id="1">
+		<name>‚Ð‚Ì‚«‚Ì‚Ú‚¤</name>
+		<state at="3" df="0" cr="0" />
+	</weapon>
+	<weapon id="2">
+		<name>ƒƒg‚ÌŒ•</name>
+		<state at="108" df="50" cr="10" />
+	</weapon>
+</weapons>
