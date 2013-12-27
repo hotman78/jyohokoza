@@ -4,9 +4,11 @@
 class Map{
   PImage background, mask;
   Trans[] map_transition;
+  Enemy[] map_enemy;
   
   Map(){
     map_transition = new Trans[1];
+    map_enemy=new Enemy[1];
   }
   
   Map(int debug){
@@ -18,6 +20,13 @@ class Map{
     }else{
       background = loadImage("./data/image/map_2_bg.png");
       map_transition[0] = new Trans(1);
+    }
+    
+    map_enemy=new Enemy[1];
+    if(debug==0){
+      map_enemy[0]=new Enemy(0);
+    }else{
+      map_enemy[0]=new Enemy(1);
     }
   }
   
