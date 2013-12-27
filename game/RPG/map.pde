@@ -1,5 +1,5 @@
-// マップに関するファイルのデータを読み込んだもの
-// 管轄はdata
+// マ ッ プ に 関 す る フ ァ イ ル の デ ー タ を 読 み 込 ん だ も の
+// 管 轄 は data
 
 class Map{
   PImage background, mask;
@@ -12,15 +12,9 @@ class Map{
   }
   
   Map(int debug){
-    event_list = new Event[0];
-    map_transition = new Trans[1];
-    if(debug==0){
-      background = loadImage("./data/image/map_1_bg.png");
-//      event_list[0] = new Event(0);
-      map_transition[0] = new Trans(0);
-    }else{
-      background = loadImage("./data/image/map_2_bg.png");
-      map_transition[0] = new Trans(1);
+    event_list = new Event[1];
+    for(int i=0;i<event_list/length;i++){
+      event_list[0]=new Event()
     }
   }
   
