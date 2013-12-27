@@ -5,6 +5,7 @@ class Enemy{
   int img_id,AI_id,w_id,hp,mp,at,df;
   String name;
   Weapon w;
+  
   Enemy(int id){
     img_id=3;
     AI_id=4;
