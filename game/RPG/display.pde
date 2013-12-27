@@ -1,6 +1,7 @@
 class Display{
+  PImage player_img;
   Display(){
-    
+    player_img = loadImage("./data/image/BIANCA_0_small.png");
   }
   
   void draw(Game g){
@@ -33,7 +34,8 @@ class Display{
   }
   
   void draw_player(Game g){
-    ellipse(g.state.player_x, g.state.player_y, 20, 20);
+    image(player_img, g.state.player_x, g.state.player_y, 60, 60);
+//    ellipse(g.state.player_x, g.state.player_y, 20, 20);
   }
   
   void draw_kaiwa(Game g){
