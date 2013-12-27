@@ -25,7 +25,8 @@ class State{
       g.data.maps[0].map_transition[0].y, 
       g.data.maps[0].map_transition[0].id);*/
     for(int i=0;i<enemy.length;i++){
-      enemy[i]=g.data.maps[map_id].map_enemy[i].copy2();
+      Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
+      enemy[i]=en.copy2();
     }
   }
   
@@ -39,8 +40,8 @@ class State{
         player_y=t[0].py;
         enemy = new Enemy[1];        
         for(int j=0;j<enemy.length;j++){
-          enemy[j]=g.data.maps[map_id].map_enemy[j].copy2();
-        }
+          Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
+          enemy[i]=en.copy2();        }
       /*    trans[0] = new Trans(g.data.maps[map_id].map_transition[0].px,
             g.data.maps[map_id].map_transition[0].py, 
             g.data.maps[map_id].map_transition[0].map_id, 
