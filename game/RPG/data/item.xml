@@ -1,22 +1,17 @@
 <items>
 	<item id="1">
 		<name>やくそう</name>
-		<state type="h_heal" value="30" />
 	</item>
 	<item id="2">
 		<name>魔法のせいすい</name>
-		<state type="m_heal" value="40" />
 	</item>
 	<item id="3">
-		<name>抹茶</name>
-		<state type="important">
+		<name>オリハルコン</name>
 	</item>
 	<item id="4">
 		<name>ひのきのぼう</name>
-		<state type="weapon" at="3" df="0" cr="0" />
 	</item>
 	<item id="5">
 		<name>ロトの剣</name>
-		<state type="weapon" at="108" df="50" cr="10" />
 	</item>
 </items>
