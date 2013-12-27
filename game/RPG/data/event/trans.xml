@@ -1,0 +1,14 @@
+<transes>
+	<trans id="0">
+		<name>港町→マップ</name>
+		<map id="0" x="1" y="1" />
+	</trans>
+	<trans id="1">
+		<name>マップ→港町</name>
+		<map id="1" x="30" y="20" />
+	</trans>
+	<trans id="2">
+		<name>１２使徒の宮殿→エルサレム</name>
+		<map id="5" x="100" y="200" />
+	</trans>
+</transes>
