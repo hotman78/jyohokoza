@@ -4,11 +4,11 @@
 class Map{
   PImage background, mask;
   Trans[] map_transition;
-  Enemy[] map_enemy;
+  ArrayList map_enemy;
   
   Map(){
     map_transition = new Trans[1];
-    map_enemy=new Enemy[1];
+    map_enemy=new ArrayList();
   }
   
   Map(int debug,Game g){
@@ -22,15 +22,17 @@ class Map{
       map_transition[0] = new Trans(1);
     }
     
-    map_enemy=new Enemy[1];
+    map_enemy=new ArrayList();
     if(debug==0){
-      map_enemy[0]=g.data.o_enemies[0].copy();
-      map_enemy[0].x=300;
-      map_enemy[0].y=200;
+      Enemy en = g.data.o_enemies[0].copy();
+      en.x = 300;
+      en.y = 100;
+      map_enemy.add(en);
     }else{
-      map_enemy[0]=g.data.o_enemies[1].copy();
-      map_enemy[0].x=100;
-      map_enemy[0].y=300;
+      Enemy en = g.data.o_enemies[1].copy();
+      en.x = 300;
+      en.y = 100;
+      map_enemy.add(en);
     }
   }
   
