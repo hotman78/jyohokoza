@@ -10,14 +10,14 @@
 		<name>オルゴデミーラ</name>
 		<img id="1" />
 		<AI id="0" />
-		<weapon id="2" />
+		<weapon id="4" />
 		<state hp="99999" mp="9999" at="3000" df="5000" />
 	</enemy>
 	<enemy id="3">
 		<name>メタルキング</name>
 		<img id="2" />
 		<AI id="3" />
-		<weapon id="3" />
+		<weapon id="5" />
 		<state hp="300" mp="4000" at="100" df="5000000" />
 	</enemy>
 </enemys>
