@@ -29,6 +29,7 @@ class Map{
   }
   
   void draw(Game g){
+    imageMode(CORNERS);
     image(background, 0, 0);
     for(int i=0; i<event_list.length; i++){
 //      event_list[i].draw(g);

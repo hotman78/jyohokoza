@@ -15,7 +15,7 @@ class Event{
   }
   
   int trigger(Game g){
-    if(dist(x, y, g.state.player_x, g.state.player_y) < 150){
+    if(dist(x, y, g.state.player_x, g.state.player_y) < 50){
       return 1;
     }
     return 0;

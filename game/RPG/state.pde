@@ -28,7 +28,7 @@ class State{
       if(event[0].trigger(g)==1){
         // map transition
         if(event[0].type==0){
-          int next_map = g.data.maps[map_id].map_transition[event[0].id].next_map;
+          int next_map = g.data.maps[map_id].map_transition[0].next_map;
           map_id = next_map;
           event[0] = new Event(g.data.maps[map_id].map_transition[0].x,
             g.data.maps[map_id].map_transition[0].y, 

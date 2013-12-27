@@ -29,6 +29,7 @@ class Trans{
   }
   
   void draw(Game g){
+    imageMode(CENTER);
     image(img, x, y);
   }
 }
