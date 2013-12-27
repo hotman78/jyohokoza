@@ -1,0 +1,46 @@
+必要そうなデータ
+<map> <event x="30" y="10" type="enemy" id="3" /> <event x="30" y="10" type="enemy" id="3" flag="3,5,7"/> </map>
+
+event[]:
+	x
+	y
+	type-id
+	flag-id
+
+type[]:
+	0 enemy[]:  
+		img-id
+		AI-id
+	 	weapon-id
+		(skill-id)
+		name  
+		hp
+		mp
+		at
+		df
+	1 trans[]:
+		map-id
+		x
+		y
+	
+
+	
+	3 item[]:
+		item-id
+		value
+	
+	4 talk[]:
+		?
+	
+	5 flag[]:
+		?
+
+weapon[]:
+	name  
+	at  
+	df  
+	cr 
+
+
+map[]
+
