@@ -99,10 +99,17 @@
 	</enemy>
 	<enemy id="15">
 		<name>‚è‚ñ‚²</name>
-		<img>l	apple.png</img>
+		<img>apple.png</img>
 		<AI id="15" />
 		<weapon id="15" />
 		<state hp="500" mp="40" at="350" df="640" />
+	</enemy>
+	<enemy id="16">
+		<name>‚ ‚ñ‚±ƒuƒŒƒbƒh‚Ü‚ñ</name>
+		<img>ampan</img>
+		<AI id="16" />
+		<weapon id="16" />
+		<state hp="5550" mp="10" at="350" df="570" />
 	</enemy>
 	
 </enemys>
