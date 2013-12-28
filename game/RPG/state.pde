@@ -98,6 +98,69 @@ class State{
           ((Item)items.get(i)).num = -1;
         }else{
           ((Item)items.get(i)).move();
+          
+          if(((Item)items.get(i)).type==-1){
+          // item hit player
+            if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y)<25){
+              Player[] ahyo = new Player[3];
+              println(ahyo[0].hp);
+              ((Item)items.get(i)).num = -1;
+            }
+            // item hit monster
+            /*
+            for(int j=0;j<enemy.size();j++){
+              float ex = ((Enemy)enemy.get(j)).x;
+              float ey = ((Enemy)enemy.get(j)).y;
+              int itx = (int)(((Item)items.get(i)).pos.x);
+              int ity = (int)(((Item)items.get(i)).pos.y);
+              if(dist(ex, ey, itx, ity) < 30){
+                ((Enemy)enemy.get(j)).hp-=90000000;
+                PImage bg = g.data.maps[map_id].background;
+                PImage mg = g.data.maps[map_id].mask;
+                bg.loadPixels();
+                mg.loadPixels();
+                int x = (int)(((Item)items.get(i)).pos.x);
+                int y = (int)(((Item)items.get(i)).pos.y);
+                if(x>=0 && x<bg.width && y>=0 && y<bg.height){
+                  for(int ix=-50; ix<=50; ix++){
+                    for(int iy=-50; iy<=50; iy++){
+                      if(sq(ix)+sq(iy)<sq(50) && x+ix>=0 && x+ix<bg.width && y+iy>=0 && y+iy<bg.height){
+                        bg.pixels[(x+ix)+bg.width*(y+iy)] = color(255, 0, 0);
+                        mg.pixels[(x+ix)+mg.width*(y+iy)] = color(0, 0, 0);
+                      }
+                    }
+                  }
+                }
+                bg.updatePixels();
+                mg.updatePixels();
+                ((Item)items.get(i)).num = -1;
+              }
+            }
+            */
+            
+            // item hit wall
+            PImage bg = g.data.maps[map_id].background;
+            PImage mg = g.data.maps[map_id].mask;
+            bg.loadPixels();
+            mg.loadPixels();
+            int x = (int)(((Item)items.get(i)).pos.x);
+            int y = (int)(((Item)items.get(i)).pos.y);
+            if(x>=0 && x<bg.width && y>=0 && y<bg.height){
+              if(mg.pixels[(int)(((Item)items.get(i)).pos.x) + mg.width*(int)(((Item)items.get(i)).pos.y)]==color(255)){
+                for(int ix=-50; ix<=50; ix++){
+                  for(int iy=-50; iy<=50; iy++){
+                    if(sq(ix)+sq(iy)<sq(50) && x+ix>=0 && x+ix<bg.width && y+iy>=0 && y+iy<bg.height){
+                      bg.pixels[(x+ix)+bg.width*(y+iy)] = color(255, 0, 0);
+                      mg.pixels[(x+ix)+mg.width*(y+iy)] = color(0, 0, 0);
+                    }
+                  }
+                }
+              }
+            }
+            bg.updatePixels();
+            mg.updatePixels();
+            ((Item)items.get(i)).num = -1;
+          }
         }
       }
       
@@ -152,6 +215,18 @@ class State{
                 vx = 0;
                 vy = 0;
               }
+            }
+            break;
+          case 3:
+            if(frameCount%45==0){
+              vx = 0;
+              vy = 0;
+              Item it = ((Item)g.data.items[9]).copy();
+              float theta = atan2(player_y - y, player_x - x);
+              float vel = 5.0;
+              it.pos = new Position(x+30*cos(theta), y+30*sin(theta), vel*cos(theta), vel*sin(theta), theta+PI, 0);
+              it.type = -1;
+              items.add(it);
             }
             break;
           default:

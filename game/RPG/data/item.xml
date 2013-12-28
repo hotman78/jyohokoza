@@ -1,4 +1,4 @@
-<items num="9">
+<items num="10">
 	<item id="0">
 		<name>やくそう</name>
 		<img>yakusou.png</img>
@@ -42,6 +42,11 @@
 	<item id="8">
 		<name>手榴弾</name>
 		<img></img>
+		<use type="2" value="60" />
+	</item>
+	<item id="9">
+		<name>ぬるぽ</name>
+		<img>nullpo.png</img>
 		<use type="2" value="60" />
 	</item>
 	

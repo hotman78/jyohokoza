@@ -30,7 +30,7 @@
 	<enemy id="5">
 		<name>パソコンダ</name>
 		<img>com.png</img>
-		<AI id="5" />
+		<AI id="3" />
 		<weapon id="5" />
 		<state hp="100" mp="5000" at="100" df="800" />
 	</enemy>
