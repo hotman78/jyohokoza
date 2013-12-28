@@ -66,15 +66,30 @@ class State{
         int id = ((Enemy)enemy.get(i)).AI_id;
         switch(id){
           case 0:
-          default:
+            if(frameCount %3 == 0){
+              vx = 3*cos(random(TWO_PI));
+              vy = 3*sin(random(TWO_PI));
+            }
+            break;
+          case 1:
             if(frameCount %10 == 0){
               vx = 3*cos(random(TWO_PI));
               vy = 3*sin(random(TWO_PI));
             }
             break;
+          case 2:
+            if(frameCount %5 == 0){
+              vx = 3*cos(random(TWO_PI));
+              vy = 3*sin(random(TWO_PI));
+            }
+            break;
+          default:
+            if(frameCount %8 == 0){
+              vx = 3*cos(random(TWO_PI));
+              vy = 3*sin(random(TWO_PI));
+            }
+            break;
         }
-        //vx=(int)random(-5,5);
-        //vy=(int)random(-5,5);
         if(dist(player_x, player_y, x+vx, y+vy)<dist(player_x, player_y, x, y)){
           x+=vx;
           y+=vy;
@@ -84,21 +99,6 @@ class State{
         ((Enemy)enemy.get(i)).vx = vx;
         ((Enemy)enemy.get(i)).vy = vy;
       }
-      /*
-      for(int i=0;i<enemy.size();i++){
-        int vx,vy;
-        vx=(int)random(-5,5);
-        vy=(int)random(-5,5);
-        if(dist(player_x, player_y, ((Enemy)enemy.get(i)).x+vx, ((Enemy)enemy.get(i)).y+vy)<dist(player_x, player_y, ((Enemy)enemy.get(i)).x, ((Enemy)enemy.get(i)).y)){
-          ((Enemy)enemy.get(i)).x+=vx;
-          ((Enemy)enemy.get(i)).y+=vy;
-        }
-        ((Enemy)enemy.get(i)).x = x;
-        ((Enemy)enemy.get(i)).y = y;
-        ((Enemy)enemy.get(i)).vx = vx;
-        ((Enemy)enemy.get(i)).vy = vy;
-      }
-    */
     
       if(g.key_state.key_up>=1){
         player_y -= 2; 
