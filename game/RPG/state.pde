@@ -90,7 +90,7 @@ class State{
         }
       }
       
-      for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
+      for(int i=0;i<enemy.size();i++){
         float vx = ((Enemy)enemy.get(i)).vx;
         float vy = ((Enemy)enemy.get(i)).vy;
         float x = ((Enemy)enemy.get(i)).x;
@@ -110,9 +110,16 @@ class State{
             }
             break;
           case 2:
-            if(frameCount %5 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+            if(frameCount %15 == 0){
+              if(dist(player_x,player_y,x,y) < 300){
+                if(frameCount %5 == 0){
+                  vx = 4*cos(random(TWO_PI));
+                  vy = 4*sin(random(TWO_PI));
+                }
+              }else{
+                vx = 0;
+                vy = 0;
+              }
             }
             break;
           default:
@@ -151,34 +158,40 @@ class State{
         player_muki = 3;
       }
       println(g.key_state.key_z);
+      for(int i=0; i<enemy.size();i++){
+        if(((Enemy)enemy.get(0)).hp>0){
+          enemy.add(((Enemy)enemy.get(0)));
+        }
+        enemy.remove(0);
+      }
       if(g.key_state.key_z%80<30){
       }else if((g.key_state.key_z%80>=30&&g.key_state.key_z%80<40)||(g.key_state.key_z%80>50&&g.key_state.key_z%80<80)){
       }else if(g.key_state.key_z%80==40){
         //println(player_muki);
         switch(player_muki){
           case 0:
-            for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
+            for(int i=0;i<enemy.size();i++){     
               if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y<=0&& ((Enemy)enemy.get(i)).y-player_y>-60){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break;
           case 1:
-            for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
+            for(int i=0;i<enemy.size();i++){     
               if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y>=0&& ((Enemy)enemy.get(i)).y-player_y<60){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break;
           case 2:
-             for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
+             for(int i=0;i<enemy.size();i++){     
               if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break; 
           case 3:
-              for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
+              for(int i=0;i<enemy.size();i++){     
               if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
