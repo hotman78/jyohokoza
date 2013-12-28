@@ -90,5 +90,12 @@
 		<weapon id="13" />
 		<state hp="500" mp="9560" at="6670" df="670" />
 	</enemy>
+	<enemy id="14">
+		<name>‚«‚Ì‚±</name>
+		<img>kinoko.png</img>
+		<AI id="14" />
+		<weapon id="14" />
+		<state hp="200" mp="300" at="60" df="70" />
+	</enemy>
 	
 </enemys>
