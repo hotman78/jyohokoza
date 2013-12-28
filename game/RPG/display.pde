@@ -50,6 +50,15 @@ class Display{
     
     image(player_img, mx, my, 60, 60);
 //    ellipse(g.state.player_x, g.state.player_y, 20, 20);
+
+
+    for(int i=0; i<g.state.player.items.size(); i++){
+      Item it = (Item)(g.state.player.items.get(i));
+      textFont(g.data.kishimoto);
+      textSize(25);
+      fill(255, 0, 0);
+      text(it.name, 20, i*30 + 50);
+    }
   }
   
   void draw_kaiwa(Game g){

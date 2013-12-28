@@ -8,6 +8,8 @@ class Item{
   int type;
   int id;
   int x, y;
+  int value;
+  int num=0;
   
   Item(String name0, PImage img0, int id0){
     name = name0;
@@ -22,6 +24,8 @@ class Item{
     Item it = new Item(name, img, id);
     it.x = x;
     it.y = y;
+//    it.val = 0;
+    it.num = 0;
     return it;
   }
   

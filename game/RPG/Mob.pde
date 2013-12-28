@@ -5,7 +5,7 @@ class Player extends Schar {
   Schar schara;
   
   Player(){
-    
+    items = new ArrayList();
   }
   
 }
