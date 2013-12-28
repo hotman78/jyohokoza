@@ -31,7 +31,13 @@ class Item{
   
   void draw(Game g, int mx, int my){
     imageMode(CENTER);
-    image(img, x+mx, y+my, 60, 60);
+    if(img==null){
+      rectMode(CENTER);
+      fill(0, 0, 255, 100);
+      rect(0, 0, 60, 60);
+    }
+    else image(img, 0, 0, 60, 60);
+    popMatrix();
   }
   
 }

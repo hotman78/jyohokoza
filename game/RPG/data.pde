@@ -9,8 +9,8 @@ class Data{
   Weapon[] weapons;
   
   int N_maps = 2;
-  int N_enemies = 5;
-  int N_items = 5;
+  int N_enemies = 9;
+  int N_items = 22;
   int N_weapons = 3;
   
   Data(){
@@ -54,7 +54,7 @@ class Data{
       mp         = children[i].getChild("state").getInt("mp");
       at         = children[i].getChild("state").getInt("at");
       df         = children[i].getChild("state").getInt("df");  
-      println(i);
+//      println(i);
       o_enemies[i]=new Enemy(name,img,AI_id,weapon_id,hp,mp,at,df);
     }
   }
