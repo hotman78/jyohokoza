@@ -1,6 +1,5 @@
 class State{
   int game_state=1;  // タイトル、ゲーム内、エンディングとか
-  int menu_state;  // メニューが開いている時 1
   
   int map_id;
   int player_x, player_y;
