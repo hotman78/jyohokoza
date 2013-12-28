@@ -62,13 +62,31 @@ class State{
       
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).x, ((Item)items.get(i)).y, player_x, player_y) < 20){
-          player.items.add((Item)(items.get(i)));
+          player.items.add(((Item)(items.get(i))).copy());
           ((Item)items.get(i)).num = -1;
+        }else{
+          ((Item)items.get(i)).x += ((Item)items.get(i)).vx;
+          ((Item)items.get(i)).y += ((Item)items.get(i)).vy;
+          ((Item)items.get(i)).t += ((Item)items.get(i)).vt;
         }
       }
       for(int i=items.size()-1; i>=0; i--){
         if(((Item)items.get(i)).num == -1){
           items.remove(i);
+        }
+      }
+      if(g.key_state.key_c==1){
+        if(player.items.size()>0){
+          Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
+          player.items.remove((player.items.size()-1));
+          float theta = random(0, 2*PI);
+          float vel = 5.0;
+          it.x = player_x+30*cos(theta);
+          it.y = player_y+30*sin(theta);
+          it.vx = vel*cos(theta);
+          it.vy = vel*sin(theta);
+          it.vt = random(-0.1, 0.1);
+          items.add(it);
         }
       }
       
@@ -130,7 +148,9 @@ class State{
         player_x -= 2;
         player_muki = 3;
       }
-      println(g.key_state.key_z);
+      
+      
+//      println(g.key_state.key_z);
       if(g.key_state.key_z%80<30){
       }else if((g.key_state.key_z%80>=30&&g.key_state.key_z%80<40)||(g.key_state.key_z%80>50&&g.key_state.key_z%80<80)){
       }else if(g.key_state.key_z%80==40){
