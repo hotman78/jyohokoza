@@ -9,7 +9,7 @@ class Data{
   
   int N_maps = 2;
   int N_enemies = 5;
-  int N_items = 100;
+  int N_items = 5;
   int N_weapons = 3;
   
   Data(){
@@ -64,12 +64,10 @@ class Data{
     int id;
     PImage img;
     
-    for(int i=0; i<children.length; i++){
-//      id         = children[i].getInt("id");
+    for(int i=0; i<min(N_items, children.length); i++){
+      id         = children[i].getInt("id");
       name       = children[i].getChild("name").getContent();
-//      img        = loadImage("./data/image/items/"+children[i].getChild("img").getContent());
-      id = 0;
-      img = null;
+      img        = loadImage("./data/image/"+children[i].getChild("img").getContent());
       items[i] = new Item(name, img, id);
     }
   }

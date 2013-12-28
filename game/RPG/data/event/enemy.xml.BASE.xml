@@ -1,52 +1,36 @@
-<enemys>
+ï»¿<enemys>
 	<enemy id="1">
-		<name>ƒXƒ‰ƒCƒ€</name>
-		<img>suraimuu.png</img>
+		<name>ã‚¹ãƒ©ã‚¤ãƒ </name>
+		<img>suraimu.png</img>
 		<AI id="0" />
 		<weapon id="0" />
 		<state hp="7" mp="2" at="3" df="2" />
 	</enemy>
 	<enemy id="2">
-		<name>ƒIƒ‹ƒSƒfƒ~[ƒ‰</name>
+		<name>ã‚ªãƒ«ã‚´ãƒ‡ãƒŸãƒ¼ãƒ©</name>
 		<img>orugo.png</img>
 		<AI id="0" />
 		<weapon id="2" />
 		<state hp="99999" mp="9999" at="3000" df="5000" />
 	</enemy>
 	<enemy id="3">
-		<name>ƒƒ^ƒ‹ƒLƒ“ƒO</name>
+		<name>ãƒ¡ã‚¿ãƒ«ã‚­ãƒ³ã‚°</name>
 		<img>metakin.png</img>
 		<AI id="3" />
 		<weapon id="3" />
 		<state hp="300" mp="4000" at="100" df="5000000" />
-	</enemy>
 	<enemy id="4">
-		<name>‚«‚ã[‚èŒN</name>
+		<name>ãã‚…ãƒ¼ã‚Šå›</name>
 		<img>cucumber.png</img>
 		<AI id="4" />
 		<weapon id="4" />
 		<state hp="10" mp="8" at="30" df="8" />
 	</enemy>
 	<enemy id="5">
-		<name>ƒpƒ\ƒRƒ“ƒ_</name>
+		<name>ãƒ‘ã‚½ã‚³ãƒ³ãƒ€</name>
 		<img>com.png</img>
 		<AI id="5" />
 		<weapon id="5" />
 		<state hp="100" mp="5000" at="100" df="800" />
 	</enemy>
-	<enemy id="6">
-		<name>Mr.Brown</name>
-		<img>mattyo.png</img>
-		<AI id="6" />
-		<weapon id="6" />
-		<state hp="10000" mp="50" at="90000" df="8000" />
-	</enemy>
-	<enemy id="7">
-		<name>C++ƒ}ƒ“</name>
-		<img>CClemon.png</img>
-		<AI id="7" />
-		<weapon id="7" />
-		<state hp="9000" mp="80" at="50000" df="6000" />
-	</enemy>
-	
-</enemys>
+</enemys>         

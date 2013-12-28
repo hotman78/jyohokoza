@@ -31,16 +31,24 @@ class Display{
   }
   
   void draw_event(Game g){
-    for(int i=0; i<g.data.maps[g.state.map_id].map_transition.length; i++){
-      g.data.maps[g.state.map_id].map_transition[i].draw(g);
-    }
-    for(int i=0; i<g.state.enemy.size(); i++){
-      ((Enemy)g.state.enemy.get(i)).draw(g);
-    }
+    
   }
   
   void draw_player(Game g){
-    image(player_img, g.state.player_x, g.state.player_y, 60, 60);
+    int mx=-1,my=-1;
+    int px=g.state.player_x;
+    int py=g.state.player_y;
+    int b_width=g.data.maps[g.state.map_id].background.width;
+    int b_height=g.data.maps[g.state.map_id].background.height;    
+    if(px<width/2)mx=px;
+    else if(px>b_width-width/2)mx=width-b_width+px;
+    if(py<height/2)my=py;
+    else if(py>b_height-height/2)my=height-b_height+py;
+    
+    if(mx==-1)mx=width/2;    
+    if(my==-1)my=height/2;
+    
+    image(player_img, mx, my, 60, 60);
 //    ellipse(g.state.player_x, g.state.player_y, 20, 20);
   }
   
