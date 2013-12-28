@@ -9,6 +9,8 @@ class State{
   ArrayList items;
   ArrayList enemy;
   Player player;
+  
+  Dict_character dict_c;
 
   
   Flag[] flag_state;
@@ -18,6 +20,7 @@ class State{
     enemy=new ArrayList();
     items = new ArrayList();
     player = new Player();
+    dict_c = new Dict_character();
   }
   
   void init(Game g){
@@ -252,7 +255,8 @@ class State{
       }
     }
     else if(game_state==3){
-      
+      if(g.key_state.key_a==1){
+        s
     }
   }
 }

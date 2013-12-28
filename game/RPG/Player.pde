@@ -4,6 +4,7 @@ class Player{
   int mp, maxmp;
   int at, df;
   ArrayList items;
+  ArrayList weapons;
   
   Player(){
     items = new ArrayList();
