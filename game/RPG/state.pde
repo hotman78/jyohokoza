@@ -86,19 +86,44 @@ class State{
         player_muki = 3;
       }
       println(g.key_state.key_z);
-      if(g.key_state.key_z>=40){
+      if(g.key_state.key_z%80<30){
+      }else if((g.key_state.key_z%80>=30&&g.key_state.key_z%80<40)||(g.key_state.key_z%80>50&&g.key_state.key_z%80<80)){
+      }else if(g.key_state.key_z%80==40){
         //println(player_muki);
         switch(player_muki){
           case 0:
-            for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){  
-              
+            for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
               if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y<=0&& ((Enemy)enemy.get(i)).y-player_y>-60){
-                ((Enemy)enemy.get(i)).hp-=100;
+                ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
+            break;
+          case 1:
+            for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
+              if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y>=0&& ((Enemy)enemy.get(i)).y-player_y<60){
+                ((Enemy)enemy.get(i)).hp-=90000000;
+              }
+            }
+            break;
+          case 2:
+             for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
+              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+                ((Enemy)enemy.get(i)).hp-=90000000;
+              }
+            }
+            break; 
+          case 3:
+              for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
+              if(((Enemy)enemy.get(i)).x-player_x<-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+                ((Enemy)enemy.get(i)).hp-=90000000;
+              }
+            }
+            break; 
         }
+      }else if(g.key_state.key_z%80>40&&g.key_state.key_z%80<50){
+      }else if(g.key_state.key_z%80==0){
+        g.key_state.key_z=1;
       }
-
     }
     else if(game_state==1){
       if(g.key_state.key_c>=1){
