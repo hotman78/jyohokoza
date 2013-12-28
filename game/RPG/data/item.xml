@@ -53,7 +53,7 @@
 	</item>
 	<item id="13">
 		<name>毛糸の鞭</name>
-		<img></img>
+		<img>photo/keito.JPEG</img>
 	</item>
 	<item id="14">
 		<name>女王様の鞭</name>
@@ -61,7 +61,7 @@
 	</item>
 	<item id="15">
 		<name>グリーンの鞭</name>
-		<img>photo/green_muchi.png</img>
+		<img>photo/green_muchi.JPEG</img>
 	</item>
 	<item id="16">
 		<name>魔法使いの杖</name>
@@ -77,7 +77,7 @@
 	</item>	
 	<item id="19">
 		<name>錆びた斧</name>
-		<img></img>
+		<img>photo/sabita_ono.JPEG</img>
 	</item>	
 	<item id="20">
 		<name>テフロン加工の斧</name>
@@ -93,7 +93,7 @@
 	</item>
 	<item id="23">
 		<name>破滅の盾</name>
-		<img></img>
+		<img>photo/hametsu_tate.JPEG</img>
 	</item>
 	
 </items>
