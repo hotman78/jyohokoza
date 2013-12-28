@@ -1,11 +1,19 @@
 <map>
-	<img_bg>map_1_bg.png</img_bg>
+	<img_bg>map_1.png</img_bg>
 	<img_mask>map_1_mask.png</img_mask>
-	<enemy x="300" y="100" id="0" />
+	<enemy x="100" y="450" id="0" />
+	<enemy x="200" y="850" id="1" />
+	<enemy x="300" y="650" id="2" />
+	<enemy x="400" y="250" id="3" />
+	<enemy x="500" y="1050" id="4" />
+	<enemy x="600" y="350" id="3" />
+	<enemy x="700" y="550" id="2" />
+	<enemy x="800" y="350" id="1" />
+	<enemy x="900" y="1110" id="0" />
 	<trans next="1" x="314" y="159" px="100" py="200" />
 	<item x="123" y="321" id="0" />
-	<item x="234" y="432" id="0" />
-	<item x="345" y="543" id="0" />
-	<item x="456" y="321" id="0" />
-	<item x="12" y="321" id="0" />
+	<item x="234" y="432" id="1" />
+	<item x="345" y="543" id="2" />
+	<item x="456" y="210" id="3" />
+	<item x="12" y="109" id="4" />
 </map>

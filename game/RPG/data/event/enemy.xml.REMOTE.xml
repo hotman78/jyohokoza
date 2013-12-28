@@ -1,7 +1,7 @@
 <enemys>
 	<enemy id="1">
 		<name>ƒXƒ‰ƒCƒ€</name>
-		<img>suraimuu.png</img>
+		<img>suraimu.png</img>
 		<AI id="0" />
 		<weapon id="0" />
 		<state hp="7" mp="2" at="3" df="2" />
