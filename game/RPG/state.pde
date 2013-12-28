@@ -1,7 +1,6 @@
 class State{
   int game_state=1;  // タイトル、ゲーム内、エンディングとか
   int menu_state;  // メニューが開いている時 1
-  int kaiwa_state; // 会話が起きている時 1
   
   int map_id;
   int player_x, player_y;
@@ -226,6 +225,9 @@ class State{
       if(time>200){
         exit();
       }
+    }
+    else if(game_state==3){
+      
     }
   }
 }
