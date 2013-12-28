@@ -1,4 +1,5 @@
 class Data{
+  PFont kishimoto;
   // arraylistでもいい
   Map[] maps;
   //ArrayList enemies;
@@ -13,6 +14,7 @@ class Data{
   int N_weapons = 3;
   
   Data(){
+    kishimoto = loadFont("HGPKisimotoKaishotai-25.vlw");
     maps    = new Map[N_maps];
     //enemies = new ArrayList();
     o_enemies = new Enemy[N_enemies];

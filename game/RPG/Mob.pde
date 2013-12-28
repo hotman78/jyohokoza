@@ -1,11 +1,11 @@
-
+/*
 class Player extends Schar {
   ArrayList<Item> items;
   
   Schar schara;
   
   Player(){
-    
+    items = new ArrayList();
   }
   
 }
@@ -19,7 +19,7 @@ class Schar extends Chara {
   }
   
 }
-/*
+
 class Enemy extends Chara {
   int ai_pt;
   
@@ -28,7 +28,7 @@ class Enemy extends Chara {
   }
   
 }
-*/
+
 class Chara extends Mob{//active charactor
   int x, y;
   String type;
@@ -62,5 +62,5 @@ class Mob {
     
   }
   
-}
+}*/
 
