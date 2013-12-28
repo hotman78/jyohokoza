@@ -11,8 +11,6 @@ class Data{
   XML enemy   = loadXML("./data/event/enemy.xml");
   XML item   = loadXML("./data/item.xml");
   XML weapon   = loadXML("./data/weapon.xml");
-  
-<<<<<<< HEAD
   int N_maps;
   int N_enemies;
   int N_items;
