@@ -9,7 +9,7 @@ class Data{
   Weapon[] weapons;
   
   int N_maps = 2;
-  int N_enemies = 5;
+  int N_enemies = 9;
   int N_items = 5;
   int N_weapons = 3;
   
