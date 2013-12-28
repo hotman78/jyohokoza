@@ -7,9 +7,7 @@ class Item{
   PImage img;
   int type;
   int id;
-  float x, y;
-  float vx, vy;
-  float t, vt;
+  int x, y;
   int value;
   int num=0;
   
@@ -26,19 +24,12 @@ class Item{
     Item it = new Item(name, img, id);
     it.x = x;
     it.y = y;
-    it.t = 0;
-    it.vx = 0;
-    it.vy = 0;
-    it.vt = 0;
 //    it.val = 0;
     it.num = 0;
     return it;
   }
   
   void draw(Game g, int mx, int my){
-    pushMatrix();
-    translate(x+mx, y+my);
-    rotate(t);
     imageMode(CENTER);
     if(img==null){
       rectMode(CENTER);
