@@ -74,9 +74,9 @@ class State{
         player_x -= 1;
         player_muki = 3;
       }
-      
+      println(g.key_state.key_z);
       if(g.key_state.key_z>=40){
-        println(player_muki);
+        //println(player_muki);
         switch(player_muki){
           case 0:
             for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){  
