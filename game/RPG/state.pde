@@ -110,9 +110,16 @@ class State{
             }
             break;
           case 2:
-            if(frameCount %5 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+            if(frameCount %15 == 0){
+              if(dist(player_x,player_y,x,y) < 300){
+                if(frameCount %5 == 0){
+                  vx = 4*cos(random(TWO_PI));
+                  vy = 4*sin(random(TWO_PI));
+                }
+              }else{
+                vx = 0;
+                vy = 0;
+              }
             }
             break;
           default:
