@@ -10,6 +10,7 @@ class State{
   Trans[] trans;
   ArrayList items;
   ArrayList enemy;
+  Player player;
 
   
   Flag[] flag_state;
@@ -18,6 +19,7 @@ class State{
     trans = new Trans[1];
     enemy=new ArrayList();
     items = new ArrayList();
+    player = new Player();
   }
   
   void init(Game g){
@@ -55,6 +57,18 @@ class State{
             Item it = (Item)g.data.maps[map_id].map_item.get(j);
             items.add(it.copy2());
           }
+        }
+      }
+      
+      for(int i=0; i<items.size(); i++){
+        if(dist(((Item)items.get(i)).x, ((Item)items.get(i)).y, player_x, player_y) < 20){
+          player.items.add((Item)(items.get(i)));
+          ((Item)items.get(i)).num = -1;
+        }
+      }
+      for(int i=items.size()-1; i>=0; i--){
+        if(((Item)items.get(i)).num == -1){
+          items.remove(i);
         }
       }
       
@@ -145,7 +159,7 @@ class State{
             break; 
           case 3:
               for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+              if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
