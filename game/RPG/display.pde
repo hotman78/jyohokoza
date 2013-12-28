@@ -37,6 +37,10 @@ class Display{
     for(int i=0; i<g.state.enemy.size(); i++){
       ((Enemy)g.state.enemy.get(i)).draw(g);
     }
+    for(int i=0; i<g.state.items.size(); i++){
+      println("draw item: "+i);
+      ((Item)g.state.items.get(i)).draw(g);
+    }
   }
   
   void draw_player(Game g){

@@ -8,6 +8,7 @@ class State{
   int player_muki;//0up 1down 2 right 3 left
   int time,trans_num;
   Trans[] trans;
+  ArrayList items;
   ArrayList enemy;
 
   
@@ -16,6 +17,7 @@ class State{
   State(){
     trans = new Trans[1];
     enemy=new ArrayList();
+    items = new ArrayList();
   }
   
   void init(Game g){
@@ -25,6 +27,10 @@ class State{
     for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
       Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
       enemy.add(en.copy2());
+    }
+    for(int j=0; j<g.data.maps[map_id].map_item.size(); j++){
+      Item it = (Item)g.data.maps[map_id].map_item.get(j);
+      items.add(it.copy2());
     }
   }
   
@@ -41,8 +47,13 @@ class State{
           if(trans_num>=5)game_state=2;
           enemy = new ArrayList();        
           for(int j=0;j<g.data.maps[map_id].map_enemy.size();j++){
-            Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
+            Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(j);
             enemy.add(en.copy2());
+          }
+          items = new ArrayList();
+          for(int j=0; j<g.data.maps[map_id].map_item.size(); j++){
+            Item it = (Item)g.data.maps[map_id].map_item.get(j);
+            items.add(it.copy2());
           }
         }
       }

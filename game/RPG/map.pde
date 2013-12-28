@@ -5,10 +5,12 @@ class Map{
   PImage background, mask;
   Trans[] map_transition;
   ArrayList map_enemy;
+  ArrayList map_item;
   
   Map(){
     map_transition = new Trans[1];
     map_enemy=new ArrayList();
+    map_item = new ArrayList();
   }
   
   Map(int debug,Game g){
@@ -58,6 +60,15 @@ class Map{
       en.x = xml_enemies[i].getInt("x");
       en.y = xml_enemies[i].getInt("y");
       map_enemy.add(en);
+    }
+    
+    map_item=new ArrayList();
+    XML[] xml_items = xml.getChildren("item");
+    for(int i=0; i<xml_items.length; i++){
+      Item it = g.data.items[xml_items[i].getInt("id")].copy();
+      it.x = xml_items[i].getInt("x");
+      it.y = xml_items[i].getInt("y");
+      map_item.add(it);
     }
   }
   
