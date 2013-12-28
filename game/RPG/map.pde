@@ -73,10 +73,14 @@ class Map{
     if(mx==-1)mx=width/2-px;    
     if(my==-1)my=height/2-py;
     
-    
     imageMode(CORNERS);
     image(background, mx, my);
-
+    for(int i=0; i<g.data.maps[g.state.map_id].map_transition.length; i++){
+      g.data.maps[g.state.map_id].map_transition[i].draw(g,mx,my);
+    }
+    for(int i=0; i<g.state.enemy.size(); i++){
+      ((Enemy)g.state.enemy.get(i)).draw(g,mx,my);
+    }
   }
   
 }

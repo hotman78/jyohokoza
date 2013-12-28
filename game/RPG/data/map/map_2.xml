@@ -1,5 +1,5 @@
 <map>
-	<img_bg>map_2_bg.png</img_bg>
+	<img_bg>map_2.png</img_bg>
 	<img_mask>map_2_mask.png</img_mask>
 	<enemy x="300" y="300" id="0" />
 	<enemy x="110" y="510" id="0" />
