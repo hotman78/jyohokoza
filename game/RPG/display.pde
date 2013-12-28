@@ -13,7 +13,7 @@ class Display{
   void draw(Game g){
     background(255);
     
-    if(g.state.game_state==0 && g.state.game_state==3){//main
+    if(g.state.game_state==0){//main
       draw_map(g);
       draw_event(g);
       draw_player(g);
@@ -22,8 +22,8 @@ class Display{
     }else if(g.state.game_state==2){//ed
         draw_ending(g);
     }
-      window.draw(g);
-      draw_menu(g);
+     // window.draw(g);
+     // draw_menu(g);
       
   }
   

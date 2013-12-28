@@ -56,6 +56,7 @@ class State{
   }
   
   void update(Game g){
+    if(game_state==3)game_state=0;
     if(game_state==0){
       Trans[] t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.length; i++){
@@ -78,7 +79,6 @@ class State{
           }
         }
       }
-      
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).x, ((Item)items.get(i)).y, player_x, player_y) < 20){
           player.items.add(((Item)(items.get(i))).copy());
@@ -165,10 +165,6 @@ class State{
         if(han(g,0,-2)==1)vy -= 2; 
         player_muki = 0;
         
-      }
-      if(g.key_state.key_left>=1){
-        player_x -= 2;
-        player_muki = 1;
       }
       if(g.key_state.key_down>=1){
         if(han(g,0,2)==1)vy += 2;
