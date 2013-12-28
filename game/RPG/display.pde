@@ -21,6 +21,16 @@ class Display{
         draw_title(g);
     }else if(g.state.game_state==2){//ed
         draw_ending(g);
+    }else if(g.state.game_state==3){
+      if(g.state.disp_dict=='a'){
+        g.state.dict_item.display(g);
+      }
+      if(g.state.disp_dict=='s'){
+        g.state.dict_enemy.display(g);
+      }
+      if(g.state.disp_dict=='d'){
+        g.state.dict_character.display(g);
+      }
     }
      // window.draw(g);
      // draw_menu(g);

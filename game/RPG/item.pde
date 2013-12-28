@@ -61,6 +61,7 @@ class Item{
     id = id0;
     type = type0;
     status = s0;
+    if(status==null) status = new Status();
     pos = new Position();
   }
   

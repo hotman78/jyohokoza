@@ -1,10 +1,14 @@
 class State{
   int game_state=1;  // タイトル、ゲーム内、エンディングとか
+  Dict_item dict_item;
+  Dict_enemy dict_enemy;
+  Dict_character dict_character;
   
   int map_id;
   int player_x, player_y;
   int player_muki;//0up 1down 2 right 3 left
   int time,trans_num;
+  int disp_dict;
   Trans[] trans;
   ArrayList items;
   ArrayList enemy;
@@ -59,7 +63,7 @@ class State{
   }
   
   void update(Game g){
-    if(game_state==3)game_state=0;
+//    if(game_state==3)game_state=0;
     
     // in game
     if(game_state==0){
@@ -255,6 +259,23 @@ class State{
 
       }else if(g.key_state.key_z%80==0){
       }
+      
+      if(g.key_state.key_a==1){
+        game_state = 3;
+        disp_dict='a';
+        dict_item = new Dict_item(g);
+      }
+      if(g.key_state.key_s==1){
+        game_state = 3;
+        disp_dict='s';
+        dict_enemy = new Dict_enemy(g);
+      }
+      if(g.key_state.key_d==1){
+        game_state = 3;
+        disp_dict='d';
+        dict_character = new Dict_character();
+      }
+        
     }
     // title
     else if(game_state==1){
@@ -272,9 +293,21 @@ class State{
     }
     // kaiwa window
     else if(game_state==3){
-//      if(g.key_state.key_a==1){
-       // s
-  //    }
+      if(disp_dict=='a'){
+        if(g.key_state.key_up==1) dict_item.switch_prev();
+        if(g.key_state.key_down==1) dict_item.switch_next();
+        if(g.key_state.key_x==1) game_state = 0;
+      }
+      if(disp_dict=='s'){
+        if(g.key_state.key_up==1) dict_enemy.switch_prev();
+        if(g.key_state.key_down==1) dict_enemy.switch_next();
+        if(g.key_state.key_x==1) game_state = 0;
+      }
+      else if(disp_dict=='d'){
+        if(g.key_state.key_up==1) dict_character.switch_prev();
+        if(g.key_state.key_down==1) dict_character.switch_next();
+        if(g.key_state.key_x==1) game_state = 0;
+      }
     }
   }
 }

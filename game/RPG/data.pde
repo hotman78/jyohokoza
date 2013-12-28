@@ -17,10 +17,10 @@ class Data{
   int N_weapons;
   
   Data(){
-    N_maps=enemy.getInt("num");
+    N_maps=map.getInt("num");
     N_enemies=enemy.getInt("num");
-    N_items=enemy.getInt("num");
-    N_weapons=enemy.getInt("num");
+    N_items=item.getInt("num");
+    N_weapons=weapon.getInt("num");
     kishimoto = loadFont("HGPKisimotoKaishotai-25.vlw");
     maps    = new Map[N_maps];
     //enemies = new ArrayList();
@@ -72,7 +72,7 @@ class Data{
     String name;
     int id;
     PImage img;
-    String type_str;
+    int type_str;
     int type = 0;
     int val;
     Status stat = null;
@@ -81,15 +81,15 @@ class Data{
       id         = children[i].getInt("id");
       name       = children[i].getChild("name").getContent();
       img        = loadImage("./data/image/items/"+children[i].getChild("img").getContent());
-      type_str   = children[i].getChild("use").getString("type");
+      type_str   = children[i].getChild("use").getInt("type");
       val        = children[i].getChild("use").getInt("value");
-      if(type_str=="heal_hp"){
+      if(type_str==0){
         type = 0;
         stat = new Status(0, 0, 0, val, 0, 0, 0);
-      }else if(type_str=="heal_mp"){
+      }else if(type_str==1){
         type = 0;
         stat = new Status(0, 0, 0, 0, val, 0, 0);
-      }else if(type_str=="throw"){
+      }else if(type_str==2){
         type = 1;
         stat = new Status(val, 0, 0, 0, 0, 0, 0);
       }
@@ -113,6 +113,7 @@ class Data{
       cr         = children[i].getChild("state").getInt("cr");
       img        = loadImage("./data/image/weapons/"+children[i].getChild("img").getContent());
       
+//      println("set_weapons: "+(N_items+i));
       items[N_items+i] = new Item(id, name, img, 2, new Status(at, df, cr, 0, 0, 0, 0));
     }
   }
