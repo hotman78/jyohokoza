@@ -5,6 +5,9 @@ class Player{
   int at, df;
   ArrayList items;
   
+  Player(){
+    items = new ArrayList();
+  }
   
   
 }
