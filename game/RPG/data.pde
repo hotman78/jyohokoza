@@ -12,11 +12,11 @@ class Data{
   XML item   = loadXML("./data/item.xml");
   XML weapon   = loadXML("./data/weapon.xml");
   
+<<<<<<< HEAD
   int N_maps;
   int N_enemies;
   int N_items;
   int N_weapons;
-
   
   Data(){
     N_maps=enemy.getInt("num");
