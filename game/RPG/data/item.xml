@@ -1,4 +1,4 @@
-<items>
+﻿<items>
 	<item id="0">
 		<name>やくそう</name>
 		<img>photo/yakusou.png</img>
@@ -60,8 +60,8 @@
 		<img></img>
 	</item>
 	<item id="15">
-		<name>グリンガムの鞭</name>
-		<img>photo/green_muchi.JPG</img>
+		<name>グリーンの鞭</name>
+		<img>photo/green_muchi.png</img>
 	</item>
 	<item id="16">
 		<name>魔法使いの杖</name>
@@ -89,6 +89,10 @@
 	</item>	
 	<item id="22">
 		<name>手榴弾</name>
+		<img></img>
+	</item>
+	<item id="23">
+		<name>破滅の盾</name>
 		<img></img>
 	</item>
 	
