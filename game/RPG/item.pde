@@ -4,14 +4,14 @@
 class Item{
   
   String name;
+  PImage img;
   int type;
   int id;
   
-  Item(){
-    
+  Item(String name0, PImage img0, int id0){
+    name = name0;
+    img = img0;
+    id = id0;
   }
   
-  void load_file(){
-    
-  }
 }
