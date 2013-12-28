@@ -47,7 +47,7 @@ class State{
         }
       }
       
-      /*for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
+      for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
         int vx,vy;
         vx=(int)random(-5,5);
         vy=(int)random(-5,5);
@@ -55,7 +55,7 @@ class State{
           ((Enemy)enemy.get(i)).x+=vx;
           ((Enemy)enemy.get(i)).y+=vy;
         }
-      }*/
+      }
     
     
       if(g.key_state.key_up>=1){
