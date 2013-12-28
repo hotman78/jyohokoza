@@ -40,7 +40,12 @@ class Item{
     translate(x+mx, y+my);
     rotate(t);
     imageMode(CENTER);
-    image(img, 0, 0, 60, 60);
+    if(img==null){
+      rectMode(CENTER);
+      fill(0, 0, 255, 100);
+      rect(0, 0, 60, 60);
+    }
+    else image(img, 0, 0, 60, 60);
     popMatrix();
   }
   

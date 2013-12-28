@@ -5,7 +5,7 @@
 	</item>
 	<item id="1">
 		<name>魔法のせいすい</name>
-		<img>photo/mahou_seisui.png</img>
+		<img>photo/mahou_seisui.JPG</img>
 	</item>
 	<item id="2">
 		<name>エルフの飲み薬</name>
@@ -29,11 +29,11 @@
 	</item>
 	<item id="7">
 		<name>オリハルコンの塊</name>
-		<img>photo/oriharu.png</img>
+		<img>photo/oriharu.JPG</img>
 	</item>
 	<item id="8">
 		<name>ひのきのぼう</name>
-		<img>photo/hinoki_bou.png</img>
+		<img>photo/hinoki_bou.JPG</img>
 	</item>
 	<item id="9">
 		<name>暗殺ナイフ</name>
@@ -41,7 +41,7 @@
 	</item>
 	<item id="10">
 		<name>兵士の剣</name>
-		<img>photo/sword.png</img>
+		<img>photo/sword.JPG</img>
 	</item>
 	<item id="11">
 		<name>ロトの剣</name>
@@ -65,11 +65,11 @@
 	</item>
 	<item id="16">
 		<name>魔法使いの杖</name>
-		<img>photo/maho-_tsue.png</img>
+		<img>photo/maho-_tsue.JPG</img>
 	</item>
 	<item id="17">
 		<name>マグマの杖</name>
-		<img>photo/maguma_tsue.png</img>
+		<img>photo/maguma_tsue.JPG</img>
 	</item>	
 	<item id="18">
 		<name>氷の杖</name>
@@ -81,11 +81,11 @@
 	</item>	
 	<item id="20">
 		<name>テフロン加工の斧</name>
-		<img>photo/tehuron_ono.png</img>
+		<img>photo/tehuron_ono.JPG</img>
 	</item>	
 	<item id="21">
 		<name>魔人の斧</name>
-		<img>photo/tehuron.png</img>
+		<img>photo/tehuron.JPG</img>
 	</item>	
 	<item id="22">
 		<name>手榴弾</name>
