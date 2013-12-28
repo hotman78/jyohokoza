@@ -3,7 +3,8 @@
 
 class Enemy{
   int AI_id,w_id,hp,mp,at,df;
-  int x,y;
+  float x,y;
+  float vx,vy;
   String name;
   PImage img;
 //  Weapon w;
