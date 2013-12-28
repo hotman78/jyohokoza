@@ -48,5 +48,19 @@
 		<weapon id="7" />
 		<state hp="9000" mp="80" at="50000" df="6000" />
 	</enemy>
+	<enemy id="8">
+		<name>ルービック5000</name>
+		<img>cube.png</img>
+		<AI id="8" />
+		<weapon id="8" />
+		<state hp="3000" mp="5000" at="600" df="800" />
+	</enemy>
+	<enemy id="9">
+		<name>Nバッグマン</name>
+		<img>nbag.png</img>
+		<AI id="9" />
+		<weapon id="9" />
+		<state hp="8000" mp="5500" at="300" df="60000" />
+	</enemy>
 	
 </enemys>
