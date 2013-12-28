@@ -1,17 +1,77 @@
 <items>
 	<item id="1">
 		<name>やくそう</name>
+		<img>yakusou.png</img>
 	</item>
 	<item id="2">
 		<name>魔法のせいすい</name>
+		<img>mahou_seisui.jpeg</img>
+	</item>
+	<item id="">
+		<name>エルフの飲み薬</name>
+		<img></img>
 	</item>
 	<item id="3">
-		<name>オリハルコン</name>
+		<name>オリハルコンの塊</name>
+		<img></img>
 	</item>
 	<item id="4">
 		<name>ひのきのぼう</name>
+		<img>hinoki_bou.jpeg</img>
+	</item>
+	<item id="">
+		<name>暗殺ナイフ</name>
+		<img></img>
+	</item>
+	<item id="">
+		<name>兵士の剣</name>
+		<img></img>
 	</item>
 	<item id="5">
 		<name>ロトの剣</name>
+		<img></img>
 	</item>
+	<item id="6">
+		<name>モーニングスター</name>
+		<img></img>
+	</item>
+	<item id="">
+		<name>毛糸の鞭</name>
+		<img></img>
+	</item>
+	<item id="">
+		<name>女王様の鞭</name>
+		<img></img>
+	</item>
+	<item id="7">
+		<name>グリンガムの鞭</name>
+		<img></img>
+	</item>
+	<item id="8">
+		<name>魔法使いの杖</name>
+		<img></img>
+	</item>
+	<item id="">
+		<name>マグマの杖</name>
+		<img></img>
+	</item>	<item id="">
+		<name>氷の杖</name>
+		<img></img>
+	</item>	<item id="">
+		<name>錆びた斧</name>
+		<img></img>
+	</item>	<item id="">
+		<name>テフロン加工の斧</name>
+		<img></img>
+	</item>	<item id="">
+		<name>魔人の斧</name>
+		<img></img>
+	</item>	<item id="">
+		<name></name>
+		<img></img>
+	</item>	<item id="">
+		<name></name>
+		<img></img>
+	</item>
+	
 </items>

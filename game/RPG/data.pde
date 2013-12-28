@@ -8,8 +8,8 @@ class Data{
   Weapon[] weapons;
   
   int N_maps = 2;
-  int N_enemies = 3;
-  int N_items = 5;
+  int N_enemies = 5;
+  int N_items = 100;
   int N_weapons = 3;
   
   Data(){
@@ -65,9 +65,10 @@ class Data{
     PImage img;
     
     for(int i=0; i<children.length; i++){
-      id         = children[i].getInt("id");
+//      id         = children[i].getInt("id");
       name       = children[i].getChild("name").getContent();
 //      img        = loadImage("./data/image/items/"+children[i].getChild("img").getContent());
+      id = 0;
       img = null;
       items[i] = new Item(name, img, id);
     }

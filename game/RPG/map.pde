@@ -62,8 +62,20 @@ class Map{
   }
   
   void draw(Game g){
+    int mx=-1,my=-1;
+    int px=g.state.player_x;
+    int py=g.state.player_y;
+    if(px<width/2)mx=0;
+    else if(px>background.width-width/2)mx=width-background.width;
+    if(py<height/2)my=0;
+    else if(py>background.height-height/2)my=height-background.height;
+    
+    if(mx==-1)mx=width/2-px;    
+    if(my==-1)my=height/2-py;
+    
+    
     imageMode(CORNERS);
-    image(background, 0, 0);
+    image(background, mx, my);
 
   }
   
