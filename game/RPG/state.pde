@@ -176,24 +176,25 @@ class State{
         player_muki = 0;
         
       }
+      if(g.key_state.key_left>=1){
+        if(han(g,-2,0)==1)vx -= 2;
+        player_muki = 1;
+      }
       if(g.key_state.key_down>=1){
         if(han(g,0,2)==1)vy += 2;
-        player_muki = 1;
+        player_muki = 2;
       }
       if(g.key_state.key_right>=1){
         if(han(g,2,0)==1)vx += 2;
-        player_muki = 2;
-      }
-      if(g.key_state.key_left>=1){
-        if(han(g,-2,0)==1)vx -= 2;
         player_muki = 3;
       }
+
       if(vx!=0&&vy!=0&&han(g,vx,vy)==0);else{
         player_x+=vx;
         player_y+=vy;
       }
       
-      // remove dead enemy?
+      // remove dead enemy
       println(g.key_state.key_z);
       for(int i=0; i<enemy.size();i++){
         if(((Enemy)enemy.get(0)).hp>0){
