@@ -17,10 +17,10 @@ class Data{
   int N_weapons;
   
   Data(){
-    N_maps=enemy.getInt("num");
+    N_maps=map.getInt("num");
     N_enemies=enemy.getInt("num");
-    N_items=enemy.getInt("num");
-    N_weapons=enemy.getInt("num");
+    N_items=item.getInt("num");
+    N_weapons=weapon.getInt("num");
     kishimoto = loadFont("HGPKisimotoKaishotai-25.vlw");
     maps    = new Map[N_maps];
     //enemies = new ArrayList();
@@ -113,6 +113,7 @@ class Data{
       cr         = children[i].getChild("state").getInt("cr");
       img        = loadImage("./data/image/weapons/"+children[i].getChild("img").getContent());
       
+//      println("set_weapons: "+(N_items+i));
       items[N_items+i] = new Item(id, name, img, 2, new Status(at, df, cr, 0, 0, 0, 0));
     }
   }

@@ -1,5 +1,6 @@
 class Key{
   int key_up, key_down, key_left, key_right, key_z, key_x, key_c;
+  int key_a, key_s, key_d;
   int mouse_left;
   
   Key(){
@@ -10,6 +11,9 @@ class Key{
     key_z = 0;
     key_x = 0;
     key_c = 0;
+    key_a = 0;
+    key_s = 0;
+    key_d = 0;
     
     mouse_left = 0;
   }
@@ -22,6 +26,9 @@ class Key{
     if(key_z>=1) key_z++;
     if(key_x>=1) key_x++;
     if(key_c>=1) key_c++;
+    if(key_a>=1) key_a++;
+    if(key_s>=1) key_s++;
+    if(key_d>=1) key_d++;
     if(mouse_left>=1) mouse_left++;
   }
   
@@ -35,6 +42,9 @@ class Key{
       if(key=='z'&&key_z==0) key_z = 1;
       if(key=='x'&&key_z==0) key_x = 1;
       if(key=='c'&&key_c==0) key_c = 1;
+      if(key=='a'&&key_a==0) key_a = 1;
+      if(key=='s'&&key_s==0) key_s = 1;
+      if(key=='d'&&key_d==0) key_d = 1;
     }
   }
   
@@ -48,6 +58,9 @@ class Key{
       if(key=='z') key_z = 0;
       if(key=='x') key_x = 0;
       if(key=='c') key_c = 0;
+      if(key=='a') key_a = 0;
+      if(key=='s') key_s = 0;
+      if(key=='d') key_d = 0;
     }
   }
   

@@ -1,25 +1,85 @@
-class Dict_weapon{
-  int cursor;
-  
-  Dict_weapon(){
-    cursor = 0;
-  }
-}
-
 class Dict_item{
   int cursor;
+  int N;
   
-  Dict_item(){
+  Dict_item(Game g){
     cursor = 0;
+    N = g.data.N_items + g.data.N_weapons;
+  }
+  
+  void switch_next(){
+    if(cursor<N-1) cursor++;
+  }
+  
+  void switch_prev(){
+    if(cursor>0) cursor--;
+  }
+  
+  void display(Game g){
+    fill(200, 0, 0, 100);
+    stroke(0);
+    rectMode(CORNER);
+    rect(30, 30, width-60, height-60);
+    for(int i=0; i<N; i++){
+//      println("item: "+i);
+      if(i==cursor) fill(255, 0, 0);
+      else fill(50);
+      textFont(g.data.kishimoto);
+      textSize(15);
+      text(g.data.items[i].name, 60, i*20+60);
+    }
+    textSize(25);
+    text(g.data.items[cursor].name, width/2, 60);
+    imageMode(CORNER);
+    if(g.data.items[cursor].img==null) rect(250, 150, 200, 200);
+    else image(g.data.items[cursor].img, 250, 150, 200, 200);
+    fill(255);
+    rect(30, height-100, width-60, 70);
+    fill(0);
+    text("アイテム説明的な", 40, height-60);
   }
   
 }
 
 class Dict_enemy{
   int cursor;
+  int N;
   
-  Dict_enemy(){
+  Dict_enemy(Game g){
     cursor = 0;
+    N = g.data.N_enemies;
+  }
+  
+  void switch_next(){
+    if(cursor<N-1) cursor++;
+  }
+  
+  void switch_prev(){
+    if(cursor>0) cursor--;
+  }
+  
+  void display(Game g){
+    fill(0, 200, 0, 100);
+    stroke(0);
+    rectMode(CORNER);
+    rect(30, 30, width-60, height-60);
+    for(int i=0; i<N; i++){
+//      println("item: "+i);
+      if(i==cursor) fill(255, 0, 0);
+      else fill(50);
+      textFont(g.data.kishimoto);
+      textSize(15);
+      text(g.data.o_enemies[i].name, 60, i*20+60);
+    }
+    textSize(25);
+    text(g.data.o_enemies[cursor].name, width/2, 60);
+    imageMode(CORNER);
+    if(g.data.o_enemies[cursor].img==null) rect(250, 150, 200, 200);
+    else image(g.data.o_enemies[cursor].img, 250, 150, 200, 200);
+    fill(255);
+    rect(30, height-100, width-60, 70);
+    fill(0);
+    text("敵説明的な", 40, height-60);
   }
 }
 
@@ -27,7 +87,7 @@ class Dict_character{
   int cursor;
   int N = 6;
   String[] names = {"ビアンカ", "ナターシャ×ビアンカ", "やるお", "サタン", "キリスト?", "使徒?"};
-  String[] files = {"BIANCA_n.png", "players.fpg", "front.png", "satan2.jpeg", "tenshi2.jpeg"};
+  String[] files = {"BIANCA.png", "players.jpg", "front.png", "satan2.jpeg", "kirisuto.jpeg", "tenshi2.jpeg"};
   
   PImage img;
   
@@ -47,19 +107,22 @@ class Dict_character{
   }
   
   void display(Game g){
-    fill(200, 200, 200, 200);
+    fill(0, 0, 200, 100);
     stroke(0);
+    rectMode(CORNER);
     rect(30, 30, width-60, height-60);
     for(int i=0; i<N; i++){
       if(i==cursor) fill(255, 0, 0);
       else fill(50);
       textFont(g.data.kishimoto);
-      textSize(25);
-      text(names[i], i*30+60, 60);
+      textSize(15);
+      text(names[i], 60, i*20+60);
     }
-    image(img, 100, 50);
+    imageMode(CORNER);
+    image(img, 200, 50, 400, 400);
     fill(255);
     rect(30, height-100, width-60, 70);
+    fill(0);
     text("キャラクター説明的な", 40, height-60);
   }
 }
