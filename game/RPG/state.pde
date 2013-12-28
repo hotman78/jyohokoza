@@ -36,6 +36,27 @@ class State{
     }
   }
   
+  int han(Game g,int vx,int vy){
+    PImage pg=g.display.player_img;
+    PImage bg=g.data.maps[map_id].background;
+    PImage mg=g.data.maps[map_id].mask;
+    println(pg.width);
+    println(bg.width);
+    if(player_x+vx-pg.width/2>=0&&player_y+vy-pg.height/2>=0&&player_x+vx-bg.width+pg.height/2<=0&&player_y+vy-bg.height+pg.height/2<=0);else return 0;
+    mg.loadPixels();
+    int s=0;
+    for(int i=0;i<pg.width;i++){
+      for(int j=0;j<pg.height;j++){
+        color c=mg.pixels[(player_y+vy-pg.height/2+j)*bg.width+player_x+vx-pg.width/2+i];
+        if(c==color(255)){
+          return 0;
+        }
+      }
+    }
+    return 1;
+  
+  }
+  
   void update(Game g){
     if(game_state==0){
       Trans[] t=g.data.maps[map_id].map_transition;
@@ -132,21 +153,26 @@ class State{
         ((Enemy)enemy.get(i)).vy = vy;
       }
     
+      int vx=0,vy=0;
       if(g.key_state.key_up>=1){
-        player_y -= 2; 
+        if(han(g,0,-2)==1)vy -= 2; 
         player_muki = 0;
       }
       if(g.key_state.key_down>=1){
-        player_y += 2;
+        if(han(g,0,2)==1)vy += 2;
         player_muki = 1;
       }
       if(g.key_state.key_right>=1){
-        player_x += 2;
+        if(han(g,2,0)==1)vx += 2;
         player_muki = 2;
       }
       if(g.key_state.key_left>=1){
-        player_x -= 2;
+        if(han(g,-2,0)==1)vx -= 2;
         player_muki = 3;
+      }
+      if(vx!=0&&vy!=0&&han(g,vx,vy)==0);else{
+        player_x+=vx;
+        player_y+=vy;
       }
       
       

@@ -46,7 +46,7 @@ class Display{
     else if(py>b_height-height/2)my=height-b_height+py;
     
     if(mx==-1)mx=width/2;    
-    if(my==-1)my=height/2;
+    if(my==-1)my=height/2;  //スクロール処理　  by ookuwa
     
     image(player_img, mx, my, 60, 60);
 //    ellipse(g.state.player_x, g.state.player_y, 20, 20);

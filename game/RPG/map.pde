@@ -42,6 +42,7 @@ class Map{
     XML x = loadXML("./data/map/map.xml");
     XML[] xml=x.getChildren("map");
     background = loadImage("./data/image/"+xml[filename].getChild("img_bg").getContent());
+    mask = loadImage("./data/image/"+xml[filename].getChild("img_mask").getContent());
 //    mask = loadImage("./data/image/"+xml.getChild("img_mask").getContent());
     
     map_transition = new Trans[1];
