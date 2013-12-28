@@ -1,4 +1,4 @@
-<map>
+<map id="1">
 	<img_bg>map_1.png</img_bg>
 	<img_mask>map_1_mask.png</img_mask>
 	<enemy x="100" y="450" id="0" />
@@ -11,9 +11,20 @@
 	<enemy x="800" y="350" id="1" />
 	<enemy x="900" y="1110" id="0" />
 	<trans next="1" x="314" y="159" px="100" py="200" />
-	<item x="123" y="321" id="0" />
-	<item x="234" y="432" id="1" />
-	<item x="345" y="543" id="2" />
-	<item x="456" y="210" id="3" />
+	<item x="123" y="321" id="0" num="1" />
+	<item x="234" y="432" id="1" num="100" />
+	<item x="345" y="543" id="2" num="5000" />
+	<item x="456" y="210" id="3" num="2" />
 	<item x="12" y="109" id="4" />
+</map>
+<map id="2">
+	<img_bg>map_2.png</img_bg>
+	<img_mask>map_2_mask.png</img_mask>
+	<enemy x="300" y="300" id="0" />
+	<enemy x="110" y="510" id="0" />
+	<enemy x="520" y="620" id="2" />
+	<enemy x="430" y="130" id="1" />
+	<enemy x="240" y="340" id="1" />
+	<trans next="0" x="265" y="328" px="200" py="100" />
+	<item x="234" y="432" id="0" num="3000" />
 </map>
