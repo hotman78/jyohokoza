@@ -1,28 +1,36 @@
 class Display{
   PImage player_img,title_img,end_img;
+  Window window;
+  
   Display(){
     player_img = loadImage("./data/image/BIANCA_0_small.png");
     title_img=loadImage("./data/image/title.png");
     end_img=loadImage("./data/image/end.png");
+    
+    window = new Window(0, height/4*3, width, height/4);
   }
   
   void draw(Game g){
     background(255);
     
-    if(g.state.game_state==0){
+    if(g.state.game_state==0){//active
       draw_map(g);
       draw_event(g);
       draw_player(g);
-      if(g.state.kaiwa_state==1){
-        draw_kaiwa(g);
-      }
+    }else if(g.state.game_state==1){//op
+        draw_title(g);
+    }else if(g.state.game_state==2){//ed
+        draw_ending(g);
+    }else if(g.state.game_state==3){//event
+      draw_map(g);
+      draw_event(g);
+      draw_player(g);
+      
+      window.draw(g);
       if(g.state.menu_state==1){
         draw_menu(g);
       }
-    }else if(g.state.game_state==1){
-        draw_title(g);
-    }else if(g.state.game_state==2){
-        draw_ending(g);
+      
     }
   }
   
@@ -61,8 +69,8 @@ class Display{
     }
   }
   
-  void draw_kaiwa(Game g){
-    
+  void draw_window(Game g){
+    window.draw(g);
   }
   
   void draw_menu(Game g){
