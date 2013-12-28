@@ -60,21 +60,25 @@ class State{
   
   void update(Game g){
     if(game_state==3)game_state=0;
+    
+    // in game
     if(game_state==0){
       Trans[] t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.length; i++){
+        // map transition
         if(t[0].trigger(g)==1){
-          // map transition
           map_id = t[0].next_map;
           player_x=t[0].px;
           player_y=t[0].py;
           trans_num++;
           if(trans_num>=5)game_state=2;
+          // set enemy data for the new map
           enemy = new ArrayList();        
           for(int j=0;j<g.data.maps[map_id].map_enemy.size();j++){
             Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(j);
             enemy.add(en.copy2());
           }
+          // set item data for the new map
           items = new ArrayList();
           for(int j=0; j<g.data.maps[map_id].map_item.size(); j++){
             Item it = (Item)g.data.maps[map_id].map_item.get(j);
@@ -82,36 +86,38 @@ class State{
           }
         }
       }
+      
+      // get item and move item
       for(int i=0; i<items.size(); i++){
-        if(dist(((Item)items.get(i)).x, ((Item)items.get(i)).y, player_x, player_y) < 20){
+        if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
           player.items.add(((Item)(items.get(i))).copy());
           ((Item)items.get(i)).num = -1;
         }else{
-          ((Item)items.get(i)).x += ((Item)items.get(i)).vx;
-          ((Item)items.get(i)).y += ((Item)items.get(i)).vy;
-          ((Item)items.get(i)).t += ((Item)items.get(i)).vt;
+          ((Item)items.get(i)).move();
         }
       }
+      
+      // remove item from state.items (the item is now in player.items)
       for(int i=items.size()-1; i>=0; i--){
         if(((Item)items.get(i)).num == -1){
           items.remove(i);
         }
       }
+      
+      // throw items
       if(g.key_state.key_c==1){
         if(player.items.size()>0){
           Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
           player.items.remove((player.items.size()-1));
           float theta = random(0, 2*PI);
           float vel = 5.0;
-          it.x = player_x+30*cos(theta);
-          it.y = player_y+30*sin(theta);
-          it.vx = vel*cos(theta);
-          it.vy = vel*sin(theta);
-          it.vt = random(-0.1, 0.1);
+          it.pos = new Position(player_x+30*cos(theta), player_y+30*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
+          it.type = -1;
           items.add(it);
         }
       }
       
+      // enemy move (AI)
       for(int i=0;i<enemy.size();i++){
         float vx = ((Enemy)enemy.get(i)).vx;
         float vy = ((Enemy)enemy.get(i)).vy;
@@ -163,6 +169,7 @@ class State{
         ((Enemy)enemy.get(i)).vy = vy;
       }
     
+      // player move
       int vx=0,vy=0;
       if(g.key_state.key_up>=1){
         if(han(g,0,-2)==1)vy -= 2; 
@@ -186,6 +193,7 @@ class State{
         player_y+=vy;
       }
       
+      // remove dead enemy?
       println(g.key_state.key_z);
       for(int i=0; i<enemy.size();i++){
         if(((Enemy)enemy.get(0)).hp>0){
@@ -193,12 +201,17 @@ class State{
         }
         enemy.remove(0);
       }
+      
+      // player attack
       if(g.key_state.key_z%80<30){
+        // attack effect?
                         ellipse(player_x+10*cos(-QUARTER_PI-player_muki*HALF_PI),player_y+10*sin(-QUARTER_PI-player_muki*HALF_PI),50,50);
 
       }else if((g.key_state.key_z%80>=30&&g.key_state.key_z%80<40)||(g.key_state.key_z%80>50&&g.key_state.key_z%80<80)){
       
       }else if(g.key_state.key_z%80==40){
+        // attack enemy
+        
         //println(player_muki);
         switch(player_muki){
           case 0:
@@ -242,21 +255,25 @@ class State{
       }else if(g.key_state.key_z%80==0){
       }
     }
+    // title
     else if(game_state==1){
       if(g.key_state.key_c>=1){
         game_state=0;
         println("a");
       }
     }
+    // ending
     else if(game_state==2){
       time++;
       if(time>200){
         exit();
       }
     }
+    // kaiwa window
     else if(game_state==3){
-      if(g.key_state.key_a==1){
-        s
+//      if(g.key_state.key_a==1){
+       // s
+  //    }
     }
   }
 }

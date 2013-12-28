@@ -3,7 +3,7 @@ class Display{
   Window window;
   
   Display(){
-    player_img = loadImage("./data/image/BIANCA_0_small.png");
+    player_img = loadImage("./data/image/characters/BIANCA_0_small.png");
     title_img=loadImage("./data/image/title.png");
     end_img=loadImage("./data/image/end.png");
     
@@ -56,7 +56,7 @@ class Display{
  }
 
       
-
+  // display item list
     for(int i=0; i<g.state.player.items.size(); i++){
       Item it = (Item)(g.state.player.items.get(i));
       textFont(g.data.kishimoto);
