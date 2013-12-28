@@ -3,6 +3,7 @@
 
 class Weapon{
   String name;
+  int id;
   int at,df,cr;
   Weapon(int id){
     name="testsord";
