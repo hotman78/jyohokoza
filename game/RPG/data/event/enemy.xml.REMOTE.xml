@@ -1,0 +1,37 @@
+<enemys>
+	<enemy id="1">
+		<name>スライム</name>
+		<img>suraimu.png</img>
+		<AI id="0" />
+		<weapon id="0" />
+		<state hp="7" mp="2" at="3" df="2" />
+	</enemy>
+	<enemy id="2">
+		<name>オルゴデミーラ</name>
+		<img>orugo.png</img>
+		<AI id="0" />
+		<weapon id="2" />
+		<state hp="99999" mp="9999" at="3000" df="5000" />
+	</enemy>
+	<enemy id="3">
+		<name>メタルキング</name>
+		<img>metakin.png</img>
+		<AI id="3" />
+		<weapon id="3" />
+		<state hp="300" mp="4000" at="100" df="5000000" />
+	</enemy>
+	<enemy id="4">
+		<name>きゅーり君</name>
+		<img>cucumber.png</img>
+		<AI id="4" />
+		<weapon id="4" />
+		<state hp="10" mp="8" at="30" df="8" />
+	</enemy>
+	<enemy id="5">
+		<name>パソコンダ</name>
+		<img>com.png</img>
+		<AI id="5" />
+		<weapon id="5" />
+		<state hp="100" mp="5000" at="100" df="800" />
+	</enemy>
+</enemys>

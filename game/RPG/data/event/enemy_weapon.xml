@@ -1,9 +1,9 @@
-<e_weapons>
+<e_weapons num="4">
 	<e_weapon id="0">
 			<name>–³ŠŽ</name>
 		<state at="0" df="0" cr="0" />
 	</e_weapon>
-	<e_weapon	id="1">
+	<e_weapon id="1">
 		<name>‚Ð‚Ì‚«‚Ì‚Ú‚¤</name>
 		<state at="3" df="0" cr="0" />
 	</weapon>
