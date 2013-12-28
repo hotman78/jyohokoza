@@ -12,14 +12,14 @@ class Player extends Schar {
 
 class Schar extends Chara {
   int mhp,mmp;
-  Thing things;
+//  Thing things;
   
   Schar(){
     
   }
   
 }
-
+/*
 class Enemy extends Chara {
   int ai_pt;
   
@@ -28,7 +28,7 @@ class Enemy extends Chara {
   }
   
 }
-
+*/
 class Chara extends Mob{//active charactor
   int x, y;
   String type;
