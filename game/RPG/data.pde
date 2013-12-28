@@ -16,7 +16,7 @@ class Data{
   int N_enemies;
   int N_items;
   int N_weapons;
-  
+
   
   Data(){
     N_maps=enemy.getInt("num");
