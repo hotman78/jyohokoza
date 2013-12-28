@@ -27,8 +27,8 @@
 		<name>兵士の剣</name>
 		<img>photo/sword.JPG</img>
 	</item>
-	<item id="7">
-		<name>ロトの剣</name>
+	<item id="11">
+		<name>トトロの剣</name>
 		<img></img>
 	</item>
 	<item id="8">
@@ -43,10 +43,6 @@
 		<name>女王様の鞭</name>
 		<img></img>
 	</item>
-	<item id="11">
-		<name>グリンガムの鞭</name>
-		<img>photo/green_muchi.JPG</img>
-    </item>
 	<item id="15">
 		<name>グリーンの鞭</name>
 		<img>photo/green_muchi.JPEG</img>
@@ -69,7 +65,8 @@
 	</item>	
 	<item id="16">
 		<name>テフロン加工の斧</name>
-		<img>photo/tehuron_ono.JPG</img>	</item>
+		<img>photo/tehuron_ono.JPG</img>
+	</item>
 	<item id="17">
 		<name>魔人の斧</name>
 		<img>photo/tehuron.JPG</img>
