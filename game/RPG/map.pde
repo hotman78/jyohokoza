@@ -38,13 +38,14 @@ class Map{
     }
   }
   
-  void load_file(String filename, Game g){
-    XML xml = loadXML("./data/map/" + filename);
-    background = loadImage("./data/image/"+xml.getChild("img_bg").getContent());
+  void load_file(int filename, Game g){
+    XML x = loadXML("./data/map/map.xml");
+    XML[] xml=x.getChildren("map");
+    background = loadImage("./data/image/"+xml[filename].getChild("img_bg").getContent());
 //    mask = loadImage("./data/image/"+xml.getChild("img_mask").getContent());
     
     map_transition = new Trans[1];
-    XML[] xml_tr = xml.getChildren("trans");
+    XML[] xml_tr = xml[filename].getChildren("trans");
     for(int i=0; i<xml_tr.length; i++){
       map_transition[i] = new Trans(xml_tr[i].getInt("next"),
                                     xml_tr[i].getInt("x"),
@@ -54,7 +55,7 @@ class Map{
     }
     
     map_enemy=new ArrayList();
-    XML[] xml_enemies = xml.getChildren("enemy");
+    XML[] xml_enemies = xml[filename].getChildren("enemy");
     for(int i=0; i<xml_enemies.length; i++){
       Enemy en = g.data.o_enemies[xml_enemies[i].getInt("id")].copy();
       en.x = xml_enemies[i].getInt("x");
@@ -63,7 +64,7 @@ class Map{
     }
     
     map_item=new ArrayList();
-    XML[] xml_items = xml.getChildren("item");
+    XML[] xml_items = xml[filename].getChildren("item");
     for(int i=0; i<xml_items.length; i++){
       Item it = g.data.items[xml_items[i].getInt("id")].copy();
       it.x = xml_items[i].getInt("x");
