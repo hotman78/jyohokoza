@@ -1,7 +1,7 @@
-﻿<items>
+<items num="23">
 	<item id="0">
 		<name>やくそう</name>
-		<img>photo/yakusou.png</img>
+		<img>yakusou.png</img>
 	</item>
 	<item id="1">
 		<name>魔法のせいすい</name>
@@ -12,88 +12,79 @@
 		<img>behomaS.png</img>
 	</item>
 	<item id="3">
-		<name>馬糞</name>
-		<img></img>
-	</item>
-	<item id="4">
-		<name>抹茶の粉末</name>
-		<img>items/mattya.png</img>
-	</item>
-	<item id="5">
-		<name>ピルクル</name>
-		<img>items/pillcoll.png</img>
-	</item>
-	<item id="6">
-		<name>出汁かおるロースかつ重</name>
-		<img>items/katsuju.png</img>
-	</item>
-	<item id="7">
 		<name>オリハルコンの塊</name>
 		<img>photo/oriharu.JPG</img>
 	</item>
-	<item id="8">
+	<item id="4">
 		<name>ひのきのぼう</name>
 		<img>photo/hinoki_bou.JPG</img>
 	</item>
-	<item id="9">
+	<item id="5">
 		<name>暗殺ナイフ</name>
 		<img></img>
 	</item>
-	<item id="10">
+	<item id="6">
 		<name>兵士の剣</name>
 		<img>photo/sword.JPG</img>
 	</item>
-	<item id="11">
+	<item id="7">
 		<name>ロトの剣</name>
 		<img></img>
 	</item>
-	<item id="12">
+	<item id="8">
 		<name>モーニングスター</name>
 		<img></img>
 	</item>
-	<item id="13">
+	<item id="9">
 		<name>毛糸の鞭</name>
-		<img></img>
+		<img>photo/keito.JPEG</img>
 	</item>
-	<item id="14">
+	<item id="10">
 		<name>女王様の鞭</name>
 		<img></img>
 	</item>
+	<item id="11">
+		<name>グリンガムの鞭</name>
+		<img>photo/green_muchi.JPG</img>
+    </item>
 	<item id="15">
 		<name>グリーンの鞭</name>
-		<img>photo/green_muchi.png</img>
+		<img>photo/green_muchi.JPEG</img>
 	</item>
-	<item id="16">
+	<item id="12">
 		<name>魔法使いの杖</name>
 		<img>photo/maho-_tsue.JPG</img>
 	</item>
-	<item id="17">
+	<item id="13">
 		<name>マグマの杖</name>
 		<img>photo/maguma_tsue.JPG</img>
 	</item>	
-	<item id="18">
+	<item id="14">
 		<name>氷の杖</name>
 		<img></img>
 	</item>	
-	<item id="19">
+	<item id="15">
 		<name>錆びた斧</name>
-		<img></img>
+		<img>photo/sabita_ono.JPEG</img>
 	</item>	
-	<item id="20">
+	<item id="16">
 		<name>テフロン加工の斧</name>
-		<img>photo/tehuron_ono.JPG</img>
-	</item>	
-	<item id="21">
+		<img>photo/tehuron_ono.JPG</img>	</item>
+	<item id="17">
 		<name>魔人の斧</name>
 		<img>photo/tehuron.JPG</img>
 	</item>	
-	<item id="22">
-		<name>手榴弾</name>
+	<item id="18">
+		<name></name>
+		<img></img>
+	</item>	
+	<item id="19">
+		<name></name>
 		<img></img>
 	</item>
 	<item id="23">
 		<name>破滅の盾</name>
-		<img></img>
+		<img>photo/hametsu_tate.JPEG</img>
 	</item>
 	
 </items>

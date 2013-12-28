@@ -7,13 +7,20 @@ class Data{
   Talk[] talks;
   Item[] items;
   Weapon[] weapons;
-  
-  int N_maps = 2;
-  int N_enemies = 9;
-  int N_items = 22;
-  int N_weapons = 3;
+  XML map   = loadXML("./data/map/map.xml");
+  XML enemy   = loadXML("./data/event/enemy.xml");
+  XML item   = loadXML("./data/item.xml");
+  XML weapon   = loadXML("./data/weapon.xml");
+  int N_maps;
+  int N_enemies;
+  int N_items;
+  int N_weapons;
   
   Data(){
+    N_maps=enemy.getInt("num");
+    N_enemies=enemy.getInt("num");
+    N_items=enemy.getInt("num");
+    N_weapons=enemy.getInt("num");
     kishimoto = loadFont("HGPKisimotoKaishotai-25.vlw");
     maps    = new Map[N_maps];
     //enemies = new ArrayList();
@@ -29,8 +36,8 @@ class Data{
 //    maps[1] = new Map(1,g);
     maps[0] = new Map();
     maps[1] = new Map();
-    maps[0].load_file("map_1.xml", g);
-    maps[1].load_file("map_2.xml", g);
+    maps[0].load_file(0, g);
+    maps[1].load_file(1, g);
   }
  /* void make_enemies(int id,int x, int y){
       Enemy en = o_enemies[id];
@@ -40,7 +47,6 @@ class Data{
  
   }*/
   void set_enemy(){
-    XML enemy   = loadXML("./data/event/enemy.xml");
     XML children[] = enemy.getChildren("enemy");
     String name;
     int AI_id,weapon_id,hp,mp,at,df;
