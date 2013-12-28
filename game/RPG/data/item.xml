@@ -60,7 +60,7 @@
 		<img></img>
 	</item>
 	<item id="15">
-		<name>グリンガムの鞭</name>
+		<name>グリーンの鞭</name>
 		<img>photo/green_muchi.png</img>
 	</item>
 	<item id="16">
@@ -89,6 +89,10 @@
 	</item>	
 	<item id="22">
 		<name>手榴弾</name>
+		<img></img>
+	</item>
+	<item id="23">
+		<name>破滅の盾</name>
 		<img></img>
 	</item>
 	
