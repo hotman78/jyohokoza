@@ -80,15 +80,30 @@ class State{
         int id = ((Enemy)enemy.get(i)).AI_id;
         switch(id){
           case 0:
-          default:
+            if(frameCount %3 == 0){
+              vx = 3*cos(random(TWO_PI));
+              vy = 3*sin(random(TWO_PI));
+            }
+            break;
+          case 1:
             if(frameCount %10 == 0){
               vx = 3*cos(random(TWO_PI));
               vy = 3*sin(random(TWO_PI));
             }
             break;
+          case 2:
+            if(frameCount %5 == 0){
+              vx = 3*cos(random(TWO_PI));
+              vy = 3*sin(random(TWO_PI));
+            }
+            break;
+          default:
+            if(frameCount %8 == 0){
+              vx = 3*cos(random(TWO_PI));
+              vy = 3*sin(random(TWO_PI));
+            }
+            break;
         }
-        //vx=(int)random(-5,5);
-        //vy=(int)random(-5,5);
         if(dist(player_x, player_y, x+vx, y+vy)<dist(player_x, player_y, x, y)){
           x+=vx;
           y+=vy;
@@ -98,21 +113,6 @@ class State{
         ((Enemy)enemy.get(i)).vx = vx;
         ((Enemy)enemy.get(i)).vy = vy;
       }
-      /*
-      for(int i=0;i<enemy.size();i++){
-        int vx,vy;
-        vx=(int)random(-5,5);
-        vy=(int)random(-5,5);
-        if(dist(player_x, player_y, ((Enemy)enemy.get(i)).x+vx, ((Enemy)enemy.get(i)).y+vy)<dist(player_x, player_y, ((Enemy)enemy.get(i)).x, ((Enemy)enemy.get(i)).y)){
-          ((Enemy)enemy.get(i)).x+=vx;
-          ((Enemy)enemy.get(i)).y+=vy;
-        }
-        ((Enemy)enemy.get(i)).x = x;
-        ((Enemy)enemy.get(i)).y = y;
-        ((Enemy)enemy.get(i)).vx = vx;
-        ((Enemy)enemy.get(i)).vy = vy;
-      }
-    */
     
       if(g.key_state.key_up>=1){
         player_y -= 2; 
@@ -159,7 +159,7 @@ class State{
             break; 
           case 3:
               for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+              if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
