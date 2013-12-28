@@ -27,14 +27,14 @@ class Key{
   
   void keyPressed(){
     if(key==CODED){
-      if(keyCode==UP) key_up = 1;
-      if(keyCode==DOWN) key_down = 1;
-      if(keyCode==LEFT) key_left = 1;
-      if(keyCode==RIGHT) key_right = 1;
+      if(keyCode==UP&&key_up==0) key_up = 1;
+      if(keyCode==DOWN&&key_down==0) key_down = 1;
+      if(keyCode==LEFT&&key_left==0) key_left = 1;
+      if(keyCode==RIGHT&&key_right==0) key_right = 1;
     }else{
-      if(key=='z') key_z = 1;
-      if(key=='x') key_x = 1;
-      if(key=='c') key_c = 1;
+      if(key=='z'&&key_z==0) key_z = 1;
+      if(key=='x'&&key_z==0) key_x = 1;
+      if(key=='c'&&key_c==0) key_c = 1;
     }
   }
   
