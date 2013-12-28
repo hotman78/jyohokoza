@@ -7,23 +7,23 @@ class State{
   int player_x, player_y;
   int time,trans_num;
   Trans[] trans;
-  Enemy[] enemy;
+  ArrayList enemy;
 
   
   Flag[] flag_state;
   
   State(){
     trans = new Trans[1];
-    enemy=new Enemy[1];
+    enemy=new ArrayList();
   }
   
   void init(Game g){
     player_x = 100;
     player_y = 100;
     map_id = 0;
-    for(int i=0;i<enemy.length;i++){
+    for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
       Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
-      enemy[i]=en.copy2();
+      enemy.add(en.copy2());
     }
   }
   
@@ -38,21 +38,21 @@ class State{
           player_y=t[0].py;
           trans_num++;
           if(trans_num>=5)game_state=2;
-          enemy = new Enemy[1];        
-          for(int j=0;j<enemy.length;j++){
+          enemy = new ArrayList();        
+          for(int j=0;j<g.data.maps[map_id].map_enemy.size();j++){
             Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
-            enemy[i]=en.copy2();
+            enemy.add(en.copy2());
           }
         }
       }
       
-      for(int i=0;i<enemy.length;i++){
+      for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
         int vx,vy;
         vx=(int)random(-5,5);
         vy=(int)random(-5,5);
-        if(dist(player_x, player_y, enemy[i].x+vx, enemy[i].y+vy)<dist(player_x, player_y, enemy[i].x, enemy[i].y)){
-          enemy[i].x+=vx;
-          enemy[i].y+=vy;
+        if(dist(player_x, player_y, ((Enemy)enemy.get(i)).x+vx, ((Enemy)enemy.get(i)).y+vy)<dist(player_x, player_y, ((Enemy)enemy.get(i)).x, ((Enemy)enemy.get(i)).y)){
+          ((Enemy)enemy.get(i)).x+=vx;
+          ((Enemy)enemy.get(i)).y+=vy;
         }
       }
     
