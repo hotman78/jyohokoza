@@ -2,47 +2,47 @@
 	<item id="0">
 		<name>やくそう</name>
 		<img>yakusou.png</img>
-		<use type="heal_hp" value="30" />
+		<use type="0" value="30" />
 	</item>
 	<item id="1">
 		<name>魔法のせいすい</name>
 		<img>mahou_seisui.JPG</img>
-		<use type="heal_mp" value="50" />
+		<use type="1" value="50" />
 	</item>
 	<item id="2">
 		<name>エルフの飲み薬</name>
 		<img>behomaS.png</img>
-		<use type="heal_mp" value="100" />
+		<use type="1" value="100" />
 	</item>
 	<item id="3">
 		<name>馬糞</name>
 		<img></img>
-		<use type="throw" value="100" />
+		<use type="2" value="100" />
 	</item>
 	<item id="4">
 		<name>抹茶の粉末</name>
 		<img>mattya.png</img>
-		<use type="heal_hp" value="1000" />
+		<use type="0" value="1000" />
 	</item>
 	<item id="5">
 		<name>ピルクル</name>
 		<img>pillcoll.png</img>
-		<use type="heal_hp" value="100" />
+		<use type="0" value="100" />
 	</item>
 	<item id="6">
 		<name>出汁かおるロースかつ重</name>
 		<img>katsuju.png</img>
-		<use type="heal_hp" value="200" />
+		<use type="0" value="200" />
 	</item>
 	<item id="7">
 		<name>オリハルコンの塊</name>
 		<img>oriharu.JPG</img>
-		<use type="throw" value="30" />
+		<use type="2" value="30" />
 	</item>
 	<item id="8">
 		<name>手榴弾</name>
 		<img></img>
-		<use type="throw" value="60" />
+		<use type="2" value="60" />
 	</item>
 	
 </items>
