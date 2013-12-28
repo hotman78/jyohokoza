@@ -5,6 +5,7 @@ class State{
   
   int map_id;
   int player_x, player_y;
+  int player_muki;//0up 1down 2 right 3 left
   int time,trans_num;
   Trans[] trans;
   ArrayList enemy;
@@ -46,7 +47,7 @@ class State{
         }
       }
       
-      for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
+      /*for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
         int vx,vy;
         vx=(int)random(-5,5);
         vy=(int)random(-5,5);
@@ -54,21 +55,39 @@ class State{
           ((Enemy)enemy.get(i)).x+=vx;
           ((Enemy)enemy.get(i)).y+=vy;
         }
-      }
+      }*/
     
     
       if(g.key_state.key_up>=1){
-        player_y -= 1;
+        player_y -= 1; 
+        player_muki = 0;
       }
       if(g.key_state.key_down>=1){
         player_y += 1;
+        player_muki = 1;
       }
       if(g.key_state.key_right>=1){
         player_x += 1;
+        player_muki = 2;
       }
       if(g.key_state.key_left>=1){
         player_x -= 1;
+        player_muki = 3;
       }
+      
+      if(g.key_state.key_z>=40){
+        println(player_muki);
+        switch(player_muki){
+          case 0:
+            for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){  
+              
+              if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y<=0&& ((Enemy)enemy.get(i)).y-player_y>-60){
+                ((Enemy)enemy.get(i)).hp-=100;
+              }
+            }
+        }
+      }
+
     }
     else if(game_state==1){
       if(g.key_state.key_c>=1){

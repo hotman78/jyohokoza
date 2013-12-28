@@ -38,6 +38,7 @@ class Enemy{
   void draw(Game g){
     imageMode(CENTER);
     if(hp>0)image(img, x, y);
+    ellipse(x,y,10,10);
   }
   
  // void load_file(){
