@@ -58,6 +58,33 @@ class State{
         }
       }
       
+      for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
+        float vx = ((Enemy)enemy.get(i)).vx;
+        float vy = ((Enemy)enemy.get(i)).vy;
+        float x = ((Enemy)enemy.get(i)).x;
+        float y = ((Enemy)enemy.get(i)).y;
+        int id = ((Enemy)enemy.get(i)).AI_id;
+        switch(id){
+          case 0:
+          default:
+            if(frameCount %10 == 0){
+              vx = 3*cos(random(TWO_PI));
+              vy = 3*sin(random(TWO_PI));
+            }
+            break;
+        }
+        //vx=(int)random(-5,5);
+        //vy=(int)random(-5,5);
+        if(dist(player_x, player_y, x+vx, y+vy)<dist(player_x, player_y, x, y)){
+          x+=vx;
+          y+=vy;
+        }
+        ((Enemy)enemy.get(i)).x = x;
+        ((Enemy)enemy.get(i)).y = y;
+        ((Enemy)enemy.get(i)).vx = vx;
+        ((Enemy)enemy.get(i)).vy = vy;
+      }
+      /*
       for(int i=0;i<enemy.size();i++){
         int vx,vy;
         vx=(int)random(-5,5);
@@ -66,23 +93,27 @@ class State{
           ((Enemy)enemy.get(i)).x+=vx;
           ((Enemy)enemy.get(i)).y+=vy;
         }
+        ((Enemy)enemy.get(i)).x = x;
+        ((Enemy)enemy.get(i)).y = y;
+        ((Enemy)enemy.get(i)).vx = vx;
+        ((Enemy)enemy.get(i)).vy = vy;
       }
-    
+    */
     
       if(g.key_state.key_up>=1){
-        player_y -= 1; 
+        player_y -= 2; 
         player_muki = 0;
       }
       if(g.key_state.key_down>=1){
-        player_y += 1;
+        player_y += 2;
         player_muki = 1;
       }
       if(g.key_state.key_right>=1){
-        player_x += 1;
+        player_x += 2;
         player_muki = 2;
       }
       if(g.key_state.key_left>=1){
-        player_x -= 1;
+        player_x -= 2;
         player_muki = 3;
       }
       println(g.key_state.key_z);
