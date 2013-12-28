@@ -54,8 +54,8 @@ class Trans{
     id = id0;
   }
   
-  void draw(Game g){
+  void draw(Game g,int mx,int my){
     imageMode(CENTER);
-    image(img, x, y);
+    image(img, x+mx, y+my);
   }
 }

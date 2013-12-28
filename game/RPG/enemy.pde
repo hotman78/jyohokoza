@@ -36,10 +36,10 @@ class Enemy{
     }
   }
   
-  void draw(Game g){
+  void draw(Game g,int mx,int my){
     imageMode(CENTER);
-    if(hp>0)image(img, x, y);
-    ellipse(x,y,10,10);
+    if(hp>0)image(img, mx+x, my+y);
+    ellipse(mx+x,my+y,10,10);
   }
   
  // void load_file(){
