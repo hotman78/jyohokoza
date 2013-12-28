@@ -1,4 +1,4 @@
-<enemys>
+<enemys num="16">
 	<enemy id="1">
 		<name>ƒXƒ‰ƒCƒ€</name>
 		<img>suraimuu.png</img>
