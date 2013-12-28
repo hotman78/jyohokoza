@@ -92,6 +92,9 @@ class Map{
     for(int i=0; i<g.state.enemy.size(); i++){
       ((Enemy)g.state.enemy.get(i)).draw(g,mx,my);
     }
+    for(int i=0; i<g.state.items.size(); i++){
+      ((Item)g.state.items.get(i)).draw(g, mx, my);
+    }
   }
   
 }

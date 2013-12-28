@@ -25,9 +25,9 @@ class Item{
     return it;
   }
   
-  void draw(Game g){
+  void draw(Game g, int mx, int my){
     imageMode(CENTER);
-    image(img, x, y, 60, 60);
+    image(img, x+mx, y+my, 60, 60);
   }
   
 }
