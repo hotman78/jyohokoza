@@ -63,7 +63,7 @@ class Map{
   
   void draw(Game g){
     imageMode(CORNERS);
-    image(background, 0, 0);
+    image(background, mx, my);
 
   }
   

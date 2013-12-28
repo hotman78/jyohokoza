@@ -32,7 +32,7 @@ class Data{
   }*/
   void set_enemy(){
     enemy   = loadXML("./data/event/enemy.xml");
-    XML children[] = enemy.getChildren("enemy");
+    XML children[] = enemy.getChild("enemys").getChildren("enemy");
     String name;
     int AI_id,weapon_id,hp,mp,at,df;
     PImage img;

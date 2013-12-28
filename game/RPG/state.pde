@@ -46,7 +46,7 @@ class State{
         }
       }
       
-      for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
+      for(int i=0;i<enemy.size();i++){
         int vx,vy;
         vx=(int)random(-5,5);
         vy=(int)random(-5,5);
