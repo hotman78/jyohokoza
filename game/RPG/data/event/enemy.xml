@@ -1,4 +1,4 @@
-<enemys num="12">
+<enemys>
 	<enemy id="1">
 		<name>ƒXƒ‰ƒCƒ€</name>
 		<img>suraimuu.png</img>
@@ -96,6 +96,13 @@
 		<AI id="14" />
 		<weapon id="14" />
 		<state hp="200" mp="300" at="60" df="70" />
+	</enemy>
+	<enemy id="15">
+		<name>‚è‚ñ‚²</name>
+		<img>l	apple.png</img>
+		<AI id="15" />
+		<weapon id="15" />
+		<state hp="500" mp="40" at="350" df="640" />
 	</enemy>
 	
 </enemys>
