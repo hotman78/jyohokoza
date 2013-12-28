@@ -1,4 +1,4 @@
-<enemys num="12">
+<enemys num="16">
 	<enemy id="1">
 		<name>スライム</name>
 		<img>suraimuu.png</img>
@@ -63,8 +63,8 @@
 		<state hp="8000" mp="5500" at="300" df="60000" />
 	</enemy>
 	<enemy id="10">
-		<name>Nバッグマン</name>
-		<img>nbag.png</img>
+		<name>猿</name>
+		<img>saru.png</img>
 		<AI id="10" />
 		<weapon id="10" />
 		<state hp="5000" mp="50" at="800" df="80" />
@@ -82,6 +82,34 @@
 		<AI id="12" />
 		<weapon id="12" />
 		<state hp="500" mp="8976" at="465" df="250" />
+	</enemy>
+	<enemy id="13">
+		<name>唇</name>
+		<img>lip.png</img>
+		<AI id="13" />
+		<weapon id="13" />
+		<state hp="500" mp="9560" at="6670" df="670" />
+	</enemy>
+	<enemy id="14">
+		<name>きのこ</name>
+		<img>kinoko.png</img>
+		<AI id="14" />
+		<weapon id="14" />
+		<state hp="200" mp="300" at="60" df="70" />
+	</enemy>
+	<enemy id="15">
+		<name>りんご</name>
+		<img>apple.png</img>
+		<AI id="15" />
+		<weapon id="15" />
+		<state hp="500" mp="40" at="350" df="640" />
+	</enemy>
+	<enemy id="16">
+		<name>あんこブレッドまん</name>
+		<img>ampan</img>
+		<AI id="16" />
+		<weapon id="16" />
+		<state hp="5550" mp="10" at="350" df="570" />
 	</enemy>
 	
 </enemys>
