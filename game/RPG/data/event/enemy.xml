@@ -69,12 +69,19 @@
 		<weapon id="10" />
 		<state hp="5000" mp="50" at="800" df="80" />
 	</enemy>
-		<enemy id="11">
+	<enemy id="11">
 		<name>‚¨‚©‚ñ</name>
 		<img>okan.png</img>
 		<AI id="11" />
 		<weapon id="11" />
 		<state hp="6000" mp="800" at="490" df="680" />
+	</enemy>
+	<enemy id="12">
+		<name>‚©‚ç‚·</name>
+		<img>karasu.png</img>
+		<AI id="12" />
+		<weapon id="12" />
+		<state hp="500" mp="8976" at="465" df="250" />
 	</enemy>
 	
 </enemys>
