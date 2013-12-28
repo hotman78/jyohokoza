@@ -1,4 +1,4 @@
-﻿<items num="23">
+<items num="23">
 	<item id="0">
 		<name>やくそう</name>
 		<img>yakusou.png</img>
@@ -43,7 +43,6 @@
 		<name>女王様の鞭</name>
 		<img></img>
 	</item>
-    </item>
 	<item id="15">
 		<name>グリーンの鞭</name>
 		<img>photo/green_muchi.JPEG</img>
@@ -66,7 +65,8 @@
 	</item>	
 	<item id="16">
 		<name>テフロン加工の斧</name>
-		<img>photo/tehuron_ono.JPG</img>	</item>
+		<img>photo/tehuron_ono.JPG</img>
+	</item>
 	<item id="17">
 		<name>魔人の斧</name>
 		<img>photo/tehuron.JPG</img>
