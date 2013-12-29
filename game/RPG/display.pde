@@ -28,7 +28,7 @@ class Display{
       fill(255, 0, 0);
       text(hptext, width-100, 50);
       
-      if(g.state.player.status.hp==0){
+      if(g.state.player.status.hp<=0){
         imageMode(CORNERS);
         image(die,0,0);
       }
