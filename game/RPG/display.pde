@@ -46,6 +46,9 @@ class Display{
       if(g.state.disp_dict=='d'){
         g.state.dict_character.display(g);
       }
+      if(g.state.disp_dict=='f'){
+        g.state.player.display_status(g);
+      }
     }
      // window.draw(g);
      // draw_menu(g);

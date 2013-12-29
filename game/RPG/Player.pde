@@ -46,7 +46,7 @@ class Player{
       noFill();
       if(i==cursor){
         rectMode(CORNER);
-        rect(20, (i-1)*30+50, 100, 30);
+        rect(20, (i-1)*30+50, 200, 30);
       }
       textSize(25);
       fill(255, 0, 0);
@@ -54,7 +54,14 @@ class Player{
     }
   }
   
-  /*
+  void switch_next(){
+    if(cursor<items.size()-1) cursor++;
+  }
+  
+  void switch_prev(){
+    if(cursor>0) cursor--;
+  }
+  
   
   void display_status(Game g){
     fill(200, 0, 0, 100);
@@ -62,49 +69,21 @@ class Player{
     rectMode(CORNER);
     rect(30, 30, width-60, height-60);
     
-    fill(0, 255, 0);
+    fill(0, 0, 255);
     textSize(30);
-    text("ステータス画面", 100, 50);
+    text("ステータス画面", 100, 70);
     
     display_item_list(g);
-    for(int i=0; i<g.state.player.items.size(); i++){
-      
-    }
     
+    textSize(20);
+    text("HP: "+status.hp + " / "+status.maxhp, 300, 100);
+    text("MP: "+status.mp + " / "+status.maxmp, 300, 120);
+    text("AT: "+status.at, 300, 140);
+    text("DF: "+status.df, 300, 160);
+    text("CR: "+status.cr, 300, 180);
     
-    for(int i=0; i<N; i++){
-//      println("item: "+i);
-      if(i==cursor) fill(255, 0, 0);
-      else fill(50);
-      textFont(g.data.kishimoto);
-      textSize(15);
-      text(g.data.items[i].name, 60, i*20+60);
-    }
-    textSize(25);
-    text(g.data.items[cursor].name, width/2, 60);
-    imageMode(CORNER);
-    if(g.data.items[cursor].img==null) rect(250, 150, 200, 200);
-    else image(g.data.items[cursor].img, 250, 150, 200, 200);
-    fill(255);
-    rect(30, height-100, width-60, 70);
-    fill(0);
-    textSize(15);
-    text(g.data.items[cursor].text,50,450);
-    if(g.data.items[cursor].type==0) text("type: 回復", 250, 360);
-    if(g.data.items[cursor].type==1) text("type: 投擲", 250, 360);
-    if(g.data.items[cursor].type==2) text("type: 武器", 250, 360);
-    text("at  df  cr  hp  mp mhp mmp", 250, 380);
-    text(g.data.items[cursor].status.at + " " + 
-         g.data.items[cursor].status.df + " " + 
-         g.data.items[cursor].status.cr + " " + 
-         g.data.items[cursor].status.hp + " " + 
-         g.data.items[cursor].status.mp + " " + 
-         g.data.items[cursor].status.maxhp + " " + 
-         g.data.items[cursor].status.maxmp + " "
-    , 250, 400);
   }
   
-  */
 }
 
 

@@ -375,6 +375,10 @@ class State{
         disp_dict='d';
         dict_character = new Dict_character();
       }
+      if(g.key_state.key_f==1){
+        game_state = 3;
+        disp_dict='f';
+      }
         
     }
     if(game_state==0&&player.status.hp<=0){
@@ -414,6 +418,11 @@ class State{
       else if(disp_dict=='d'){
         if(g.key_state.key_up==1) dict_character.switch_prev();
         if(g.key_state.key_down==1) dict_character.switch_next();
+        if(g.key_state.key_x==1) game_state = 0;
+      }
+      else if(disp_dict=='f'){
+        if(g.key_state.key_up==1) player.switch_prev();
+        if(g.key_state.key_down==1) player.switch_next();
         if(g.key_state.key_x==1) game_state = 0;
       }
     }
