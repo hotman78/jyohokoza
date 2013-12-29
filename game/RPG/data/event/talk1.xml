@@ -1,34 +1,28 @@
-<talks backgound="">
+﻿<talks>
 	<talk id="0">
-        <name>美 杏科</name>
-        <img src="BIANCA.png"/>
+		<name>美 杏科</name>
+		<img src="./data/image/BIANCA.png"/>
 		<text>コニチワ~</text>
-        
-        <name>ペーター</name>
-        <img src="satan2.jpg"/>
+		<name>サタン</name>
+		<img src="./data/image/satan2.jpeg"/>
 		<text>何者だ</text>
-        
-        <name>美 杏科</name>
-        <img src="BIANCA.png"/>
+		<name>美 杏科</name>
+		<img src="./data/image/BIANCA.png"/>
 		<text>私、ビ・アンカ アルヨ~</text>
 		<text>ヨロシクネ~</text>
-        
-        <name>ペーター</name>
-        <img src="satan2.jpg"/>
+		<name>サタン</name>
+		<img src="./data/image/satan2.jpeg"/>
 		<text>何処の国の生まれだ?</text>
-        
-        <name>美 杏科</name>
-        <img src="BIANCA.png"/>
+		<name>美 杏科</name>
+		<img src="./data/image/BIANCA.png"/>
 		<text>ココノ町デ生マレタアルヨ~</text>
 		<text>デモ、オ母サンハ清カラ来タッテ言ッテタアルヨ~</text>
 		<text>オ友達ニナリマショ~</text>
-        
-        <name>ペーター</name>
-        <img src="satan2.jpg"/>
+		<name>サタン</name>
+		<img src="./data/image/satan2.jpeg"/>
 		<text>怪しい奴とは仲良くなれん。</text>
-        
-        <name>美 杏科</name>
-        <img src="BIANCA.png"/>
+		<name>美 杏科</name>
+		<img src="./data/image/BIANCA.png"/>
 		<text>分カッタ（´・ω・｀）\nデモ、マタ会イニ来テネ~</text>
 	</talk>
 </talks>
