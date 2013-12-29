@@ -263,24 +263,25 @@ class State{
     
       // player move
       int vx=0,vy=0;
+
+      if(g.key_state.key_right>=1){
+        if(han(g,g.display.right,player_x,player_y,2,0)==1)vx += 2;
+        player_muki = 3;
+      }
+      if(g.key_state.key_left>=1){
+        if(han(g,g.display.left,player_x,player_y,-2,0)==1)vx -= 2;
+        player_muki = 1;
+      }
       if(g.key_state.key_up>=1){
-        if(han(g,g.display.player_img,player_x,player_y,0,-2)==1)vy -= 2; 
+        if(han(g,g.display.back,player_x,player_y,0,-2)==1)vy -= 2; 
         player_muki = 0;
         
       }
       if(g.key_state.key_down>=1){
-        if(han(g,g.display.player_img,player_x,player_y,0,2)==1)vy += 2;
+        if(han(g,g.display.front,player_x,player_y,0,2)==1)vy += 2;
         player_muki = 2;
       }
-      if(g.key_state.key_right>=1){
-        if(han(g,g.display.player_img,player_x,player_y,2,0)==1)vx += 2;
-        player_muki = 3;
-      }
-      if(g.key_state.key_left>=1){
-        if(han(g,g.display.player_img,player_x,player_y,-2,0)==1)vx -= 2;
-        player_muki = 1;
-      }
-      if(vx!=0&&vy!=0&&han(g,g.display.player_img,player_x,player_y,vx,vy)==0);else{
+      if(vx!=0&&vy!=0&&han(g,g.display.front,player_x,player_y,vx,vy)==0);else{
         player_x+=vx;
         player_y+=vy;
       }
