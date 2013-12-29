@@ -1,6 +1,7 @@
 class Key{
   int key_up, key_down, key_left, key_right, key_z, key_x, key_c;
   int key_a, key_s, key_d;
+  int attack;
   int mouse_left;
   
   Key(){
@@ -14,6 +15,8 @@ class Key{
     key_a = 0;
     key_s = 0;
     key_d = 0;
+    
+    attack = 80;
     
     mouse_left = 0;
   }
@@ -29,7 +32,10 @@ class Key{
     if(key_a>=1) key_a++;
     if(key_s>=1) key_s++;
     if(key_d>=1) key_d++;
+    if(attack>=1) attack++;
     if(mouse_left>=1) mouse_left++;
+    println(attack);
+    if(attack>80&&key_z>=1) attack=1;
   }
   
   void keyPressed(){
