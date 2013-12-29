@@ -107,15 +107,8 @@ class Display{
     }
 //  attack motion by blue
 
+    g.state.player.display_item_list(g);
      
-  // display item list
-    for(int i=0; i<g.state.player.items.size(); i++){
-      Item it = (Item)(g.state.player.items.get(i));
-      textFont(g.data.kishimoto);
-      textSize(25);
-      fill(255, 0, 0);
-      text(it.name + "(" + it.num + ")", 20, i*30 + 50);
-    }
   }
   
   void draw_window(Game g){
