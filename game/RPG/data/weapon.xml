@@ -7,7 +7,7 @@
 	<weapon id="1">
 		<name>ひのきのぼう</name>
 		<state at="3" df="0" cr="0" />
-		<img>hinoki_bou.JPG</img>
+		<img>hinoki_bou.png</img>
 	</weapon>
 	<weapon id="2">
 		<name>暗殺ナイフ</name>
@@ -17,7 +17,7 @@
 	<weapon id="3">
 		<name>兵士の剣</name>
 		<state at="20" df="0" cr="0"/>
-		<img>sword.JPG</img>
+		<img>sword.png</img>
 	</weapon>
 	<weapon id="4">
 		<name>ロトの剣</name>
@@ -27,56 +27,56 @@
 	<weapon id="5">
 		<name>モーニングスター</name>
 		<state at="40" df="0" cr="0"/>
-		<img>morning.JPG</img>
+		<img>morning.png</img>
 	</weapon>
 	<weapon id="6">
 		<name>毛糸の鞭</name>
 		<state at="5" df="0" cr="0"/>
-		<img>keito.JPG</img>
+		<img>keito.png</img>
 	</weapon>
 	<weapon id="7">
 		<name>女王様の鞭</name>
 		<state at="50" df="0" cr="0"/>
-		<img>muchi.JPG</img>
+		<img>muchi.png</img>
 	</weapon>
 	<weapon id="8">
 		<name>グリーンの鞭</name>
 		<state at="100" df="0" cr="0"/>
-		<img>green_muchi.JPG</img>
+		<img>green_muchi.png</img>
 	</weapon>
 	<weapon id="9">
 		<name>魔法使いの杖</name>
 		<state at="10" df="0" cr="0"/>
-		<img>maho-_tsue.JPG</img>
+		<img>maho-_tsue.png</img>
 	</weapon>	
 	<weapon id="10">
 		<name>マグマの杖</name>
 		<state at="30" df="0" cr="0"/>
-		<img>maguma_tsue.JPG</img>
+		<img>maguma_tsue.png</img>
 	</weapon>	
 	<weapon id="11">
 		<name>氷の杖</name>
 		<state at="30" df="0" cr="0"/>
-		<img>koori_tsue.JPG</img>
+		<img>koori_tsue.png</img>
 	</weapon>	
 	<weapon id="12">
 		<name>錆びた斧</name>
 		<state at="3" df="0" cr="0"/>
-		<img>sabita_ono.JPEG</img>
+		<img>sabita_ono.png</img>
 	</weapon>
 	<weapon id="13">
 		<name>テフロン加工の斧</name>
 		<state at="30" df="0" cr="0"/>
-		<img>tehuron_ono.JPG</img>
+		<img>tehuron_ono.png</img>
 	</weapon>	
 	<weapon id="14">
 		<name>魔人の斧</name>
 		<state at="100" df="0" cr="20"/>
-		<img>tehuron.JPG</img>
+		<img>tehuron.png</img>
 	</weapon>
 	<weapon id="15">
 		<name>破滅の盾</name>
 		<state at="0" df="100" cr="20"/>
-		<img>hametsu_tate.JPEG</img>
+		<img>hametsu_tate.png</img>
 	</weapon>
 </weapons>
