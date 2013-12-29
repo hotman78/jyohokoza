@@ -36,24 +36,27 @@ class Item{
   Status status;
   Position pos;
   
+  String text;
+  
   int value;
   int num=0;
   
-  Item(int id0, String name0, PImage img0, int type0, Status s0){
+  Item(int id0, String name0, PImage img0, int type0, Status s0, String text0){
     name = name0;
     img = img0;
     id = id0;
     type = type0;
     status = s0;
+    text = text0;
     if(status==null) status = new Status();
     pos = new Position();
   }
   
   Item copy(){
-    return new Item(id, name, img, type, status);
+    return new Item(id, name, img, type, status,text);
   }
   Item copy2(){
-    Item it = new Item(id, name, img, type, status);
+    Item it = new Item(id, name, img, type, status,text);
     it.pos = new Position(pos.x, pos.y);
     it.value = 0;
     it.num = 0;
