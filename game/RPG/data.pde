@@ -70,6 +70,7 @@ class Data{
     XML item   = loadXML("./data/item.xml");
     XML children[] = item.getChildren("item");
     String name;
+    String text;
     int id;
     PImage img;
     int type_str;
@@ -83,6 +84,7 @@ class Data{
       img        = loadImage("./data/image/items/"+children[i].getChild("img").getContent());
       type_str   = children[i].getChild("use").getInt("type");
       val        = children[i].getChild("use").getInt("value");
+      text       = children[i].getChild("text").getContent();
       if(type_str==0){
         type = 0;
         stat = new Status(0, 0, 0, val, 0, 0, 0);
@@ -93,7 +95,7 @@ class Data{
         type = 1;
         stat = new Status(val, 0, 0, 0, 0, 0, 0);
       }
-      items[i] = new Item(id, name, img, type, stat);
+      items[i] = new Item(id, name, img, type, stat,text);
     }
   }
   
@@ -114,7 +116,7 @@ class Data{
       img        = loadImage("./data/image/weapons/"+children[i].getChild("img").getContent());
       
 //      println("set_weapons: "+(N_items+i));
-      items[N_items+i] = new Item(id, name, img, 2, new Status(at, df, cr, 0, 0, 0, 0));
+      items[N_items+i] = new Item(id, name, img, 2, new Status(at, df, cr, 0, 0, 0, 0),"");
     }
   }
 }
