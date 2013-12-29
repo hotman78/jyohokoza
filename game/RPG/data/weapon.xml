@@ -1,98 +1,1 @@
-<weapons num="16">
-	<weapon id="0">
-		<name>無所持</name>
-		<state at="0" df="0" cr="0" />
-		<img></img>
-		<text>しかし、投げられるぞ</text>
-	</weapon>
-	<weapon id="1">
-		<name>ひのきのぼう</name>
-		<state at="3" df="0" cr="0" />
-		<img>hinoki_bou.png</img>
-		<text>全ての冒険はここから始まる！</text>
-	</weapon>
-	<weapon id="2">
-		<name>暗殺ナイフ</name>
-		<state at="1" df="0" cr="50"/>
-		<img></img>
-		<text>今だここにあらず。</text>
-	</weapon>
-	<weapon id="3">
-		<name>兵士の剣</name>
-		<state at="20" df="0" cr="0"/>
-		<img>sword.png</img>
-		<text>まあ、持ってて損はない</text>
-	</weapon>
-	<weapon id="4">
-		<name>ロトの剣</name>
-		<state at="108" df="50" cr="10" />
-		<img></img>
-		<text>伝説の勇者ロトの使っていた剣と同じデザインの剣</text>
-	</weapon>
-	<weapon id="5">
-		<name>モーニングスター</name>
-		<state at="40" df="0" cr="0"/>
-		<img>morning.png</img>
-		<text>これを頭に受けると、目の前に星が散るよ★</text>
-	</weapon>
-	<weapon id="6">
-		<name>毛糸の鞭</name>
-		<state at="5" df="0" cr="0"/>
-		<img>keito.png</img>
-		<text>フワッフワで優しさがある</text>
-	</weapon>
-	<weapon id="7">
-		<name>女王様の鞭</name>
-		<state at="50" df="0" cr="0"/>
-		<img>muchi.png</img>
-		<text>ドSの君にこれを贈ろう</text>
-	</weapon>
-	<weapon id="8">
-		<name>グリーンの鞭</name>
-		<state at="100" df="0" cr="0"/>
-		<img>green_muchi.png</img>
-		<text>グリーーーーン！！！！！</text>
-	</weapon>
-	<weapon id="9">
-		<name>魔法使いの杖</name>
-		<state at="10" df="0" cr="0"/>
-		<img>maho-_tsue.png</img>
-		<text>メラとヒャドが使える</text>
-	</weapon>	
-	<weapon id="10">
-		<name>マグマの杖</name>
-		<state at="30" df="0" cr="0"/>
-		<img>maguma_tsue.png</img>
-		<text>マグマの研究をしていた叔父さんから賜ったもの</text>
-	</weapon>	
-	<weapon id="11">
-		<name>氷の杖</name>
-		<state at="30" df="0" cr="0"/>
-		<img>koori_tsue.png</img>
-		<text>南極旅行のお土産</text>
-	</weapon>	
-	<weapon id="12">
-		<name>錆びた斧</name>
-		<state at="3" df="0" cr="0"/>
-		<img>sabita_ono.png</img>
-		<text>農家のおっさんからもらったやつ</text>
-	</weapon>
-	<weapon id="13">
-		<name>テフロン加工の斧</name>
-		<state at="30" df="0" cr="0"/>
-		<img>tehuron_ono.png</img>
-		<text>もう焦げ付きとはおさらば！</text>
-	</weapon>	
-	<weapon id="14">
-		<name>魔人の斧</name>
-		<state at="100" df="0" cr="20"/>
-		<img>tehuron.png</img>
-		<text>こすると魔人が出てくるぞ</text>
-	</weapon>
-	<weapon id="15">
-		<name>破滅の盾</name>
-		<state at="0" df="100" cr="20"/>
-		<img>hametsu_tate.png</img>
-		<text>破滅することがある</text>
-	</weapon>
-</weapons>
+<weapons num="16">	<weapon id="0">		<name>無所持</name>		<state at="0" df="0" cr="0" />		<img></img>		<text>しかし、投げられるぞ</text>	</weapon>	<weapon id="1">		<name>ひのきのぼう</name>		<state at="3" df="0" cr="0" />		<img>hinoki_bou.png</img>		<text>全ての冒険はここから始まる！</text>	</weapon>	<weapon id="2">		<name>暗殺ナイフ</name>		<state at="1" df="0" cr="50"/>		<img>knife.png</img>		<text>暗殺しちゃうぞっ</text>	</weapon>	<weapon id="3">		<name>兵士の剣</name>		<state at="20" df="0" cr="0"/>		<img>sword.png</img>		<text>まあ、持ってて損はない</text>	</weapon>	<weapon id="4">		<name>トトロの剣</name>		<state at="108" df="50" cr="10" />		<img>totoro.png</img>		<text>伝説の勇者トトロの使っていた剣と同じデザインの剣</text>	</weapon>	<weapon id="5">		<name>モーニングスター</name>		<state at="40" df="0" cr="0"/>		<img>morning.png</img>		<text>これを頭に受けると、目の前に星が散るよ★</text>	</weapon>	<weapon id="6">		<name>毛糸の鞭</name>		<state at="5" df="0" cr="0"/>		<img>keito.png</img>		<text>フワッフワで優しさがある</text>	</weapon>	<weapon id="7">		<name>女王様の鞭</name>		<state at="50" df="0" cr="0"/>		<img>muchi.png</img>		<text>ドSの君にこれを贈ろう</text>	</weapon>	<weapon id="8">		<name>グリーンの鞭</name>		<state at="100" df="0" cr="0"/>		<img>green_muchi.png</img>		<text>グリーーーーン！！！！！</text>	</weapon>	<weapon id="9">		<name>魔法使いの杖</name>		<state at="10" df="0" cr="0"/>		<img>maho-_tsue.png</img>		<text>メラとヒャドが使える</text>	</weapon>		<weapon id="10">		<name>マグマの杖</name>		<state at="30" df="0" cr="0"/>		<img>magma_tsue.png</img>		<text>マグマの研究をしていた叔父さんから賜ったもの</text>	</weapon>		<weapon id="11">		<name>氷の杖</name>		<state at="30" df="0" cr="0"/>		<img>koori_tsue.png</img>		<text>南極旅行のお土産</text>	</weapon>		<weapon id="12">		<name>錆びた斧</name>		<state at="3" df="0" cr="0"/>		<img>sabita_ono.png</img>		<text>農家のおっさんからもらったやつ</text>	</weapon>	<weapon id="13">		<name>テフロン加工の斧</name>		<state at="30" df="0" cr="0"/>		<img>tehuron_ono.png</img>		<text>もう焦げ付きとはおさらば！</text>	</weapon>		<weapon id="14">		<name>魔人の斧</name>		<state at="100" df="0" cr="20"/>		<img>tefuron.png</img>		<text>こすると魔人が出てくるぞ</text>	</weapon>	<weapon id="15">		<name>破滅の盾</name>		<state at="0" df="100" cr="20"/>		<img>hametsu_tate.png</img>		<text>破滅することがある</text>	</weapon></weapons>
