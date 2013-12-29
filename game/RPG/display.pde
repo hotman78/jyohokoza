@@ -114,7 +114,7 @@ class Display{
       textFont(g.data.kishimoto);
       textSize(25);
       fill(255, 0, 0);
-      text(it.name, 20, i*30 + 50);
+      text(it.name + "(" + it.num + ")", 20, i*30 + 50);
     }
   }
   
