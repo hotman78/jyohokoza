@@ -81,7 +81,8 @@ class State{
 //    if(game_state==3)game_state=0;
     
     // in game
-    if(game_state==0){
+    if(game_state==0&&player.status.hp>0){
+      player.status.hp+=(int)random(-10,9.9);
       ArrayList t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.size(); i++){
         // map transition
@@ -110,7 +111,9 @@ class State{
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
 //          println("aaaaaaaaaaaaaaaaaaaaaaaa");
-          player.items.add(((Item)(items.get(i))).copy());
+          Item it = ((Item)(items.get(i))).copy();
+          it.num = 100;
+          player.items.add(it);
           ((Item)items.get(i)).num = -1;
         }else{
           ((Item)items.get(i)).move();
@@ -192,8 +195,10 @@ class State{
       if(g.key_state.key_c==1){
         if(player.items.size()>0){
 //          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-          Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
-          player.items.remove((player.items.size()-1));
+          Item it = ((Item)(player.items.get((player.items.size()-1))));
+          if(it.num<=1) player.items.remove((player.items.size()-1));
+          else it.num--;
+          it = it.copy();
           float theta = atan2(mouseY-(player_y+my), mouseX-(player_x+mx));
           float vel = 5.0;
           it.pos = new Position(player_x+50*cos(theta), player_y+50*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
@@ -369,6 +374,14 @@ class State{
         dict_character = new Dict_character();
       }
         
+    }
+    if(game_state==0&&player.status.hp<=0){
+      if(g.key_state.key_c>=1){
+        println("aaaaa");
+        g.data.load_all(g);
+        game_state=1;
+        init(g);
+      }
     }
     // title
     else if(game_state==1){
