@@ -125,5 +125,7 @@ class Data{
       items[N_items+i] = new Item(id, name, img, 2, new Status(at, df, cr, 0, 0, 0, 0),text);
     }
   }
+  
+  
 }
 
