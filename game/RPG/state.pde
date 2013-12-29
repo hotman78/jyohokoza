@@ -12,6 +12,7 @@ class State{
   ArrayList trans;
   ArrayList items;
   ArrayList enemy;
+  ArrayList talk;
   Player player;
   
   Dict_character dict_c;
@@ -21,8 +22,9 @@ class State{
   
   State(){
     trans = new ArrayList();
-    enemy=new ArrayList();
+    enemy = new ArrayList();
     items = new ArrayList();
+    talk = new ArrayList();
     player = new Player();
     dict_c = new Dict_character();
   }
@@ -81,7 +83,7 @@ class State{
 //    if(game_state==3)game_state=0;
     
     // in game
-    if(game_state==0&&player.status.hp>0){
+    if(game_state==0){
       player.status.hp+=(int)random(-10,9.9);
       ArrayList t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.size(); i++){
@@ -104,13 +106,25 @@ class State{
             Item it = (Item)g.data.maps[map_id].map_item.get(j);
             items.add(it.copy2());
           }
+          // set talk data for the new map
+          talk = new ArrayList();
+          for(int j=0; j<g.data.maps[map_id].map_talk.size(); j++){
+            TPos it = (TPos)g.data.maps[map_id].map_talk.get(j);
+            talk.add(it);
+          }
+        }
+      }
+      
+      ArrayList tl = g.data.maps[map_id].map_talk;
+      for(int i=0;i<tl.size();i++){
+        if(((TPos)tl.get(i)).trigger(g)){
+          game_state=4;
         }
       }
       
       // get item and move item
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
-//          println("aaaaaaaaaaaaaaaaaaaaaaaa");
           Item it = ((Item)(items.get(i))).copy();
           it.num = 100;
           player.items.add(it);
@@ -119,7 +133,6 @@ class State{
           ((Item)items.get(i)).move();
           
           if(((Item)items.get(i)).type==-1){
-//          println("cccccccccccccccccccccccccccc");
           // item hit player
             if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y)<25){
               Player[] ahyo = new Player[3];
@@ -195,8 +208,8 @@ class State{
       if(g.key_state.key_c==1){
         if(player.items.size()>0){
 //          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-          Item it = ((Item)(player.items.get((player.cursor))));
-          if(it.num<=1) player.items.remove((player.cursor));
+          Item it = ((Item)(player.items.get((player.items.size()-1))));
+          if(it.num<=1) player.items.remove((player.items.size()-1));
           else it.num--;
           it = it.copy();
           float theta = atan2(mouseY-(player_y+my), mouseX-(player_x+mx));
@@ -372,19 +385,9 @@ class State{
         disp_dict='d';
         dict_character = new Dict_character();
       }
-      if(g.key_state.key_f==1){
-        game_state = 3;
-        disp_dict='f';
-      }
-        
-    }
-    if(game_state==0&&player.status.hp<=0){
-      if(g.key_state.key_c>=1){
-        println("aaaaa");
-        g.data.load_all(g);
-        game_state=1;
-        init(g);
-      }
+      
+      if(player.status.hp<=0)game_state=2;
+      
     }
     // title
     else if(game_state==1){
@@ -395,9 +398,17 @@ class State{
     }
     // ending
     else if(game_state==2){
-      time++;
-      if(time>200){
-        exit();
+      if(player.status.hp<=0){
+        if(g.key_state.key_c>0){
+        g.data.load_all(g);
+        game_state=1;
+        init(g);
+        }
+      }else{
+        time++;
+        if(time>200){
+          exit();
+        }
       }
     }
     // kaiwa window
@@ -415,11 +426,6 @@ class State{
       else if(disp_dict=='d'){
         if(g.key_state.key_up==1) dict_character.switch_prev();
         if(g.key_state.key_down==1) dict_character.switch_next();
-        if(g.key_state.key_x==1) game_state = 0;
-      }
-      else if(disp_dict=='f'){
-        if(g.key_state.key_up==1) player.switch_prev();
-        if(g.key_state.key_down==1) player.switch_next();
         if(g.key_state.key_x==1) game_state = 0;
       }
     }

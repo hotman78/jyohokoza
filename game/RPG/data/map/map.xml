@@ -23,6 +23,7 @@
 	  <weapon x="433" y="544" id="4" />
 	  <weapon x="533" y="44" id="5" />
 	  <weapon x="633" y="244" id="6" />
+      <talk x="100" y="100" id="0" />
 	</map>
 	<map id="2">
 		<img_bg>minato/rayer.png</img_bg>
