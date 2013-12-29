@@ -16,11 +16,11 @@ class Map{
   Map(int debug,Game g){
     map_transition = new Trans[1];
     if(debug==0){
-      background = loadImage("./data/image/map_1_bg.png");
+      background = loadImage("./data/image/maps/map_1_bg.png");
 //      event_list[0] = new Event(0);
       map_transition[0] = new Trans(0);
     }else{
-      background = loadImage("./data/image/map_2_bg.png");
+      background = loadImage("./data/image/maps/map_2_bg.png");
       map_transition[0] = new Trans(1);
     }
     
@@ -41,7 +41,8 @@ class Map{
   void load_file(int filename, Game g){
     XML x = loadXML("./data/map/map.xml");
     XML[] xml=x.getChildren("map");
-    background = loadImage("./data/image/"+xml[filename].getChild("img_bg").getContent());
+    background = loadImage("./data/image/maps/"+xml[filename].getChild("img_bg").getContent());
+    mask = loadImage("./data/image/maps/"+xml[filename].getChild("img_mask").getContent());
 //    mask = loadImage("./data/image/"+xml.getChild("img_mask").getContent());
     
     map_transition = new Trans[1];
@@ -67,8 +68,15 @@ class Map{
     XML[] xml_items = xml[filename].getChildren("item");
     for(int i=0; i<xml_items.length; i++){
       Item it = g.data.items[xml_items[i].getInt("id")].copy();
-      it.x = xml_items[i].getInt("x");
-      it.y = xml_items[i].getInt("y");
+      it.pos = new Position(xml_items[i].getInt("x"), xml_items[i].getInt("y"));
+      map_item.add(it);
+    }
+    
+//    map_item=new ArrayList();
+    xml_items = xml[filename].getChildren("weapon");
+    for(int i=0; i<xml_items.length; i++){
+      Item it = g.data.items[xml_items[i].getInt("id") + g.data.N_items].copy();
+      it.pos = new Position(xml_items[i].getInt("x"), xml_items[i].getInt("y"));
       map_item.add(it);
     }
   }
