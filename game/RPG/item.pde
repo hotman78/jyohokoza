@@ -79,8 +79,7 @@ class Item{
     else{
       if(type>=0){
         fill(0, 0, 255, 100);
-        rect(0, 0, 60, 60);
-        image(img, 0, 0, 60, 60);
+       image(img, 0, 0, 60, 60);
       }else{
         image(img, 0, 0);
       }

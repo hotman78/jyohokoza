@@ -41,7 +41,7 @@ class Trans{
   }
     
   int trigger(Game g){
-    if(dist(x, y, g.state.player.status.player_x, g.state.player.status.player_y) < 50){
+    if(dist(x, y, g.state.player_x, g.state.player_y) < 50){
       return 1;
     }
     return 0;

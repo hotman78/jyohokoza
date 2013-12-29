@@ -1,9 +1,13 @@
 class Display{
-  PImage player_img,title_img,end_img;
+  PImage front,left,back,right,title_img,end_img;
   Window window;
   
   Display(){
-    player_img = loadImage("./data/image/characters/BIANCA_0_small.png");
+    //player_img = loadImage("./data/image/characters/BIANCA_0_small.png");
+    front = loadImage("./data/image/characters/front.png");
+    left = loadImage("./data/image/characters/left.png");
+    back = loadImage("./data/image/characters/back.png");
+    right = loadImage("./data/image/characters/right.png");
     title_img=loadImage("./data/image/title.png");
     end_img=loadImage("./data/image/end.png");
     
@@ -47,8 +51,8 @@ class Display{
   
   void draw_player(Game g){
     int mx=-1,my=-1;
-    int px=g.state.player.status.player_x;
-    int py=g.state.player.status.player_y;
+    int px=g.state.player_x;
+    int py=g.state.player_y;
     int b_width=g.data.maps[g.state.map_id].background.width;
     int b_height=g.data.maps[g.state.map_id].background.height;    
     if(px<width/2)mx=px;
@@ -59,18 +63,37 @@ class Display{
     if(mx==-1)mx=width/2;    
     if(my==-1)my=height/2;  //スクロール処理　  by ookuwa
     
-    image(player_img, mx, my);
-//    ellipse(g.state.player_x, g.state.player_y, 20, 20);
-    if(g.key_state.key_z%80<30||g.key_state.key_z%80>50){
-      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI),20,20);
+
+    //image(player_img, mx, my, 60, 60);
+    PImage pg=null;
+    switch(g.state.player_muki){
+      case 0:
+        pg=back;
+        break;
+      case 1:
+        pg=left;
+        break;
+      case 2:
+        pg=front;
+        break;
+      case 3:
+        pg=right;
+        break;
+      default:break;
     }
+    image(pg,mx,my);
+        
+//    ellipse(g.state.player_x, g.state.player_y, 20, 20);
+    if(g.key_state.key_z%80<=30||g.key_state.key_z%80>=50){
+      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI),20,20);
+    }else
     if(g.key_state.key_z%80>30&&g.key_state.key_z%80<40){
       ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.key_z%80-30)*QUARTER_PI/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.key_z%80-30)*QUARTER_PI/10),20,20);
-    }
+    }else
     if(g.key_state.key_z%80>40&&g.key_state.key_z%80<50){
-      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-(10-(g.key_state.key_z%80-40))*QUARTER_PI/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-(10-(g.key_state.key_z%80-40)/10)*QUARTER_PI/10),20,20);
+      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-QUARTER_PI*(10-(g.key_state.key_z%80-40))/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-((10-(g.key_state.key_z%80-40))/10)*QUARTER_PI/10),20,20);
     }
-
+//  attack motion by blue
 
      
   // display item list
