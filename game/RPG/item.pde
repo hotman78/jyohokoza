@@ -1,22 +1,6 @@
 // アイテムのデータを読み込んだもの
 // 管轄はdata
 
-class Status{
-  int at, df, cr;
-  int hp, mp;
-  int maxhp, maxmp;
-  
-  Status(){
-    at=0; df=0; cr=0; hp=0; mp=0; maxhp=0; maxmp=0;
-  }
-  Status(int a0, int d0, int c0, int h0, int m0, int mh0, int mm0){
-    at=a0; df=d0; cr=c0; hp=h0; mp=m0; maxhp=mh0; maxmp=mm0;
-  }
-  Status copy(){
-    return new Status(at, df, cr, hp, mp, maxhp, maxmp);
-  }
-}
-
 class Position{
   float x, y;    // xy
   float vx, vy;  // sokudo

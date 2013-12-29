@@ -5,7 +5,6 @@ class State{
   Dict_character dict_character;
   
   int map_id;
-  int player_x, player_y;
   int player_muki;//0up 1down 2 right 3 left
   int time,trans_num;
   int disp_dict;
@@ -23,13 +22,11 @@ class State{
     trans = new Trans[1];
     enemy=new ArrayList();
     items = new ArrayList();
-    player = new Player();
     dict_c = new Dict_character();
   }
   
   void init(Game g){
-    player_x = 100;
-    player_y = 100;
+    player = new Player();
     map_id = 0;
     for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
       Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
@@ -71,6 +68,8 @@ class State{
     
     // in game
     if(game_state==0){
+      int player_x=player.status.player_x;
+      int player_y=player.status.player_y;
       Trans[] t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.length; i++){
         // map transition
@@ -109,7 +108,7 @@ class State{
           // item hit player
             if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y)<25){
               Player[] ahyo = new Player[3];
-              println(ahyo[0].hp);
+              //println(ahyo[0].hp);
               ((Item)items.get(i)).num = -1;
             }
             // item hit monster
@@ -363,6 +362,7 @@ class State{
         dict_character = new Dict_character();
       }
         
+      player.move(player_x,player_y);
     }
     // title
     else if(game_state==1){

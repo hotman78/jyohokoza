@@ -83,8 +83,8 @@ class Map{
   
   void draw(Game g){
     int mx=-1,my=-1;
-    int px=g.state.player_x;
-    int py=g.state.player_y;
+    int px=g.state.player.status.player_x;
+    int py=g.state.player.status.player_y;
     if(px<width/2)mx=0;
     else if(px>background.width-width/2)mx=width-background.width;
     if(py<height/2)my=0;

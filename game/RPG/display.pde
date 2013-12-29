@@ -47,8 +47,8 @@ class Display{
   
   void draw_player(Game g){
     int mx=-1,my=-1;
-    int px=g.state.player_x;
-    int py=g.state.player_y;
+    int px=g.state.player.status.player_x;
+    int py=g.state.player.status.player_y;
     int b_width=g.data.maps[g.state.map_id].background.width;
     int b_height=g.data.maps[g.state.map_id].background.height;    
     if(px<width/2)mx=px;
@@ -59,7 +59,7 @@ class Display{
     if(mx==-1)mx=width/2;    
     if(my==-1)my=height/2;  //スクロール処理　  by ookuwa
     
-    image(player_img, mx, my, 60, 60);
+    image(player_img, mx, my);
 //    ellipse(g.state.player_x, g.state.player_y, 20, 20);
     if(g.key_state.key_z%80<30||g.key_state.key_z%80>50){
       ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI),20,20);
