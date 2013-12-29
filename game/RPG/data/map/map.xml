@@ -15,7 +15,7 @@
 		<item x="234" y="432" id="1" num="100" />
 		<item x="345" y="543" id="2" num="5000" />
 		<item x="456" y="210" id="3" num="2" />
-		<item x="12" y="109" id="4" />
+		<item x="12" y="109" id="4" num="3"/>
 	  <weapon x="33" y="344" id="0" />
 	  <weapon x="133" y="144" id="1" />
 	  <weapon x="233" y="444" id="2" />

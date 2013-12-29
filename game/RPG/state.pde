@@ -67,8 +67,6 @@ class State{
   
   int han(Game g,PImage pg,int x,int y,int vx,int vy){
 //    PImage pg=g.display.player_img;
-    println(x);
-    println("");
     if(x+vx-pg.width/2>=0&&
       y+vy-pg.height/2>=0&&
       x+vx-bg.width+pg.height/2<=0&&
@@ -106,8 +104,6 @@ class State{
     if(game_state==0&&player.status.hp>0){
       bg=b[map_id];
       mg=m[map_id];
-      mg.loadPixels();
-      println(mg.pixels[player_x+player_y*mg.width]);
       
         if(z==1){
           player.status.hp-=10;
@@ -155,7 +151,23 @@ class State{
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
           Item it = ((Item)(items.get(i))).copy();
-          it.num = 100;
+          println("");
+          println("");
+          println("");
+          println("");
+          println("");
+          println("");
+          println("");
+          println("");
+          println(i+" "+it.num);
+          println("");
+          println("");
+          println("");
+          println("");
+          println("");
+          println("");
+          println("");
+          println("");
           player.items.add(it);
           ((Item)items.get(i)).num = -1;
         }else{
@@ -350,7 +362,7 @@ class State{
       }
       
       // remove dead enemy by blue
-      println(g.key_state.key_z);
+ //     println(g.key_state.key_z);
       for(int i=0; i<enemy.size();i++){
         if(((Enemy)enemy.get(0)).hp>0){
           enemy.add(((Enemy)enemy.get(0)));
