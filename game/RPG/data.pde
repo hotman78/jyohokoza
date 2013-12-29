@@ -27,7 +27,7 @@ class Data{
     //enemies = new ArrayList();
     o_enemies = new Enemy[N_enemies];
     items = new Item[N_items + N_weapons];
-    println(N_items, N_weapons);
+//    println(N_items, N_weapons);
 //    weapons = new Weapon[N_weapons];
   }
   

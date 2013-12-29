@@ -24,6 +24,8 @@ class Player{
   ArrayList items;
   ArrayList weapons;
   
+  int cursor = 0;
+  
   int a0=90000000,
     d0=5000,
     c0=0,
@@ -34,12 +36,42 @@ class Player{
     items = new ArrayList();
     status= new Status(a0,d0,c0,mh0,mm0);
   }
+  
+  void display_item_list(Game g){
+  // display item list
+    for(int i=0; i<g.state.player.items.size(); i++){
+      Item it = (Item)(g.state.player.items.get(i));
+      textFont(g.data.kishimoto);
+      stroke(0, 0, 255);
+      noFill();
+      if(i==cursor){
+        rectMode(CORNER);
+        rect(20, (i-1)*30+50, 100, 30);
+      }
+      textSize(25);
+      fill(255, 0, 0);
+      text(it.name + "(" + it.num + ")", 20, i*30 + 50);
+    }
+  }
+  
   /*
+  
   void display_status(Game g){
     fill(200, 0, 0, 100);
     stroke(0);
     rectMode(CORNER);
     rect(30, 30, width-60, height-60);
+    
+    fill(0, 255, 0);
+    textSize(30);
+    text("ステータス画面", 100, 50);
+    
+    display_item_list(g);
+    for(int i=0; i<g.state.player.items.size(); i++){
+      
+    }
+    
+    
     for(int i=0; i<N; i++){
 //      println("item: "+i);
       if(i==cursor) fill(255, 0, 0);
@@ -71,6 +103,7 @@ class Player{
          g.data.items[cursor].status.maxmp + " "
     , 250, 400);
   }
+  
   */
 }
 
