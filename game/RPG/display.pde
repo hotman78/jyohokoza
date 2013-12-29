@@ -18,7 +18,7 @@ class Display{
   void draw(Game g){
     background(255);
     
-    if(g.state.game_state==0){//main
+    if(g.state.game_state==0 || g.state.game_state==4){//main
       draw_map(g);
       draw_event(g);
       draw_player(g);
@@ -32,6 +32,9 @@ class Display{
         imageMode(CORNERS);
         image(die,0,0);
       }
+     window.draw(g);
+     draw_menu(g);
+     
     }else if(g.state.game_state==1){//op
         draw_title(g);
     }else if(g.state.game_state==2){//ed
@@ -47,8 +50,6 @@ class Display{
         g.state.dict_character.display(g);
       }
     }
-     // window.draw(g);
-     // draw_menu(g);
       
   }
   
@@ -111,10 +112,6 @@ if(g.state.player.status.hp>0){
 
     g.state.player.display_item_list(g);
      
-  }
-  
-  void draw_window(Game g){
-    window.draw(g);
   }
   
   void draw_menu(Game g){
