@@ -1,5 +1,5 @@
 class Display{
-  PImage front,left,back,right,title_img,end_img;
+  PImage front,left,back,right,title_img,end_img,die;
   Window window;
   
   Display(){
@@ -10,6 +10,7 @@ class Display{
     right = loadImage("./data/image/characters/right.png");
     title_img=loadImage("./data/image/title.png");
     end_img=loadImage("./data/image/end.png");
+    die=loadImage("./data/image/died.png");
     
     window = new Window(0, height/4*3, width, height/4);
   }
@@ -21,6 +22,16 @@ class Display{
       draw_map(g);
       draw_event(g);
       draw_player(g);
+      String hptext="hp:"+g.state.player.status.hp;
+      textFont(g.data.kishimoto);
+      textSize(25);
+      fill(255, 0, 0);
+      text(hptext, width-100, 50);
+      
+      if(g.state.player.status.hp<=0){
+        imageMode(CORNERS);
+        image(die,0,0);
+      }
     }else if(g.state.game_state==1){//op
         draw_title(g);
     }else if(g.state.game_state==2){//ed
@@ -42,6 +53,7 @@ class Display{
   }
   
   void draw_map(Game g){
+    imageMode(CORNERS);
     g.data.maps[g.state.map_id].draw(g);
   }
   
@@ -64,42 +76,41 @@ class Display{
     if(my==-1)my=height/2;  //スクロール処理　  by ookuwa
     
     //image(player_img, mx, my, 60, 60);
+    PImage muki_img = back;
     switch(g.state.player_muki){
+      
       case 0:
-        image(back,mx,my,60,60);
+        muki_img=back;
         break;
       case 1:
-        image(left,mx,my,60,60);
+        muki_img=left;
         break;
       case 2:
-        image(front,mx,my,60,60);
+        muki_img=front;
         break;
       case 3:
-        image(right,mx,my,60,60);
+        muki_img=right;
         break;
+        
     }
+    image(muki_img,mx,my);
         
 //    ellipse(g.state.player_x, g.state.player_y, 20, 20);
-    if(g.key_state.key_z%80<=30||g.key_state.key_z%80>=50){
-      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI),20,20);
+if(g.state.player.status.hp>0){
+    if(g.key_state.attack>20){
+      ellipse(mx+50*cos(-QUARTER_PI-g.state.player_muki*HALF_PI),my+50*sin(-QUARTER_PI-g.state.player_muki*HALF_PI),20,20);
     }else
-    if(g.key_state.key_z%80>30&&g.key_state.key_z%80<40){
-      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.key_z%80-30)*QUARTER_PI/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.key_z%80-30)*QUARTER_PI/10),20,20);
+    if(g.key_state.attack>0&&g.key_state.attack<10){
+      ellipse(mx+50*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.attack)*QUARTER_PI/10),my+50*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.attack)*QUARTER_PI/10),20,20);
     }else
-    if(g.key_state.key_z%80>40&&g.key_state.key_z%80<50){
-      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-QUARTER_PI*(10-(g.key_state.key_z%80-40))/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-((10-(g.key_state.key_z%80-40))/10)*QUARTER_PI/10),20,20);
+    if(g.key_state.attack>10&&g.key_state.attack<20){
+      ellipse(mx+50*cos(-(g.state.player_muki+1)*HALF_PI+QUARTER_PI*((g.key_state.attack-10))/10),my+50*sin(-(g.state.player_muki+1)*HALF_PI+(((g.key_state.attack-10)))*QUARTER_PI/10),20,20);
     }
+}
 //  attack motion by blue
 
+    g.state.player.display_item_list(g);
      
-  // display item list
-    for(int i=0; i<g.state.player.items.size(); i++){
-      Item it = (Item)(g.state.player.items.get(i));
-      textFont(g.data.kishimoto);
-      textSize(25);
-      fill(255, 0, 0);
-      text(it.name, 20, i*30 + 50);
-    }
   }
   
   void draw_window(Game g){

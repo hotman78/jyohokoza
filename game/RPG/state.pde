@@ -28,8 +28,9 @@ class State{
   }
   
   void init(Game g){
-    player_x = 100;
-    player_y = 100;
+    player = new Player();
+    player_x=110;
+    player_y=120;
     map_id = 0;
     for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
       Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
@@ -57,7 +58,7 @@ class State{
     for(int i=0;i<pg.width;i++){
       for(int j=0;j<pg.height;j++){
         color c=mg.pixels[(y+vy-pg.height/2+j)*bg.width+x+vx-pg.width/2+i];
-        if(c==color(255)){
+        if(c==color(0)){
           return 0;
         }
       }
@@ -67,10 +68,21 @@ class State{
   }
   
   void update(Game g){
+    int mx=-1,my=-1;
+    int px=g.state.player_x;
+    int py=g.state.player_y;
+    if(px<width/2)mx=0;
+    else if(px>g.data.maps[map_id].background.width-width/2)mx=width-g.data.maps[map_id].background.width;
+    if(py<height/2)my=0;
+    else if(py>g.data.maps[map_id].background.height-height/2)my=height-g.data.maps[map_id].background.height;
+    
+    if(mx==-1)mx=width/2-px;    
+    if(my==-1)my=height/2-py;
 //    if(game_state==3)game_state=0;
     
     // in game
-    if(game_state==0){
+    if(game_state==0&&player.status.hp>0){
+      player.status.hp+=(int)random(-10,9.9);
       ArrayList t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.size(); i++){
         // map transition
@@ -99,7 +111,9 @@ class State{
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
 //          println("aaaaaaaaaaaaaaaaaaaaaaaa");
-          player.items.add(((Item)(items.get(i))).copy());
+          Item it = ((Item)(items.get(i))).copy();
+          it.num = 100;
+          player.items.add(it);
           ((Item)items.get(i)).num = -1;
         }else{
           ((Item)items.get(i)).move();
@@ -152,13 +166,13 @@ class State{
             int x = (int)(((Item)items.get(i)).pos.x);
             int y = (int)(((Item)items.get(i)).pos.y);
             if(x>=0 && x<bg.width && y>=0 && y<bg.height){
-              if(mg.pixels[(int)(((Item)items.get(i)).pos.x) + mg.width*(int)(((Item)items.get(i)).pos.y)]==color(255)){
+              if(mg.pixels[(int)(((Item)items.get(i)).pos.x) + mg.width*(int)(((Item)items.get(i)).pos.y)]==color(0)){
                 ((Item)items.get(i)).num = -1;
                 for(int ix=-50; ix<=50; ix++){
                   for(int iy=-50; iy<=50; iy++){
                     if(sq(ix)+sq(iy)<sq(50) && x+ix>=0 && x+ix<bg.width && y+iy>=0 && y+iy<bg.height){
                       bg.pixels[(x+ix)+bg.width*(y+iy)] = color(255, 0, 0);
-                      mg.pixels[(x+ix)+mg.width*(y+iy)] = color(0, 0, 0);
+                      mg.pixels[(x+ix)+mg.width*(y+iy)] = color(255);
                     }
                   }
                 }
@@ -181,9 +195,11 @@ class State{
       if(g.key_state.key_c==1){
         if(player.items.size()>0){
 //          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-          Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
-          player.items.remove((player.items.size()-1));
-          float theta = atan2(mouseY-player_y, mouseX-player_x);
+          Item it = ((Item)(player.items.get((player.items.size()-1))));
+          if(it.num<=1) player.items.remove((player.items.size()-1));
+          else it.num--;
+          it = it.copy();
+          float theta = atan2(mouseY-(player_y+my), mouseX-(player_x+mx));
           float vel = 5.0;
           it.pos = new Position(player_x+50*cos(theta), player_y+50*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
           it.type = -1;
@@ -197,27 +213,30 @@ class State{
         float vy = ((Enemy)enemy.get(i)).vy;
         float x = ((Enemy)enemy.get(i)).x;
         float y = ((Enemy)enemy.get(i)).y;
+        float angle;
         int id = ((Enemy)enemy.get(i)).AI_id;
         PImage img = ((Enemy)enemy.get(i)).img;
         switch(id){
           case 0:
-            if(frameCount %3 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
-            }
+          //float angle = atan2();
+            angle = random(TWO_PI);
+            vx = 3*cos(angle);
+            vy = 3*sin(angle);
             break;
           case 1:
             if(frameCount %10 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+              angle = random(TWO_PI);
+              vx = 4*cos(angle);
+              vy = 4*sin(angle);
             }
             break;
           case 2:
             if(frameCount %15 == 0){
               if(dist(player_x,player_y,x,y) < 300){
                 if(frameCount %5 == 0){
-                  vx = 4*cos(random(TWO_PI));
-                  vy = 4*sin(random(TWO_PI));
+                angle = random(TWO_PI);
+                vx = 5*cos(angle);
+                vy = 5*sin(angle);
                 }
               }else{
                 vx = 0;
@@ -239,8 +258,9 @@ class State{
             break;
           default:
             if(frameCount %8 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+                angle = random(TWO_PI);
+                vx = 4*cos(angle);
+                vy = 4*sin(angle);
             }
             break;
         }
@@ -296,27 +316,23 @@ class State{
       }
       
       // player attack by blue
-      if(g.key_state.key_z%80<30){
-        // attack effect?
-                        ellipse(player_x+10*cos(-QUARTER_PI-player_muki*HALF_PI),player_y+10*sin(-QUARTER_PI-player_muki*HALF_PI),50,50);
-
-      }else if((g.key_state.key_z%80>=30&&g.key_state.key_z%80<40)||(g.key_state.key_z%80>50&&g.key_state.key_z%80<80)){
-      
-      }else if(g.key_state.key_z%80==40){
+              if(g.state.player.status.hp>0){
+       if(g.key_state.attack==10){
         // attack enemy
         
         //println(player_muki);
+
         switch(player_muki){
           case 0:
             for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y<=0&& ((Enemy)enemy.get(i)).y-player_y>-60){
+              if(((Enemy)enemy.get(i)).x-player_x<16&& ((Enemy)enemy.get(i)).x-player_x>-16&& ((Enemy)enemy.get(i)).y-player_y<=0&& ((Enemy)enemy.get(i)).y-player_y>-60){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break;
           case 1:
               for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+              if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-16&& ((Enemy)enemy.get(i)).y-player_y<16){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
@@ -325,29 +341,22 @@ class State{
 
           case 2:
           for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y>=0&& ((Enemy)enemy.get(i)).y-player_y<60){
+              if(((Enemy)enemy.get(i)).x-player_x<16&& ((Enemy)enemy.get(i)).x-player_x>-16&& ((Enemy)enemy.get(i)).y-player_y>=0&& ((Enemy)enemy.get(i)).y-player_y<60){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
-             for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
-                ((Enemy)enemy.get(i)).hp-=90000000;
-              }
-            }
+             
             break; 
           case 3:
             for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-16&& ((Enemy)enemy.get(i)).y-player_y<16){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break; 
         }
-      }else if(g.key_state.key_z%80>40&&g.key_state.key_z%80<50){
-
-      }else if(g.key_state.key_z%80==0){
       }
-      
+       }
       if(g.key_state.key_a==1){
         game_state = 3;
         disp_dict='a';
@@ -364,6 +373,14 @@ class State{
         dict_character = new Dict_character();
       }
         
+    }
+    if(game_state==0&&player.status.hp<=0){
+      if(g.key_state.key_c>=1){
+        println("aaaaa");
+        g.data.load_all(g);
+        game_state=1;
+        init(g);
+      }
     }
     // title
     else if(game_state==1){

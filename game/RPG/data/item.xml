@@ -13,14 +13,14 @@
 	</item>
 	<item id="2">
 		<name>エルフの飲み薬</name>
-		<img>behomaS.png</img>
+		<img>nomigusuri.png</img>
 		<use type="1" value="1000" />
 		<text>魔力がめちゃめちゃ回復するぞ！</text>
 		
 	</item>
 	<item id="3">
 		<name>馬糞</name>
-		<img>bahunntyann.png</img>
+		<img>bahunnchann.png</img>
 		<use type="2" value="10" />
 		<text>臭い。</text>
 	</item>
@@ -40,17 +40,18 @@
 		<name>出汁かおるロースかつ重</name>
 		<img>katsuju.png</img>
 		<use type="0" value="200" />
-		<text>厳選鰹節からとった一番だしにじっくりと漬け込んだロースをカラッと揚げました。どうぞお召し上がり下さい。</text>
+		<text>厳選鰹節からとった一番だしにじっくりと漬け込んだロースをカラッと揚げました。
+		どうぞお召し上がり下さい。</text>
 	</item>
 	<item id="7">
 		<name>オリハルコンの塊</name>
-		<img>oriharu.JPG</img>
+		<img>oriharu.png</img>
 		<use type="2" value="200" />
 		<text>めっさ硬い金属のかたまり。投げて攻撃する。もったいないので投げたら拾いに行こう！</text>
 	</item>
 	<item id="8">
 		<name>手榴弾</name>
-		<img></img>
+		<img>grenade.png</img>
 		<use type="2" value="100" />
 		<text>投げつけると爆発する。扱いには気をつけよう！</text>
 	</item>
