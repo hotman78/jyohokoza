@@ -98,12 +98,14 @@ class State{
       // get item and move item
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
+//          println("aaaaaaaaaaaaaaaaaaaaaaaa");
           player.items.add(((Item)(items.get(i))).copy());
           ((Item)items.get(i)).num = -1;
         }else{
           ((Item)items.get(i)).move();
           
           if(((Item)items.get(i)).type==-1){
+//          println("cccccccccccccccccccccccccccc");
           // item hit player
             if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y)<25){
               Player[] ahyo = new Player[3];
@@ -151,6 +153,7 @@ class State{
             int y = (int)(((Item)items.get(i)).pos.y);
             if(x>=0 && x<bg.width && y>=0 && y<bg.height){
               if(mg.pixels[(int)(((Item)items.get(i)).pos.x) + mg.width*(int)(((Item)items.get(i)).pos.y)]==color(255)){
+                ((Item)items.get(i)).num = -1;
                 for(int ix=-50; ix<=50; ix++){
                   for(int iy=-50; iy<=50; iy++){
                     if(sq(ix)+sq(iy)<sq(50) && x+ix>=0 && x+ix<bg.width && y+iy>=0 && y+iy<bg.height){
@@ -163,7 +166,6 @@ class State{
             }
             bg.updatePixels();
             mg.updatePixels();
-            ((Item)items.get(i)).num = -1;
           }
         }
       }
@@ -178,11 +180,12 @@ class State{
       // throw items
       if(g.key_state.key_c==1){
         if(player.items.size()>0){
+//          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
           Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
           player.items.remove((player.items.size()-1));
           float theta = random(0, 2*PI);
           float vel = 5.0;
-          it.pos = new Position(player_x+30*cos(theta), player_y+30*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
+          it.pos = new Position(player_x+50*cos(theta), player_y+50*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
           it.type = -1;
           items.add(it);
         }
