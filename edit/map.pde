@@ -3,26 +3,23 @@ class MapLayer{
  Layer2 layer2;
  Layer3 layer3;
  Saveray saveray;
-  CD cD;
+ Frag frag;
   MapLayer(){
     layer1 = new Layer1();
     layer2 = new Layer2();
     layer3 = new Layer3();
     saveray = new Saveray();
-    cD = new CD();
+    frag = new Frag();
   }
   class Layer1{
       void edit(){
-        
        fill(255);
        rect(0,79,546,402);
        image(rayer1.get(hidariX,hidariY,544,400),0,80);
-       
        fill(255);
        image(editmap,width-160,a*16);
        fill(0,204,255,100);
        rect(mousex-mousex%16,mousey-mousey%16+b*16,16,16);
-       
        if(mouseDrag==1){
          rayer1.loadPixels();
          copy.loadPixels();
@@ -127,10 +124,10 @@ class MapLayer{
                 }
               }
             }
-          rayer1.updatePixels();
+          rayer3.updatePixels();
         }
         if((mouseX<350)&&(mouseX>320)&&(mouseY>50)&&(mouseY<70)){
-          rayer1.loadPixels();
+          rayer3.loadPixels();
           copy.loadPixels();
           for(int i=0;i<layerSizeX;i++){
             for(int j=0;j<layerSizeY;j++){
@@ -146,15 +143,76 @@ class MapLayer{
       }
     }
   }
-  
+    class Frag{
+      void edit(){
+        
+       fill(255);
+       rect(0,79,546,402);
+       image(rayer1.get(hidariX,hidariY,544,400),0,80);
+       image(rayer2.get(hidariX,hidariY,544,400),0,80);
+       image(rayer3.get(hidariX,hidariY,544,400),0,80);
+       image(fragw.get(hidariX,hidariY,544,400),0,80);
+       
+       fill(255);
+       image(editmap,width-160,a*16);
+       fill(0,204,255,100);
+       rect(mousex-mousex%16,mousey-mousey%16+b*16,16,16);
+       
+       if(mouseDrag==1){
+         fragw.loadPixels();
+         copy.loadPixels();
+         if(mouseX<width-160){
+           int x=mouseX/16*16;
+           int y=mouseY/16*16;
+            for(int i=0;i<16;i++){
+              for(int j=0;j<16;j++){
+                if((layerSizeX*16>y+j-80+hidariY)&&(0<y+j-80+hidariY)&&(layerSizeY*16>x+i+hidariX)&&(0<x+i+hidariX)){
+                  fragw.pixels[(y+j-80+hidariY)*fragw.width+(x+i+hidariX)]=copy.pixels[j*copy.width+i];
+                  if(paint<=8){
+                    fragww.pixels[(y+j-80+hidariY)*fragww.width+(x+i+hidariX)]=color(0);
+                  }
+                  if(paint>8){
+                    fragww.pixels[(y+j-80+hidariY)*fragww.width+(x+i+hidariX)]=color(255);
+                  }
+                  
+                }
+              }
+           }
+        }
+    }
+  }
+}
+
+
+
 
   class Saveray{
     void Save(){
-      
+      rayer.loadPixels();
+      rayer1.loadPixels();
+      rayer2.loadPixels();
+      rayer3.loadPixels();
+      fragw.loadPixels();
+      for(int i=0;i<layerSizeX*16;i++){
+        for(int j=0;j<layerSizeY*16;j++){
+          color cl1=rayer1.pixels[j*rayer1.width+i];
+          color cl2=rayer2.pixels[j*rayer2.width+i];
+          color cl3=rayer3.pixels[j*rayer3.width+i];
+          color clf=fragw.pixels[j*fragw.width+i];
+        if(alpha(cl1)==255){
+          rayer.pixels[j*rayer.width+i]=rayer1.pixels[j*rayer1.width+i];
+        }
+        if(alpha(cl2)==255){
+          rayer.pixels[j*rayer.width+i]=rayer2.pixels[j*rayer2.width+i];
+        }
+        if(alpha(cl3)==255){
+          rayer.pixels[j*rayer.width+i]=rayer3.pixels[j*rayer3.width+i];
+        }
     }
   }
-  
-  class CD{
-    
-  }
+    rayer.save("rayer.png");
+    fragww.save("mask.png");
+    fragw.save("mask.png");
 }
+  }
+  }
