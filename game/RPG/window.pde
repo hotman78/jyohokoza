@@ -27,7 +27,9 @@ class Window {
     }
   }
   
-  
+  boolean inside(int mx,int my){
+    return ((px<mx && mx<px+wid) && (py<my && my<py+hei));
+  }
   
 }
 
