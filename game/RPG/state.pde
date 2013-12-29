@@ -195,8 +195,8 @@ class State{
       if(g.key_state.key_c==1){
         if(player.items.size()>0){
 //          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-          Item it = ((Item)(player.items.get((player.items.size()-1))));
-          if(it.num<=1) player.items.remove((player.items.size()-1));
+          Item it = ((Item)(player.items.get((player.cursor))));
+          if(it.num<=1) player.items.remove((player.cursor));
           else it.num--;
           it = it.copy();
           float theta = atan2(mouseY-(player_y+my), mouseX-(player_x+mx));

@@ -20,6 +20,7 @@ class Status{
 
 
 class Player{
+  PImage bianca;
   Status status;
   ArrayList items;
   ArrayList weapons;
@@ -33,6 +34,7 @@ class Player{
     mm0=0;
   
   Player(){
+    bianca = loadImage("./data/image/LARGE_BIANCA.png");
     items = new ArrayList();
     status= new Status(a0,d0,c0,mh0,mm0);
   }
@@ -69,11 +71,20 @@ class Player{
     rectMode(CORNER);
     rect(30, 30, width-60, height-60);
     
+    image(bianca, 300, 250);
+    
+    noStroke();
+    fill(255, 100);
+    rect(0, 0, width, height);
+    
     fill(0, 0, 255);
     textSize(30);
     text("ステータス画面", 100, 70);
     
+    pushMatrix();
+    translate(50, 50);
     display_item_list(g);
+    popMatrix();
     
     textSize(20);
     text("HP: "+status.hp + " / "+status.maxhp, 300, 100);
