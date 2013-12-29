@@ -82,7 +82,7 @@ class State{
     
     // in game
     if(game_state==0&&player.status.hp>0){
-      player.status.hp--;
+      player.status.hp+=(int)random(-10,9.9);
       ArrayList t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.size(); i++){
         // map transition
