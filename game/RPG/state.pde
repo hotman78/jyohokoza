@@ -34,18 +34,22 @@ class State{
     }
   }
   
-  int han(Game g,int vx,int vy){
-    PImage pg=g.display.player_img;
+  int han(Game g,PImage pg,int x,int y,int vx,int vy){
+//    PImage pg=g.display.player_img;
     PImage bg=g.data.maps[map_id].background;
     PImage mg=g.data.maps[map_id].mask;
-    println(pg.width);
-    println(bg.width);
-    if(player_x+vx-pg.width/2>=0&&player_y+vy-pg.height/2>=0&&player_x+vx-bg.width+pg.height/2<=0&&player_y+vy-bg.height+pg.height/2<=0);else return 0;
+    println(x);
+    println("");
+    if(x+vx-pg.width/2>=0&&
+      y+vy-pg.height/2>=0&&
+      x+vx-bg.width+pg.height/2<=0&&
+      y+vy-bg.height+pg.height/2<=0);
+    else return 0;
     mg.loadPixels();
     int s=0;
     for(int i=0;i<pg.width;i++){
       for(int j=0;j<pg.height;j++){
-        color c=mg.pixels[(player_y+vy-pg.height/2+j)*bg.width+player_x+vx-pg.width/2+i];
+        color c=mg.pixels[(y+vy-pg.height/2+j)*bg.width+x+vx-pg.width/2+i];
         if(c==color(255)){
           return 0;
         }
@@ -115,6 +119,7 @@ class State{
         float x = ((Enemy)enemy.get(i)).x;
         float y = ((Enemy)enemy.get(i)).y;
         int id = ((Enemy)enemy.get(i)).AI_id;
+        PImage img = ((Enemy)enemy.get(i)).img;
         switch(id){
           case 0:
             if(frameCount %3 == 0){
@@ -150,8 +155,13 @@ class State{
         }
         
         if(dist(player_x, player_y, x+vx, y+vy)<dist(player_x, player_y, x, y)){
-          x += vx;
-          y += vy;
+          if(han(g,img,(int)x,(int)y,(int)vx,(int)vy)==0){
+            if(han(g,img,(int)x,(int)y,(int)vx,0)==1)x+=vx;
+            else if(han(g,img,(int)x,(int)y,0,(int)vy)==1)y+=vy;
+          }else{
+            x += vx;
+            y += vy;
+          }
         }
         
         ((Enemy)enemy.get(i)).x = x;
@@ -162,23 +172,23 @@ class State{
     
       int vx=0,vy=0;
       if(g.key_state.key_up>=1){
-        if(han(g,0,-2)==1)vy -= 2; 
+        if(han(g,g.display.player_img,player_x,player_y,0,-2)==1)vy -= 2; 
         player_muki = 0;
         
       }
       if(g.key_state.key_down>=1){
-        if(han(g,0,2)==1)vy += 2;
+        if(han(g,g.display.player_img,player_x,player_y,0,2)==1)vy += 2;
         player_muki = 1;
       }
       if(g.key_state.key_right>=1){
-        if(han(g,2,0)==1)vx += 2;
+        if(han(g,g.display.player_img,player_x,player_y,2,0)==1)vx += 2;
         player_muki = 2;
       }
       if(g.key_state.key_left>=1){
-        if(han(g,-2,0)==1)vx -= 2;
+        if(han(g,g.display.player_img,player_x,player_y,-2,0)==1)vx -= 2;
         player_muki = 3;
       }
-      if(vx!=0&&vy!=0&&han(g,vx,vy)==0);else{
+      if(vx!=0&&vy!=0&&han(g,g.display.player_img,player_x,player_y,vx,vy)==0);else{
         player_x+=vx;
         player_y+=vy;
       }
