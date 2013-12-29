@@ -113,7 +113,7 @@ class State{
               ((Item)items.get(i)).num = -1;
             }
             // item hit monster
-            /*
+            
             for(int j=0;j<enemy.size();j++){
               float ex = ((Enemy)enemy.get(j)).x;
               float ey = ((Enemy)enemy.get(j)).y;
@@ -142,7 +142,7 @@ class State{
                 ((Item)items.get(i)).num = -1;
               }
             }
-            */
+            
             
             // item hit wall
             PImage bg = g.data.maps[map_id].background;
@@ -183,7 +183,7 @@ class State{
 //          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
           Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
           player.items.remove((player.items.size()-1));
-          float theta = random(0, 2*PI);
+          float theta = atan2(mouseY-player_y, mouseX-player_x);
           float vel = 5.0;
           it.pos = new Position(player_x+50*cos(theta), player_y+50*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
           it.type = -1;
@@ -232,7 +232,7 @@ class State{
               Item it = ((Item)g.data.items[9]).copy();
               float theta = atan2(player_y - y, player_x - x);
               float vel = 5.0;
-              it.pos = new Position(x+30*cos(theta), y+30*sin(theta), vel*cos(theta), vel*sin(theta), theta+PI, 0);
+              it.pos = new Position(x+60*cos(theta), y+60*sin(theta), vel*cos(theta), vel*sin(theta), theta+PI, 0);
               it.type = -1;
               items.add(it);
             }
