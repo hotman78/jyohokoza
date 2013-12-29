@@ -1,6 +1,6 @@
 class Key{
   int key_up, key_down, key_left, key_right, key_z, key_x, key_c;
-  int key_a, key_s, key_d;
+  int key_a, key_s, key_d, key_f;
   int attack;
   int mouse_left;
   
@@ -32,6 +32,7 @@ class Key{
     if(key_a>=1) key_a++;
     if(key_s>=1) key_s++;
     if(key_d>=1) key_d++;
+    if(key_f>=1) key_f++;
     if(attack>=1) attack++;
     if(mouse_left>=1) mouse_left++;
     println(attack);
@@ -51,6 +52,7 @@ class Key{
       if(key=='a'&&key_a==0) key_a = 1;
       if(key=='s'&&key_s==0) key_s = 1;
       if(key=='d'&&key_d==0) key_d = 1;
+      if(key=='f'&&key_f==0) key_f = 1;
     }
   }
   
@@ -67,6 +69,7 @@ class Key{
       if(key=='a') key_a = 0;
       if(key=='s') key_s = 0;
       if(key=='d') key_d = 0;
+      if(key=='f') key_f = 0;
     }
   }
   
