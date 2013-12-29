@@ -319,10 +319,12 @@ class State{
       }
       
       // player attack by blue
+              if(g.state.player.status.hp>0){
        if(g.key_state.attack==10){
         // attack enemy
         
         //println(player_muki);
+
         switch(player_muki){
           case 0:
             for(int i=0;i<enemy.size();i++){     
@@ -357,7 +359,7 @@ class State{
             break; 
         }
       }
-      
+       }
       if(g.key_state.key_a==1){
         game_state = 3;
         disp_dict='a';
