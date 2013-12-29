@@ -129,6 +129,7 @@ class Data{
     }
   }
   
+
   void set_talks(){
     XML children[] = talk.getChildren("talk");
     String id;
