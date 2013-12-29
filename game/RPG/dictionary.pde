@@ -37,7 +37,7 @@ class Dict_item{
     rect(30, height-100, width-60, 70);
     fill(0);
     textSize(15);
-    text("アイテム説明的な", 40, height-60);
+    text(g.data.items[cursor].text,50,450);
     if(g.data.items[cursor].type==0) text("type: 回復", 250, 360);
     if(g.data.items[cursor].type==1) text("type: 投擲", 250, 360);
     if(g.data.items[cursor].type==2) text("type: 武器", 250, 360);
