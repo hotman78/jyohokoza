@@ -68,6 +68,16 @@ class State{
   }
   
   void update(Game g){
+    int mx=-1,my=-1;
+    int px=g.state.player_x;
+    int py=g.state.player_y;
+    if(px<width/2)mx=0;
+    else if(px>g.data.maps[map_id].background.width-width/2)mx=width-g.data.maps[map_id].background.width;
+    if(py<height/2)my=0;
+    else if(py>g.data.maps[map_id].background.height-height/2)my=height-g.data.maps[map_id].background.height;
+    
+    if(mx==-1)mx=width/2-px;    
+    if(my==-1)my=height/2-py;
 //    if(game_state==3)game_state=0;
     
     // in game
@@ -101,7 +111,9 @@ class State{
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
 //          println("aaaaaaaaaaaaaaaaaaaaaaaa");
-          player.items.add(((Item)(items.get(i))).copy());
+          Item it = ((Item)(items.get(i))).copy();
+          it.num = 100;
+          player.items.add(it);
           ((Item)items.get(i)).num = -1;
         }else{
           ((Item)items.get(i)).move();
@@ -185,7 +197,7 @@ class State{
 //          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
           Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
           player.items.remove((player.items.size()-1));
-          float theta = atan2(mouseY-player_y, mouseX-player_x);
+          float theta = atan2(mouseY-(player_y+my), mouseX-(player_x+mx));
           float vel = 5.0;
           it.pos = new Position(player_x+50*cos(theta), player_y+50*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
           it.type = -1;
@@ -305,26 +317,21 @@ class State{
       }
       
       // player attack by blue
-      if(g.key_state.key_z%80<30){
-        // attack effect?
-
-      }else if((g.key_state.key_z%80>=30&&g.key_state.key_z%80<40)||(g.key_state.key_z%80>50&&g.key_state.key_z%80<80)){
-      
-      }else if(g.key_state.attack==10){
+       if(g.key_state.attack==10){
         // attack enemy
         
         //println(player_muki);
         switch(player_muki){
           case 0:
             for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y<=0&& ((Enemy)enemy.get(i)).y-player_y>-60){
+              if(((Enemy)enemy.get(i)).x-player_x<16&& ((Enemy)enemy.get(i)).x-player_x>-16&& ((Enemy)enemy.get(i)).y-player_y<=0&& ((Enemy)enemy.get(i)).y-player_y>-60){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break;
           case 1:
               for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+              if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-16&& ((Enemy)enemy.get(i)).y-player_y<16){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
@@ -333,27 +340,20 @@ class State{
 
           case 2:
           for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y>=0&& ((Enemy)enemy.get(i)).y-player_y<60){
+              if(((Enemy)enemy.get(i)).x-player_x<16&& ((Enemy)enemy.get(i)).x-player_x>-16&& ((Enemy)enemy.get(i)).y-player_y>=0&& ((Enemy)enemy.get(i)).y-player_y<60){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
-             for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
-                ((Enemy)enemy.get(i)).hp-=90000000;
-              }
-            }
+             
             break; 
           case 3:
             for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-16&& ((Enemy)enemy.get(i)).y-player_y<16){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break; 
         }
-      }else if(g.key_state.key_z%80>40&&g.key_state.key_z%80<50){
-
-      }else if(g.key_state.key_z%80==0){
       }
       
       if(g.key_state.key_a==1){
