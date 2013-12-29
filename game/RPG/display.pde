@@ -87,7 +87,7 @@ class Display{
       ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.key_z%80-30)*QUARTER_PI/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.key_z%80-30)*QUARTER_PI/10),20,20);
     }else
     if(g.key_state.key_z%80>40&&g.key_state.key_z%80<50){
-      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-QUARTER_PI*(10-(g.key_state.key_z%80-40))/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-((10-(g.key_state.key_z%80-40))/10)*QUARTER_PI/10),20,20);
+      ellipse(mx+30*cos(-(g.state.player_muki+1)*HALF_PI+QUARTER_PI*((g.key_state.key_z%80-40))/10),my+30*sin(-(g.state.player_muki+1)*HALF_PI+(((g.key_state.key_z%80-40)))*QUARTER_PI/10),20,20);
     }
 //  attack motion by blue
 
