@@ -81,7 +81,8 @@ class State{
 //    if(game_state==3)game_state=0;
     
     // in game
-    if(game_state==0){
+    if(game_state==0&&player.status.hp>0){
+      player.status.hp--;
       ArrayList t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.size(); i++){
         // map transition
@@ -371,6 +372,14 @@ class State{
         dict_character = new Dict_character();
       }
         
+    }
+    if(game_state==0&&player.status.hp<=0){
+      if(g.key_state.key_c>=1){
+        println("aaaaa");
+        g.data.load_all(g);
+        game_state=1;
+        init(g);
+      }
     }
     // title
     else if(game_state==1){
