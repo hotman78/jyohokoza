@@ -14,6 +14,8 @@ class State{
   ArrayList enemy;
   Player player;
   
+  int z=0;
+  
   Dict_character dict_c;
 
   
@@ -82,7 +84,11 @@ class State{
     
     // in game
     if(game_state==0&&player.status.hp>0){
-      player.status.hp+=(int)random(-10,9.9);
+        if(z==1){
+          player.status.hp-=10;
+          z=0;
+        }
+    //  player.status.hp+=(int)random(-10,9.9);
       ArrayList t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.size(); i++){
         // map transition
@@ -204,6 +210,7 @@ class State{
           it.pos = new Position(player_x+50*cos(theta), player_y+50*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
           it.type = -1;
           items.add(it);
+          z=1;
         }
       }
       
@@ -376,8 +383,9 @@ class State{
         
     }
     if(game_state==0&&player.status.hp<=0){
-      if(g.key_state.key_c>=1){
+      if(g.key_state.key_x>=1){
         println("aaaaa");
+        g.data=new Data();
         g.data.load_all(g);
         game_state=1;
         init(g);
