@@ -67,6 +67,17 @@ class State{
   }
   
   void update(Game g){
+    int mx=-1,my=-1;
+    int px=g.state.player_x;
+    int py=g.state.player_y;
+    if(px<width/2)mx=0;
+    else if(px>g.data.maps[map_id].background.width-width/2)mx=width-g.data.maps[map_id].background.width;
+    if(py<height/2)my=0;
+    else if(py>g.data.maps[map_id].background.height-height/2)my=height-g.data.maps[map_id].background.height;
+    
+    if(mx==-1)mx=width/2-px;    
+    if(my==-1)my=height/2-py;
+    
 //    if(game_state==3)game_state=0;
     
     // in game
@@ -182,8 +193,9 @@ class State{
         if(player.items.size()>0){
 //          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
           Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
+          
           player.items.remove((player.items.size()-1));
-          float theta = atan2(mouseY-player_y, mouseX-player_x);
+          float theta = atan2(mouseY-(player_y+my), mouseX-(player_x+mx));
           float vel = 5.0;
           it.pos = new Position(player_x+50*cos(theta), player_y+50*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
           it.type = -1;

@@ -5,6 +5,7 @@
 		<AI id="0" />
 		<weapon id="0" />
 		<state hp="7" mp="2" at="3" df="2" />
+        <text>一言で言ってざこ！！ただのスライムだよん☆</text>
 	</enemy>
 	<enemy id="2">
 		<name>オルゴデミーラ</name>
@@ -12,6 +13,7 @@
 		<AI id="1" />
 		<weapon id="2" />
 		<state hp="99999" mp="9999" at="3000" df="5000" />
+        <text>まあ強いから覚悟しとけよ</text>
 	</enemy>
 	<enemy id="3">
 		<name>メタルキング</name>
@@ -19,6 +21,7 @@
 		<AI id="2" />
 		<weapon id="3" />
 		<state hp="300" mp="4000" at="100" df="5000000" />
+        <text>にゃははははー</text>
 	</enemy>
 	<enemy id="4">
 		<name>きゅーり君</name>
@@ -26,13 +29,15 @@
 		<AI id="4" />
 		<weapon id="4" />
 		<state hp="10" mp="8" at="30" df="8" />
+        <text>かわいさであなたのハートにずっきゅん☆</text>
 	</enemy>
 	<enemy id="5">
 		<name>パソコンダ</name>
 		<img>com.png</img>
 		<AI id="3" />
 		<weapon id="5" />
-		<state hp="100" mp="5000" at="100" df="800" />
+		<state hp="100" mp="50000" at="100" df="800" />
+        <text>未来からやってきたパソコンダ君！怖いよ怖いよー</text>
 	</enemy>
 	<enemy id="6">
 		<name>Mr.Brown</name>
@@ -40,20 +45,23 @@
 		<AI id="6" />
 		<weapon id="6" />
 		<state hp="10000" mp="50" at="90000" df="8000" />
+        <text>ゴリマッチョ！ゴリゴリッ！！俺が片手で握りつぶしてやるぜ？？</text>
 	</enemy>
 	<enemy id="7">
 		<name>C++マン</name>
-		<img>CClemon.png</img>
+		<img>C++lemon.png</img>
 		<AI id="7" />
 		<weapon id="7" />
 		<state hp="9000" mp="80" at="50000" df="6000" />
+        <text>C++レモンだぜ！パクリじゃないよ、うん。パクリじゃないもん。</text>
 	</enemy>
 	<enemy id="8">
 		<name>ルービック5000</name>
 		<img>cube.png</img>
 		<AI id="8" />
 		<weapon id="8" />
-		<state hp="3000" mp="5000" at="600" df="800" />
+		<state hp="3000" mp="50" at="60" df="8000" />
+        <text>体はかたくてぜんぜん運動できないけどな、ハードなボディでどんな攻撃でも跳ね返してやるぅぅぅ！</text>
 	</enemy>
 	<enemy id="9">
 		<name>Nバッグマン</name>
@@ -61,6 +69,7 @@
 		<AI id="9" />
 		<weapon id="9" />
 		<state hp="8000" mp="5500" at="300" df="60000" />
+        <text>さて、なつかしのNバッグがあなたが小学生時代Nバッグを背負ってくれなかった恨みを・・・</text>
 	</enemy>
 	<enemy id="10">
 		<name>猿</name>
@@ -68,6 +77,7 @@
 		<AI id="10" />
 		<weapon id="10" />
 		<state hp="5000" mp="50" at="800" df="80" />
+        <text>俺のきれいな白い歯でかみかみしちゃうぞ！</text>
 	</enemy>
 	<enemy id="11">
 		<name>おかん</name>
@@ -75,6 +85,7 @@
 		<AI id="11" />
 		<weapon id="11" />
 		<state hp="6000" mp="800" at="490" df="680" />
+        <text>人気アニメ！「あなたんち」のおかあちゃん役が登場！！</text>
 	</enemy>
 	<enemy id="12">
 		<name>からす</name>
@@ -82,6 +93,7 @@
 		<AI id="12" />
 		<weapon id="12" />
 		<state hp="500" mp="8976" at="465" df="250" />
+        <text>からすはごみ置き場にいる邪魔なヤツだけじゃないんだ。魔力を持つんだよ！！</text>
 	</enemy>
 	<enemy id="13">
 		<name>唇</name>
@@ -89,13 +101,15 @@
 		<AI id="13" />
 		<weapon id="13" />
 		<state hp="500" mp="9560" at="6670" df="670" />
+        <text>魔法のキスで攻撃しちゃうぞ☆</text>
 	</enemy>
 	<enemy id="14">
 		<name>きのこ</name>
 		<img>kinoko.png</img>
 		<AI id="14" />
 		<weapon id="14" />
-		<state hp="200" mp="300" at="60" df="70" />
+		<state hp="200" mp="30" at="60" df="70" />
+        <text>きのこっのっこーのこ！かわいいけど毒キノコだよん♪</text>
 	</enemy>
 	<enemy id="15">
 		<name>りんご</name>
@@ -103,6 +117,7 @@
 		<AI id="15" />
 		<weapon id="15" />
 		<state hp="500" mp="40" at="350" df="640" />
+        <text>アッ○ルのマークが動き出すーー！！</text>
 	</enemy>
 	<enemy id="16">
 		<img>dokupan.png</img>
@@ -110,6 +125,7 @@
 		<AI id="16" />
 		<weapon id="16" />
 		<state hp="5550" mp="10" at="350" df="570" />
+        <text>みんなのヒーロー、ア○パンマンが毒を混入されて帰ってきた！！</text>
 	</enemy>
 	
 </enemys>
