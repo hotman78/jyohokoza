@@ -13,7 +13,7 @@ class Trans{
   }
   
   Trans(int n0, int x0, int y0, int px0, int py0){
-    img = loadImage("./data/image/transition.png");
+    img = loadImage("./data/image/transition2.png");
     next_map = n0;
     x = x0;
     y = y0;
@@ -25,14 +25,14 @@ class Trans{
     if(debug==0){
 
       next_map = 1;
-      img = loadImage("./data/image/transition.png");
+      img = loadImage("./data/image/transition2.png");
       x = 314;
       y = 159;
       px=100;
       py=200;
     }else if(debug==1){
       next_map = 0;
-      img = loadImage("./data/image/transition.png");
+      img = loadImage("./data/image/transition2.png");
       x = 265;
       y = 358;
       px=200;
