@@ -40,7 +40,7 @@ class Dict_item{
     rect(250, height-100, 300, 70);
     fill(0);
     textSize(15);
-    text(g.data.items[cursor].text,250,450);
+    text(g.data.items[cursor].text,270,420);
     if(g.data.items[cursor].type==0) text("type: 回復", 250, 360);
     if(g.data.items[cursor].type==1) text("type: 投擲", 250, 360);
     if(g.data.items[cursor].type==2) text("type: 武器", 250, 360);
@@ -85,7 +85,7 @@ class Dict_enemy{
       else fill(50);
       textFont(g.data.kishimoto);
       textSize(15);
-      text(g.data.o_enemies[i].name, 60, i*20+60);
+      text(g.data.o_enemies[i].name, 60, i*20+60-cursor*15);
     }
     textSize(25);
     text(g.data.o_enemies[cursor].name, width/2, 60);
