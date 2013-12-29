@@ -213,23 +213,29 @@ class State{
         PImage img = ((Enemy)enemy.get(i)).img;
         switch(id){
           case 0:
-            if(frameCount %3 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+            while(true){
+              float angle = random(TWO_PI);
+              vx = 3*cos(angle);
+              vy = 3*sin(angle);
+              if(han(g,img,2*(int)(x+vx),2*(int)(y+vy),0,0) == 0){
+                break;
+              }else break;
             }
             break;
           case 1:
             if(frameCount %10 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+                float angle = random(TWO_PI);
+                vx = 4*cos(angle);
+                vy = 4*sin(angle);
             }
             break;
           case 2:
             if(frameCount %15 == 0){
               if(dist(player_x,player_y,x,y) < 300){
                 if(frameCount %5 == 0){
-                  vx = 4*cos(random(TWO_PI));
-                  vy = 4*sin(random(TWO_PI));
+                float angle = random(TWO_PI);
+                vx = 5*cos(angle);
+                vy = 5*sin(angle);
                 }
               }else{
                 vx = 0;
@@ -251,8 +257,9 @@ class State{
             break;
           default:
             if(frameCount %8 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+                float angle = random(TWO_PI);
+                vx = 4*cos(angle);
+                vy = 4*sin(angle);
             }
             break;
         }
