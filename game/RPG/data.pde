@@ -21,11 +21,13 @@ class Data{
     N_enemies=enemy.getInt("num");
     N_items=item.getInt("num");
     N_weapons=weapon.getInt("num");
+
     kishimoto = loadFont("HGPKisimotoKaishotai-25.vlw");
     maps    = new Map[N_maps];
     //enemies = new ArrayList();
     o_enemies = new Enemy[N_enemies];
     items = new Item[N_items + N_weapons];
+//    println(N_items, N_weapons);
 //    weapons = new Weapon[N_weapons];
   }
   
@@ -80,7 +82,7 @@ class Data{
     int val;
     Status stat = null;
     
-    for(int i=0; i<min(N_items, children.length); i++){
+    for(int i=0; i<N_items; i++){
       id         = children[i].getInt("id");
       name       = children[i].getChild("name").getContent();
       img        = loadImage("./data/image/items/"+children[i].getChild("img").getContent());

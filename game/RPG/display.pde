@@ -96,6 +96,7 @@ class Display{
     image(muki_img,mx,my);
         
 //    ellipse(g.state.player_x, g.state.player_y, 20, 20);
+if(g.state.player.status.hp>0){
     if(g.key_state.attack>20){
       ellipse(mx+50*cos(-QUARTER_PI-g.state.player_muki*HALF_PI),my+50*sin(-QUARTER_PI-g.state.player_muki*HALF_PI),20,20);
     }else
@@ -105,17 +106,11 @@ class Display{
     if(g.key_state.attack>10&&g.key_state.attack<20){
       ellipse(mx+50*cos(-(g.state.player_muki+1)*HALF_PI+QUARTER_PI*((g.key_state.attack-10))/10),my+50*sin(-(g.state.player_muki+1)*HALF_PI+(((g.key_state.attack-10)))*QUARTER_PI/10),20,20);
     }
+}
 //  attack motion by blue
 
+    g.state.player.display_item_list(g);
      
-  // display item list
-    for(int i=0; i<g.state.player.items.size(); i++){
-      Item it = (Item)(g.state.player.items.get(i));
-      textFont(g.data.kishimoto);
-      textSize(25);
-      fill(255, 0, 0);
-      text(it.name + "(" + it.num + ")", 20, i*30 + 50);
-    }
   }
   
   void draw_window(Game g){

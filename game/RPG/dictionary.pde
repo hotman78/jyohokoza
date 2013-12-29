@@ -1,7 +1,7 @@
 class Dict_item{
   int cursor;
   int N;
-  
+ 
   Dict_item(Game g){
     cursor = 0;
     N = g.data.N_items + g.data.N_weapons;
@@ -51,8 +51,8 @@ class Dict_item{
          g.data.items[cursor].status.maxmp + "  "
     , 250, 400);
   }
-  
 }
+
 
 class Dict_enemy{
   int cursor;
