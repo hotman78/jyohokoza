@@ -110,7 +110,9 @@ class State{
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
 //          println("aaaaaaaaaaaaaaaaaaaaaaaa");
-          player.items.add(((Item)(items.get(i))).copy());
+          Item it = ((Item)(items.get(i))).copy();
+          it.num = 100;
+          player.items.add(it);
           ((Item)items.get(i)).num = -1;
         }else{
           ((Item)items.get(i)).move();
