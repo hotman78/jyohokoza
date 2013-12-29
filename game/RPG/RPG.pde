@@ -1,8 +1,10 @@
+
 import ddf.minim.*;
 
 Game game;
 AudioPlayer player;
 Minim minim;
+
 void setup(){
   size(600, 500);
   game = new Game();
