@@ -22,7 +22,7 @@ class Window {
     if(disp){
       rectMode(CORNER);
       stroke(0);fill(255);
-      rect(px, py, px+wid, py+hei);
+      rect(px, py, px+wid, py+hei, 10);
       stroke(0);fill(0);
       text(inter, px, py, px+wid, py+hei);
     }

@@ -21,6 +21,9 @@ class TPos extends Talk{
     
   }
   
+  boolean trigger(Game g){
+    return (dist(x, y, g.state.player_x, g.state.player_y) < 50);
+  }
 } 
 
 class TData extends Talk{
