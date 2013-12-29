@@ -3,7 +3,7 @@ class Display{
   Window window;
   
   Display(){
-    player_img = loadImage("./data/image/BIANCA_0_small.png");
+    player_img = loadImage("./data/image/characters/BIANCA_0_small.png");
     title_img=loadImage("./data/image/title.png");
     end_img=loadImage("./data/image/end.png");
     
@@ -21,6 +21,16 @@ class Display{
         draw_title(g);
     }else if(g.state.game_state==2){//ed
         draw_ending(g);
+    }else if(g.state.game_state==3){
+      if(g.state.disp_dict=='a'){
+        g.state.dict_item.display(g);
+      }
+      if(g.state.disp_dict=='s'){
+        g.state.dict_enemy.display(g);
+      }
+      if(g.state.disp_dict=='d'){
+        g.state.dict_character.display(g);
+      }
     }
      // window.draw(g);
      // draw_menu(g);
@@ -51,12 +61,19 @@ class Display{
     
     image(player_img, mx, my, 60, 60);
 //    ellipse(g.state.player_x, g.state.player_y, 20, 20);
- if(g.key_state.key_z%80<30||g.key_state.key_z%80>50){
-                        ellipse(mx+10*cos(-QUARTER_PI-g.state.player_muki*HALF_PI),my+10*sin(-QUARTER_PI-g.state.player_muki*HALF_PI),50,50);
- }
+    if(g.key_state.key_z%80<30||g.key_state.key_z%80>50){
+      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI),20,20);
+    }
+    if(g.key_state.key_z%80>30&&g.key_state.key_z%80<40){
+      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.key_z%80-30)*QUARTER_PI/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.key_z%80-30)*QUARTER_PI/10),20,20);
+    }
+    if(g.key_state.key_z%80>40&&g.key_state.key_z%80<50){
+      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-(10-(g.key_state.key_z%80-40))*QUARTER_PI/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-(10-(g.key_state.key_z%80-40)/10)*QUARTER_PI/10),20,20);
+    }
 
-      
 
+     
+  // display item list
     for(int i=0; i<g.state.player.items.size(); i++){
       Item it = (Item)(g.state.player.items.get(i));
       textFont(g.data.kishimoto);

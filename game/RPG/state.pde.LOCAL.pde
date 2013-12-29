@@ -1,7 +1,5 @@
 class State{
   int game_state=1;  // タイトル、ゲーム内、エンディングとか
-  int menu_state;  // メニューが開いている時 1
-  int kaiwa_state; // 会話が起きている時 1
   
   int map_id;
   int player_x, player_y;
@@ -36,18 +34,22 @@ class State{
     }
   }
   
-  int han(Game g,int vx,int vy){
-    PImage pg=g.display.player_img;
+  int han(Game g,PImage pg,int x,int y,int vx,int vy){
+//    PImage pg=g.display.player_img;
     PImage bg=g.data.maps[map_id].background;
     PImage mg=g.data.maps[map_id].mask;
-    println(pg.width);
-    println(bg.width);
-    if(player_x+vx-pg.width/2>=0&&player_y+vy-pg.height/2>=0&&player_x+vx-bg.width+pg.height/2<=0&&player_y+vy-bg.height+pg.height/2<=0);else return 0;
+    println(x);
+    println("");
+    if(x+vx-pg.width/2>=0&&
+      y+vy-pg.height/2>=0&&
+      x+vx-bg.width+pg.height/2<=0&&
+      y+vy-bg.height+pg.height/2<=0);
+    else return 0;
     mg.loadPixels();
     int s=0;
     for(int i=0;i<pg.width;i++){
       for(int j=0;j<pg.height;j++){
-        color c=mg.pixels[(player_y+vy-pg.height/2+j)*bg.width+player_x+vx-pg.width/2+i];
+        color c=mg.pixels[(y+vy-pg.height/2+j)*bg.width+x+vx-pg.width/2+i];
         if(c==color(255)){
           return 0;
         }
@@ -58,6 +60,7 @@ class State{
   }
   
   void update(Game g){
+    if(game_state==3)game_state=0;
     if(game_state==0){
       Trans[] t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.length; i++){
@@ -80,7 +83,6 @@ class State{
           }
         }
       }
-      
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).x, ((Item)items.get(i)).y, player_x, player_y) < 20){
           player.items.add(((Item)(items.get(i))).copy());
@@ -111,12 +113,13 @@ class State{
         }
       }
       
-      for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
+      for(int i=0;i<enemy.size();i++){
         float vx = ((Enemy)enemy.get(i)).vx;
         float vy = ((Enemy)enemy.get(i)).vy;
         float x = ((Enemy)enemy.get(i)).x;
         float y = ((Enemy)enemy.get(i)).y;
         int id = ((Enemy)enemy.get(i)).AI_id;
+        PImage img = ((Enemy)enemy.get(i)).img;
         switch(id){
           case 0:
             if(frameCount %3 == 0){
@@ -131,9 +134,16 @@ class State{
             }
             break;
           case 2:
-            if(frameCount %5 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+            if(frameCount %15 == 0){
+              if(dist(player_x,player_y,x,y) < 300){
+                if(frameCount %5 == 0){
+                  vx = 4*cos(random(TWO_PI));
+                  vy = 4*sin(random(TWO_PI));
+                }
+              }else{
+                vx = 0;
+                vy = 0;
+              }
             }
             break;
           default:
@@ -143,10 +153,17 @@ class State{
             }
             break;
         }
+        
         if(dist(player_x, player_y, x+vx, y+vy)<dist(player_x, player_y, x, y)){
-          x+=vx;
-          y+=vy;
+          if(han(g,img,(int)x,(int)y,(int)vx,(int)vy)==0){
+            if(han(g,img,(int)x,(int)y,(int)vx,0)==1)x+=vx;
+            else if(han(g,img,(int)x,(int)y,0,(int)vy)==1)y+=vy;
+          }else{
+            x += vx;
+            y += vy;
+          }
         }
+        
         ((Enemy)enemy.get(i)).x = x;
         ((Enemy)enemy.get(i)).y = y;
         ((Enemy)enemy.get(i)).vx = vx;
@@ -155,65 +172,81 @@ class State{
     
       int vx=0,vy=0;
       if(g.key_state.key_up>=1){
-        if(han(g,0,-2)==1)vy -= 2; 
+        if(han(g,g.display.player_img,player_x,player_y,0,-2)==1)vy -= 2; 
         player_muki = 0;
+        
       }
       if(g.key_state.key_down>=1){
-        if(han(g,0,2)==1)vy += 2;
+        if(han(g,g.display.player_img,player_x,player_y,0,2)==1)vy += 2;
         player_muki = 1;
       }
       if(g.key_state.key_right>=1){
-        if(han(g,2,0)==1)vx += 2;
+        if(han(g,g.display.player_img,player_x,player_y,2,0)==1)vx += 2;
         player_muki = 2;
       }
       if(g.key_state.key_left>=1){
-        if(han(g,-2,0)==1)vx -= 2;
+        if(han(g,g.display.player_img,player_x,player_y,-2,0)==1)vx -= 2;
         player_muki = 3;
       }
-      if(vx!=0&&vy!=0&&han(g,vx,vy)==0);else{
+      if(vx!=0&&vy!=0&&han(g,g.display.player_img,player_x,player_y,vx,vy)==0);else{
         player_x+=vx;
         player_y+=vy;
       }
       
-      
-//      println(g.key_state.key_z);
+      println(g.key_state.key_z);
+      for(int i=0; i<enemy.size();i++){
+        if(((Enemy)enemy.get(0)).hp>0){
+          enemy.add(((Enemy)enemy.get(0)));
+        }
+        enemy.remove(0);
+      }
       if(g.key_state.key_z%80<30){
+                        ellipse(player_x+10*cos(-QUARTER_PI-player_muki*HALF_PI),player_y+10*sin(-QUARTER_PI-player_muki*HALF_PI),50,50);
+
       }else if((g.key_state.key_z%80>=30&&g.key_state.key_z%80<40)||(g.key_state.key_z%80>50&&g.key_state.key_z%80<80)){
+      
       }else if(g.key_state.key_z%80==40){
         //println(player_muki);
         switch(player_muki){
           case 0:
-            for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
+            for(int i=0;i<enemy.size();i++){     
               if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y<=0&& ((Enemy)enemy.get(i)).y-player_y>-60){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break;
           case 1:
-            for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
+              for(int i=0;i<enemy.size();i++){     
+              if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+                ((Enemy)enemy.get(i)).hp-=90000000;
+              }
+            }
+            break;           
+            
+
+          case 2:
+          for(int i=0;i<enemy.size();i++){     
               if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y>=0&& ((Enemy)enemy.get(i)).y-player_y<60){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
-            break;
-          case 2:
-             for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
+             for(int i=0;i<enemy.size();i++){     
               if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break; 
           case 3:
-              for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+            for(int i=0;i<enemy.size();i++){     
+              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break; 
         }
       }else if(g.key_state.key_z%80>40&&g.key_state.key_z%80<50){
+
       }else if(g.key_state.key_z%80==0){
-        g.key_state.key_z=1;
       }
     }
     else if(game_state==1){
@@ -227,6 +260,9 @@ class State{
       if(time>200){
         exit();
       }
+    }
+    else if(game_state==3){
+      
     }
   }
 }
