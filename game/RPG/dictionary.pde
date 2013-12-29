@@ -34,21 +34,21 @@ class Dict_item{
     if(g.data.items[cursor].img==null) rect(250, 150, 200, 200);
     else image(g.data.items[cursor].img, 250, 150, 200, 200);
     fill(255);
-    rect(30, height-100, width-60, 70);
+    rect(250, height-100, 300, 70);
     fill(0);
     textSize(15);
-    text(g.data.items[cursor].text,50,450);
+    text(g.data.items[cursor].text,250,450);
     if(g.data.items[cursor].type==0) text("type: 回復", 250, 360);
     if(g.data.items[cursor].type==1) text("type: 投擲", 250, 360);
     if(g.data.items[cursor].type==2) text("type: 武器", 250, 360);
     text("at  df  cr  hp  mp mhp mmp", 250, 380);
-    text(g.data.items[cursor].status.at + " " + 
-         g.data.items[cursor].status.df + " " + 
-         g.data.items[cursor].status.cr + " " + 
-         g.data.items[cursor].status.hp + " " + 
-         g.data.items[cursor].status.mp + " " + 
-         g.data.items[cursor].status.maxhp + " " + 
-         g.data.items[cursor].status.maxmp + " "
+    text(g.data.items[cursor].status.at + "  " + 
+         g.data.items[cursor].status.df + "  " + 
+         g.data.items[cursor].status.cr + "  " + 
+         g.data.items[cursor].status.hp + "  " + 
+         g.data.items[cursor].status.mp + "  " + 
+         g.data.items[cursor].status.maxhp + "  " + 
+         g.data.items[cursor].status.maxmp + "  "
     , 250, 400);
   }
   
