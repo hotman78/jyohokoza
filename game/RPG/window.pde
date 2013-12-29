@@ -10,7 +10,7 @@ class Window {
     this.py = py;
     this.wid = wid;
     this.hei = hei;
-    inter = "";
+    inter = "みwなwぎwっwてwきwたwww";
     disp = false;
   }
   
@@ -21,8 +21,9 @@ class Window {
   void draw(Game g){
     if(disp){
       rectMode(CORNER);
-      fill(255,0,0);
+      stroke(0);fill(255);
       rect(px, py, px+wid, py+hei);
+      stroke(0);fill(0);
       text(inter, px, py, px+wid, py+hei);
     }
   }

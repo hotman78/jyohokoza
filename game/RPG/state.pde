@@ -423,5 +423,11 @@ class State{
         if(g.key_state.key_x==1) game_state = 0;
       }
     }
+    else if(game_state==4){
+      
+    }
+    
   }
+  
+  
 }
