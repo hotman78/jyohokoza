@@ -1,0 +1,33 @@
+<talks backgound="">
+	<talk char="美 杏科">
+        <img src=""/>
+		<text>コニチワ~</text>
+	</talk>
+	<talk char="player">
+        <img src=""/>
+		<text>何者だ</text>
+	</talk>
+	<talk char="美 杏科">
+        <img src=""/>
+		<text>私、ビ・アンカ アルヨ~</text>
+		<text>ヨロシクネ~</text>
+	</talk>
+	<talk char="player">
+        <img src=""/>
+		<text>何処の国の生まれだ?</text>
+	</talk>
+	<talk char="美 杏科">
+        <img src=""/>
+		<text>ココノ町デ生マレタアルヨ~</text>
+		<text>デモ、オ母サンハ清カラ来タッテ言ッテタアルヨ~</text>
+		<text>オ友達ニナリマショ~</text>
+	</talk>
+	<talk char="player">
+        <img src=""/>
+		<text>怪しい奴とは仲良くなれん。</text>
+	</talk>
+	<talk char="美 杏科">
+        <img src=""/>
+		<text>分カッタ（´・ω・｀）<br>デモ、マタ会イニ来テネ~</text>
+	</talk>
+</talks>

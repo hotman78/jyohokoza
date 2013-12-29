@@ -1,62 +1,82 @@
-<weapons num="3">
+<weapons num="16">
 	<weapon id="0">
-		<name>������</name>
+		<name>無所持</name>
 		<state at="0" df="0" cr="0" />
+		<img></img>
 	</weapon>
 	<weapon id="1">
-		<name>�Ђ̂��̂ڂ�</name>
+		<name>ひのきのぼう</name>
 		<state at="3" df="0" cr="0" />
+		<img>hinoki_bou.png</img>
 	</weapon>
 	<weapon id="2">
-		<name>�ÎE�i�C�t</name>
+		<name>暗殺ナイフ</name>
 		<state at="1" df="0" cr="50"/>
+		<img></img>
 	</weapon>
 	<weapon id="3">
-		<name>���m�̌�</name>
+		<name>兵士の剣</name>
 		<state at="20" df="0" cr="0"/>
+		<img>sword.png</img>
 	</weapon>
 	<weapon id="4">
-		<name>���g�̌�</name>
+		<name>ロトの剣</name>
 		<state at="108" df="50" cr="10" />
+		<img></img>
 	</weapon>
 	<weapon id="5">
-		<name>���[�j���O�X�^�[</name>
+		<name>モーニングスター</name>
 		<state at="40" df="0" cr="0"/>
+		<img>morning.png</img>
 	</weapon>
 	<weapon id="6">
-		<name>�ю��̕�</name>
+		<name>毛糸の鞭</name>
 		<state at="5" df="0" cr="0"/>
+		<img>keito.png</img>
 	</weapon>
 	<weapon id="7">
-		<name>�����l�̕�</name>
+		<name>女王様の鞭</name>
 		<state at="50" df="0" cr="0"/>
+		<img>muchi.png</img>
 	</weapon>
 	<weapon id="8">
-		<name>�O���[���̕�</name>
+		<name>グリーンの鞭</name>
 		<state at="100" df="0" cr="0"/>
+		<img>green_muchi.png</img>
 	</weapon>
 	<weapon id="9">
-		<name>���@�g���̏�</name>
+		<name>魔法使いの杖</name>
 		<state at="10" df="0" cr="0"/>
+		<img>maho-_tsue.png</img>
 	</weapon>	
 	<weapon id="10">
-		<name>�}�O�}�̏�</name>
+		<name>マグマの杖</name>
 		<state at="30" df="0" cr="0"/>
+		<img>maguma_tsue.png</img>
 	</weapon>	
 	<weapon id="11">
-		<name>�X�̏�</name>
+		<name>氷の杖</name>
 		<state at="30" df="0" cr="0"/>
+		<img>koori_tsue.png</img>
 	</weapon>	
 	<weapon id="12">
-		<name>�K�т���</name>
+		<name>錆びた斧</name>
 		<state at="3" df="0" cr="0"/>
+		<img>sabita_ono.png</img>
 	</weapon>
 	<weapon id="13">
-		<name>�e�t�������H�̕�</name>
+		<name>テフロン加工の斧</name>
 		<state at="30" df="0" cr="0"/>
+		<img>tehuron_ono.png</img>
 	</weapon>	
 	<weapon id="14">
-		<name>���l�̕�</name>
+		<name>魔人の斧</name>
 		<state at="100" df="0" cr="20"/>
+		<img>tehuron.png</img>
+	</weapon>
+	<weapon id="15">
+		<name>破滅の盾</name>
+		<state at="0" df="100" cr="20"/>
+		<img>hametsu_tate.png</img>
 	</weapon>
 </weapons>

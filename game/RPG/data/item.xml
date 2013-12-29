@@ -1,103 +1,64 @@
-<items num="23">
+<items num="10">
 	<item id="0">
 		<name>やくそう</name>
 		<img>yakusou.png</img>
+		<use type="0" value="30" />
+		<text>体力が少し回復するぜ！</text>
 	</item>
 	<item id="1">
 		<name>魔法のせいすい</name>
-		<img>photo/mahou_seisui.JPG</img>
+		<img>mahou_seisui.png</img>
+		<use type="1" value="50" />
+		<text>魔力が少し回復するぞ！</text>
 	</item>
 	<item id="2">
 		<name>エルフの飲み薬</name>
 		<img>behomaS.png</img>
+		<use type="1" value="1000" />
+		<text>魔力がめちゃめちゃ回復するぞ！</text>
+		
 	</item>
 	<item id="3">
 		<name>馬糞</name>
-		<img></img>
+		<img>bahunntyann.png</img>
+		<use type="2" value="10" />
+		<text>臭い。</text>
 	</item>
 	<item id="4">
 		<name>抹茶の粉末</name>
-		<img>items/mattya.png</img>
+		<img>mattya.png</img>
+		<use type="0" value="1000000" />
+		<text>百合好きな魔人を呼び出し、相手に大ダメージを与えることができる。</text>
 	</item>
 	<item id="5">
 		<name>ピルクル</name>
-		<img>items/pillcoll.png</img>
+		<img>pillcoll.png</img>
+		<use type="0" value="100" />
+		<text>美味しい。ちょっと体力が回復する。</text>
 	</item>
 	<item id="6">
 		<name>出汁かおるロースかつ重</name>
-		<img>items/katsuju.png</img>
+		<img>katsuju.png</img>
+		<use type="0" value="200" />
+		<text>厳選鰹節からとった一番だしにじっくりと漬け込んだロースをカラッと揚げました。どうぞお召し上がり下さい。</text>
 	</item>
 	<item id="7">
 		<name>オリハルコンの塊</name>
-		<img>photo/oriharu.JPG</img>
+		<img>oriharu.JPG</img>
+		<use type="2" value="200" />
+		<text>めっさ硬い金属のかたまり。投げて攻撃する。もったいないので投げたら拾いに行こう！</text>
 	</item>
 	<item id="8">
-		<name>ひのきのぼう</name>
-		<img>photo/hinoki_bou.JPG</img>
-	</item>
-	<item id="9">
-		<name>暗殺ナイフ</name>
-		<img></img>
-	</item>
-	<item id="10">
-		<name>兵士の剣</name>
-		<img>photo/sword.JPG</img>
-	</item>
-	<item id="11">
-		<name>トトロの剣</name>
-		<img></img>
-	</item>
-	<item id="12">
-		<name>モーニングスター</name>
-		<img>photo/morning.JPG</img>
-	</item>
-	<item id="13">
-		<name>毛糸の鞭</name>
-		<img>photo/keito.JPG</img>
-	</item>
-	<item id="14">
-		<name>女王様の鞭</name>
-		<img>photo/muchi.JPG</img>
-	</item>
-	<item id="15">
-		<name>グリーンの鞭</name>
-		<img>photo/green_muchi.JPG</img>
-	</item>
-	<item id="16">
-		<name>魔法使いの杖</name>
-		<img>photo/maho-_tsue.JPG</img>
-	</item>
-	<item id="17">
-		<name>マグマの杖</name>
-		<img>photo/maguma_tsue.JPG</img>
-	</item>	
-	<item id="18">
-		<name>氷の杖</name>
-		<img>photo/koori_tsue.JPG</img>
-	</item>	
-	<item id="19">
-		<name>錆びた斧</name>
-		<img>photo/sabita_ono.JPEG</img>
-	</item>	
-	<item id="20">
-		<name>テフロン加工の斧</name>
-		<img>photo/tehuron_ono.JPG</img>
-	</item>
-	<item id="21">
-		<name>魔人の斧</name>
-		<img>photo/tehuron.JPG</img>
-	</item>	
-	<item id="22">
-		<name></name>
-		<img></img>
-	</item>	
-	<item id="23">
 		<name>手榴弾</name>
 		<img></img>
+		<use type="2" value="100" />
+		<text>投げつけると爆発する。扱いには気をつけよう！</text>
 	</item>
-	<item id="24">
-		<name>破滅の盾</name>
-		<img>photo/hametsu_tate.JPEG</img>
+	<item id="9">
+		<name>ぬるぽ</name>
+		<img>nullpo.png</img>
+		<use type="2" value="6000" />
+		<text>なんかよく分かんないけど、当たると危ないぞ！！！</text>
 	</item>
 	
 </items>

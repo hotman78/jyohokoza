@@ -19,7 +19,12 @@ class Window {
   }
   
   void draw(Game g){
-    if(disp)text(inter, px, py, px+wid, py+hei);
+    if(disp){
+      rectMode(CORNER);
+      fill(255,0,0);
+      rect(px, py, px+wid, py+hei);
+      text(inter, px, py, px+wid, py+hei);
+    }
   }
   
   
