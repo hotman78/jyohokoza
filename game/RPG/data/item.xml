@@ -28,7 +28,8 @@
 		<name>抹茶の粉末</name>
 		<img>mattya.png</img>
 		<use type="0" value="1000000" />
-		<text>百合好きな魔人を呼び出し、相手に大ダメージを与えることができる。</text>
+		<text>百合好きな魔人を呼び出し、
+		相手に大ダメージを与えることができる。</text>
 	</item>
 	<item id="5">
 		<name>ピルクル</name>
@@ -47,7 +48,8 @@
 		<name>オリハルコンの塊</name>
 		<img>oriharu.png</img>
 		<use type="2" value="200" />
-		<text>めっさ硬い金属のかたまり。投げて攻撃する。もったいないので投げたら拾いに行こう！</text>
+		<text>めっさ硬い金属のかたまり。投げて攻撃する。
+		もったいないので投げたら拾いに行こう！</text>
 	</item>
 	<item id="8">
 		<name>手榴弾</name>
