@@ -194,8 +194,10 @@ class State{
       if(g.key_state.key_c==1){
         if(player.items.size()>0){
 //          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-          Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
-          player.items.remove((player.items.size()-1));
+          Item it = ((Item)(player.items.get((player.items.size()-1))));
+          if(it.num<=1) player.items.remove((player.items.size()-1));
+          else it.num--;
+          it = it.copy();
           float theta = atan2(mouseY-(player_y+my), mouseX-(player_x+mx));
           float vel = 5.0;
           it.pos = new Position(player_x+50*cos(theta), player_y+50*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
