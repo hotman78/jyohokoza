@@ -3,33 +3,38 @@
 		<name>やくそう</name>
 		<img>yakusou.png</img>
 		<use type="0" value="30" />
-		<text>体力が少し回復するぜ！</text>
+		<text>怪しい草。体力が少し回復するぜ！</text>
 	</item>
 	<item id="1">
 		<name>魔法のせいすい</name>
 		<img>mahou_seisui.png</img>
 		<use type="1" value="50" />
-		<text>魔力が少し回復するぞ！</text>
+		<text>魔力が少し回復するぞ！
+		一体何の水なんだ。。。
+		</text>
 	</item>
 	<item id="2">
 		<name>エルフの飲み薬</name>
 		<img>nomigusuri.png</img>
 		<use type="1" value="1000" />
-		<text>魔力がめちゃめちゃ回復するぞ！</text>
+		<text>ぼったくりな値段で売り買いされている。
+		魔力がめちゃめちゃ回復するぞ！
+		</text>
 		
 	</item>
 	<item id="3">
 		<name>馬糞</name>
 		<img>bahunnchann.png</img>
 		<use type="2" value="10" />
-		<text>臭い。</text>
+		<text>臭い。かなり。</text>
 	</item>
 	<item id="4">
 		<name>抹茶の粉末</name>
 		<img>mattya.png</img>
 		<use type="0" value="1000000" />
 		<text>百合好きな魔人を呼び出し、
-		相手に大ダメージを与えることができる。</text>
+		相手に大ダメージを与えることができる。
+		</text>
 	</item>
 	<item id="5">
 		<name>ピルクル</name>
@@ -41,27 +46,35 @@
 		<name>出汁かおるロースかつ重</name>
 		<img>katsuju.png</img>
 		<use type="0" value="200" />
-		<text>厳選鰹節からとった一番だしにじっくりと漬け込んだロースをカラッと揚げました。
-		どうぞお召し上がり下さい。</text>
+		<text>厳選鰹節からとった一番だしに
+	漬け込んだロースをカラッと揚げました。
+	どうぞお召し上がり下さい。
+	</text>
 	</item>
 	<item id="7">
 		<name>オリハルコンの塊</name>
 		<img>oriharu.png</img>
 		<use type="2" value="200" />
-		<text>めっさ硬い金属のかたまり。投げて攻撃する。
-		もったいないので投げたら拾いに行こう！</text>
+		<text>めっさ硬い金属のかたまり。
+		投げて攻撃する。
+		もったいないので投げたら拾いに行こう！
+		</text>
 	</item>
 	<item id="8">
 		<name>手榴弾</name>
 		<img>grenade.png</img>
 		<use type="2" value="100" />
-		<text>投げつけると爆発する。扱いには気をつけよう！</text>
+		<text>投げつけると爆発する。
+		扱いには気をつけよう！
+		</text>
 	</item>
 	<item id="9">
 		<name>ぬるぽ</name>
 		<img>nullpo.png</img>
 		<use type="2" value="6000" />
-		<text>なんかよく分かんないけど、当たると危ないぞ！！！</text>
+		<text>なんかよく分かんないけど、
+		当たると危ないぞ！！！
+		</text>
 	</item>
 	
 </items>
