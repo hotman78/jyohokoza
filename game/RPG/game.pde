@@ -15,7 +15,7 @@ class Game{
     
     // 状態の初期化
     state.init(this);
-    display.window.disp = true;
+    display.window.disp = false;
     
   }
   

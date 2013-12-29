@@ -7,11 +7,13 @@ class Map{
   ArrayList map_enemy;
   ArrayList map_item;
   int d;
+  ArrayList map_talk;
   
   Map(){
     map_transition = new ArrayList();
     map_enemy=new ArrayList();
     map_item = new ArrayList();
+    map_talk = new ArrayList();
   }
   
   
@@ -82,6 +84,20 @@ class Map{
       it.pos = new Position(xml_items[i].getInt("x"), xml_items[i].getInt("y"));
       map_item.add(it);
     }
+    
+    map_talk = new ArrayList();
+    XML[] xml_talks = xml[filename].getChildren("talk");
+    for(int i=0; i<xml_talks.length; i++){
+      int v=0;
+      for(int j=0;j<g.data.talks.length;j++){
+        if(g.data.talks[j].id.equals(xml_talks[j].getString("id")))v=j;
+      }
+      TPos it = new TPos(g.data.talks[v], xml_items[i].getInt("x"), xml_items[i].getInt("y"));
+      map_talk.add(it);
+    }
+    
+    
+    
   }
   
   void draw(Game g){

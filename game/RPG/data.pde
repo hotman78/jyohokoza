@@ -4,13 +4,14 @@ class Data{
   Map[] maps;
   //ArrayList enemies;
   Enemy[] o_enemies; 
-  Talk[] talks;
   Item[] items;
+  TData[] talks;
 //  Item[] weapons;
   XML map   = loadXML("./data/map/map.xml");
   XML enemy   = loadXML("./data/event/enemy.xml");
   XML item   = loadXML("./data/item.xml");
   XML weapon   = loadXML("./data/weapon.xml");
+  XML talk = loadXML("./data/event/talk1.xml");
   int N_maps;
   int N_enemies;
   int N_items;
@@ -29,12 +30,14 @@ class Data{
     items = new Item[N_items + N_weapons];
 //    println(N_items, N_weapons);
 //    weapons = new Weapon[N_weapons];
+    talks = new TData[talk.getChildren("talk").length];
   }
   
   void load_all(Game g){
     set_enemy();
     set_items();
     set_weapons();
+    set_talks();
 //    maps[0] = new Map(0,g);
 //    maps[1] = new Map(1,g);
     maps[0] = new Map();
@@ -71,7 +74,7 @@ class Data{
   }
   
   void set_items(){
-    XML item   = loadXML("./data/item.xml");
+    //XML item   = loadXML("./data/item.xml");
     XML children[] = item.getChildren("item");
     String name;
     String text;
@@ -104,7 +107,7 @@ class Data{
   }
   
   void set_weapons(){
-    XML weapon   = loadXML("./data/weapon.xml");
+    //XML weapon   = loadXML("./data/weapon.xml");
     XML children[] = weapon.getChildren("weapon");
     String name;
     String text;
@@ -126,6 +129,32 @@ class Data{
     }
   }
   
+
+  void set_talks(){
+    XML children[] = talk.getChildren("talk");
+    String id;
+    ArrayList<String> text = new ArrayList<String>();
+    IntDict name = new IntDict();
+    IntDict img = new IntDict();
+    
+    for(int i=0;i<children.length;i++){
+      id = children[i].getString("id");
+      XML[] cld = children[i].getChildren();
+      for(int j=0;j<cld.length;j++){
+        if(cld[j].getName().equals("text")){
+          text.add(cld[j].getContent());
+        }else if(cld[j].getName().equals("name")){
+          name.set(cld[j].getContent(), name.size());
+        }else if(cld[j].getName().equals("img")){
+          img.set(cld[j].getString("src"), img.size());
+        }
+      }
+      
+      talks[i] = new TData(id, text, name, img);
+      
+    }
+    
+  }
   
 }
 
