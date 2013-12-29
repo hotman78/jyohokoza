@@ -10,7 +10,7 @@ class Display{
     right = loadImage("./data/image/characters/right.png");
     title_img=loadImage("./data/image/title.png");
     end_img=loadImage("./data/image/end.png");
-    die=loadImage("/data/image/died.png");
+    die=loadImage("./data/image/died.png");
     
     window = new Window(0, height/4*3, width, height/4);
   }
