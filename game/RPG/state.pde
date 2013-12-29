@@ -213,31 +213,28 @@ class State{
         float vy = ((Enemy)enemy.get(i)).vy;
         float x = ((Enemy)enemy.get(i)).x;
         float y = ((Enemy)enemy.get(i)).y;
+        float angle;
         int id = ((Enemy)enemy.get(i)).AI_id;
         PImage img = ((Enemy)enemy.get(i)).img;
         switch(id){
           case 0:
-            while(true){
-              float angle = random(TWO_PI);
-              vx = 3*cos(angle);
-              vy = 3*sin(angle);
-              if(han(g,img,2*(int)(x+vx),2*(int)(y+vy),0,0) == 0){
-                break;
-              }else break;
-            }
+          //float angle = atan2();
+            angle = random(TWO_PI);
+            vx = 3*cos(angle);
+            vy = 3*sin(angle);
             break;
           case 1:
             if(frameCount %10 == 0){
-                float angle = random(TWO_PI);
-                vx = 4*cos(angle);
-                vy = 4*sin(angle);
+              angle = random(TWO_PI);
+              vx = 4*cos(angle);
+              vy = 4*sin(angle);
             }
             break;
           case 2:
             if(frameCount %15 == 0){
               if(dist(player_x,player_y,x,y) < 300){
                 if(frameCount %5 == 0){
-                float angle = random(TWO_PI);
+                angle = random(TWO_PI);
                 vx = 5*cos(angle);
                 vy = 5*sin(angle);
                 }
@@ -261,7 +258,7 @@ class State{
             break;
           default:
             if(frameCount %8 == 0){
-                float angle = random(TWO_PI);
+                angle = random(TWO_PI);
                 vx = 4*cos(angle);
                 vy = 4*sin(angle);
             }
