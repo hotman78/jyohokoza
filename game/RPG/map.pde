@@ -3,25 +3,25 @@
 
 class Map{
   PImage background, mask;
-  Trans[] map_transition;
+  ArrayList map_transition;
   ArrayList map_enemy;
   ArrayList map_item;
   
   Map(){
-    map_transition = new Trans[1];
+    map_transition = new ArrayList();
     map_enemy=new ArrayList();
     map_item = new ArrayList();
   }
   
   Map(int debug,Game g){
-    map_transition = new Trans[1];
+    map_transition = new ArrayList();
     if(debug==0){
       background = loadImage("./data/image/maps/map_1_bg.png");
 //      event_list[0] = new Event(0);
-      map_transition[0] = new Trans(0);
+      map_transition.add(new Trans(0));
     }else{
       background = loadImage("./data/image/maps/map_2_bg.png");
-      map_transition[0] = new Trans(1);
+      map_transition.add(new Trans(1));
     }
     
     map_enemy=new ArrayList();
@@ -45,14 +45,14 @@ class Map{
     mask = loadImage("./data/image/maps/"+xml[filename].getChild("img_mask").getContent());
 //    mask = loadImage("./data/image/"+xml.getChild("img_mask").getContent());
     
-    map_transition = new Trans[1];
+    map_transition = new ArrayList();
     XML[] xml_tr = xml[filename].getChildren("trans");
     for(int i=0; i<xml_tr.length; i++){
-      map_transition[i] = new Trans(xml_tr[i].getInt("next"),
+      map_transition.add(new Trans(xml_tr[i].getInt("next"),
                                     xml_tr[i].getInt("x"),
                                     xml_tr[i].getInt("y"),
                                     xml_tr[i].getInt("px"),
-                                    xml_tr[i].getInt("py"));
+                                    xml_tr[i].getInt("py")));
     }
     
     map_enemy=new ArrayList();
@@ -95,8 +95,8 @@ class Map{
     
     imageMode(CORNERS);
     image(background, mx, my);
-    for(int i=0; i<g.data.maps[g.state.map_id].map_transition.length; i++){
-      g.data.maps[g.state.map_id].map_transition[i].draw(g,mx,my);
+    for(int i=0; i<g.data.maps[g.state.map_id].map_transition.size(); i++){
+      ((Trans)g.data.maps[g.state.map_id].map_transition.get(i)).draw(g,mx,my);
     }
     for(int i=0; i<g.state.enemy.size(); i++){
       ((Enemy)g.state.enemy.get(i)).draw(g,mx,my);

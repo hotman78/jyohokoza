@@ -9,7 +9,7 @@ class State{
   int player_muki;//0up 1down 2 right 3 left
   int time,trans_num;
   int disp_dict;
-  Trans[] trans;
+  ArrayList trans;
   ArrayList items;
   ArrayList enemy;
   Player player;
@@ -20,7 +20,7 @@ class State{
   Flag[] flag_state;
   
   State(){
-    trans = new Trans[1];
+    trans = new ArrayList();
     enemy=new ArrayList();
     items = new ArrayList();
     player = new Player();
@@ -71,13 +71,13 @@ class State{
     
     // in game
     if(game_state==0){
-      Trans[] t=g.data.maps[map_id].map_transition;
-      for(int i=0; i<t.length; i++){
+      ArrayList t=g.data.maps[map_id].map_transition;
+      for(int i=0; i<t.size(); i++){
         // map transition
-        if(t[0].trigger(g)==1){
-          map_id = t[0].next_map;
-          player_x=t[0].px;
-          player_y=t[0].py;
+        if(((Trans)t.get(i)).trigger(g)==1){
+          map_id = ((Trans)t.get(0)).next_map;
+          player_x=((Trans)t.get(0)).px;
+          player_y=((Trans)t.get(0)).py;
           trans_num++;
           if(trans_num>=5)game_state=2;
           // set enemy data for the new map
@@ -109,7 +109,7 @@ class State{
           // item hit player
             if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y)<25){
               Player[] ahyo = new Player[3];
-              println(ahyo[0].hp);
+              //println(ahyo[0].hp);
               ((Item)items.get(i)).num = -1;
             }
             // item hit monster
@@ -263,29 +263,30 @@ class State{
     
       // player move
       int vx=0,vy=0;
+
+      if(g.key_state.key_right>=1){
+        if(han(g,g.display.right,player_x,player_y,2,0)==1)vx += 2;
+        player_muki = 3;
+      }
+      if(g.key_state.key_left>=1){
+        if(han(g,g.display.left,player_x,player_y,-2,0)==1)vx -= 2;
+        player_muki = 1;
+      }
       if(g.key_state.key_up>=1){
-        if(han(g,g.display.player_img,player_x,player_y,0,-2)==1)vy -= 2; 
+        if(han(g,g.display.back,player_x,player_y,0,-2)==1)vy -= 2; 
         player_muki = 0;
         
       }
       if(g.key_state.key_down>=1){
-        if(han(g,g.display.player_img,player_x,player_y,0,2)==1)vy += 2;
-        player_muki = 1;
-      }
-      if(g.key_state.key_right>=1){
-        if(han(g,g.display.player_img,player_x,player_y,2,0)==1)vx += 2;
+        if(han(g,g.display.front,player_x,player_y,0,2)==1)vy += 2;
         player_muki = 2;
       }
-      if(g.key_state.key_left>=1){
-        if(han(g,g.display.player_img,player_x,player_y,-2,0)==1)vx -= 2;
-        player_muki = 3;
-      }
-      if(vx!=0&&vy!=0&&han(g,g.display.player_img,player_x,player_y,vx,vy)==0);else{
+      if(vx!=0&&vy!=0&&han(g,g.display.front,player_x,player_y,vx,vy)==0);else{
         player_x+=vx;
         player_y+=vy;
       }
       
-      // remove dead enemy
+      // remove dead enemy by blue
       println(g.key_state.key_z);
       for(int i=0; i<enemy.size();i++){
         if(((Enemy)enemy.get(0)).hp>0){
@@ -294,7 +295,7 @@ class State{
         enemy.remove(0);
       }
       
-      // player attack
+      // player attack by blue
       if(g.key_state.key_z%80<30){
         // attack effect?
                         ellipse(player_x+10*cos(-QUARTER_PI-player_muki*HALF_PI),player_y+10*sin(-QUARTER_PI-player_muki*HALF_PI),50,50);
