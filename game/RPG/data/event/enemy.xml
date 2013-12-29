@@ -1,4 +1,4 @@
-﻿<enemys num="16">
+<enemys num="16">
 	<enemy id="1">
 		<name>スライム</name>
 		<img>suraimuu.png</img>
