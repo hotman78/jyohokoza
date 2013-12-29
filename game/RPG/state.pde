@@ -304,26 +304,21 @@ class State{
       }
       
       // player attack by blue
-      if(g.key_state.key_z%80<30){
-        // attack effect?
-
-      }else if((g.key_state.key_z%80>=30&&g.key_state.key_z%80<40)||(g.key_state.key_z%80>50&&g.key_state.key_z%80<80)){
-      
-      }else if(g.key_state.attack==10){
+       if(g.key_state.attack==10){
         // attack enemy
         
         //println(player_muki);
         switch(player_muki){
           case 0:
             for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y<=0&& ((Enemy)enemy.get(i)).y-player_y>-60){
+              if(((Enemy)enemy.get(i)).x-player_x<16&& ((Enemy)enemy.get(i)).x-player_x>-16&& ((Enemy)enemy.get(i)).y-player_y<=0&& ((Enemy)enemy.get(i)).y-player_y>-60){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break;
           case 1:
               for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+              if(((Enemy)enemy.get(i)).x-player_x>-60&& ((Enemy)enemy.get(i)).x-player_x<=0&& ((Enemy)enemy.get(i)).y-player_y>-16&& ((Enemy)enemy.get(i)).y-player_y<16){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
@@ -332,27 +327,20 @@ class State{
 
           case 2:
           for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<30&& ((Enemy)enemy.get(i)).x-player_x>-30&& ((Enemy)enemy.get(i)).y-player_y>=0&& ((Enemy)enemy.get(i)).y-player_y<60){
+              if(((Enemy)enemy.get(i)).x-player_x<16&& ((Enemy)enemy.get(i)).x-player_x>-16&& ((Enemy)enemy.get(i)).y-player_y>=0&& ((Enemy)enemy.get(i)).y-player_y<60){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
-             for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
-                ((Enemy)enemy.get(i)).hp-=90000000;
-              }
-            }
+             
             break; 
           case 3:
             for(int i=0;i<enemy.size();i++){     
-              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-30&& ((Enemy)enemy.get(i)).y-player_y<30){
+              if(((Enemy)enemy.get(i)).x-player_x<60&& ((Enemy)enemy.get(i)).x-player_x>=0&& ((Enemy)enemy.get(i)).y-player_y>-16&& ((Enemy)enemy.get(i)).y-player_y<16){
                 ((Enemy)enemy.get(i)).hp-=90000000;
               }
             }
             break; 
         }
-      }else if(g.key_state.key_z%80>40&&g.key_state.key_z%80<50){
-
-      }else if(g.key_state.key_z%80==0){
       }
       
       if(g.key_state.key_a==1){
