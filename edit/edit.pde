@@ -20,6 +20,9 @@ PImage copy=createImage(16,16, 255);
 PImage rayer1;
 PImage rayer2;
 PImage rayer3;
+PImage rayer;
+PImage fragw;
+PImage fragww;
 
 BackgroundProgram backgroundProgram;
 Gui gui;
@@ -32,21 +35,25 @@ import java.awt.*;
 import javax.swing.*;
 
 void setup(){
-  size(580,600);
   backgroundProgram = new BackgroundProgram();
   gui= new Gui();
   depict = new Depict();
   layerSize = new LayerSize();
   mapLayer = new MapLayer();
-  layerSizeX=34;
-  layerSizeY=25;
+  layerSizeX=50;
+  layerSizeY=50;
   background( 0 );
   size(720,500);
   backgroundProgram.load();
   layerSize.layer();
-  rayer1= createImage(layerSizeX*16,layerSizeY*16, 255);
-  rayer2= createImage(layerSizeX*16,layerSizeY*16, 255);
-  rayer3= createImage(layerSizeX*16,layerSizeY*16, 255);
+  rayer1= createImage(layerSizeX*16,layerSizeY*16,255);
+  rayer2= createImage(layerSizeX*16,layerSizeY*16,255);
+  rayer3= createImage(layerSizeX*16,layerSizeY*16,255);
+  rayer= createImage(layerSizeX*16,layerSizeY*16,255);
+  fragw= createImage(layerSizeX*16,layerSizeY*16,255);
+  fragww= createImage(layerSizeX*16,layerSizeY*16,255);
+  fragww.loadPixels();for(int i=0;i<fragww.pixels.length;i++){fragww.pixels[i]=color(255);}
+  fragww.updatePixels();
 }
 
 void draw(){
@@ -55,8 +62,6 @@ void draw(){
   else if(A==1)hidariX-=16;
   else if(S==1)hidariY+=16;
   else if(D==1)hidariX+=16;
-  if(C==1)&&
-  mapLayer.saveray.Save();
   if(layerNow==1){
     mapLayer.layer1.edit();
   }
@@ -66,7 +71,14 @@ void draw(){
   if(layerNow==3){
     mapLayer.layer3.edit();
   }
+  if(layerNow==4){
+    mapLayer.frag.edit();
+  }
   depict.byousya ();
+  fill(255);
+     text(((mouseX/16*16+hidariX)/16+1)+
+    "X"
+    +((mouseY/16*16-80+hidariY)/16+1),350,50);
 }
 
 void mousePressed(){
@@ -74,9 +86,9 @@ void mousePressed(){
   mouseDrag=1;
     if(mouseX>width-160){
       mousex=mouseX;mousey=mouseY;
-      paint = (mousex/16)+(8*(mousey/16-a)-34);
+      paint = (mousex/16)+(8*(mousey/16-a)-35);
       println(paint);
-      copy = editmap.get((paint%8-1)*16,(paint/8)*16,16,16);
+      copy = editmap.get((paint%8)*16,(paint/8)*16,16,16);
       
     }
     if((mouseX>0)&&(mouseX<60)&&(mouseY>30)&&(mouseY<50)){
@@ -88,12 +100,22 @@ void mousePressed(){
     if((mouseX>120)&&(mouseX<180)&&(mouseY>30)&&(mouseY<50)){
       layerNow=3;
     }
+    if((mouseX>180)&&(mouseX<220)&&(mouseY>30)&&(mouseY<50)){
+      mapLayer.saveray.Save();
+    }
+        if((mouseX>220)&&(mouseX<260)&&(mouseY>30)&&(mouseY<50)){
+     layerNow=4;
+    }
+        if((mouseX>260)&&(mouseX<320)&&(mouseY>30)&&(mouseY<50)){
+     rayer1=loadImage("rayer.png");
+     fragww=loadImage("mask.png");
+    }
 }
 void mouseReleased(){
     mouseDrag=0;
 }
 void mouseWheel(int delta){
-  if(mouseX>width-160){a-=delta;b-=delta;}
+  if(mouseX>width-160){a-=delta*16;b-=delta*16;}
   if(a>0){a=0;b=0;}
   if(a<0-editmap.height){a=0;}
 }
@@ -103,14 +125,12 @@ void keyPressed(){
   else if(key=='a')A=1;
   else if(key=='s')S=1;
   else if(key=='d')D=1;
-  else if(keyCode==CONTROL)C=1;
 }
 void keyReleased(){
   if(key=='w')W=0;
   else if(key=='a')A=0;
-  else if(key=='s')S=0;
+  else if(key=='s')S=0;  
   else if(key=='d')D=0;
-  else if(keyCode==CONTROL)C=0;
 }
 
 
