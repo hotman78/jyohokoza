@@ -49,7 +49,7 @@ class Data{
   }*/
   void set_enemy(){
     XML children[] = enemy.getChildren("enemy");
-    String name;
+    String name, text;
     int AI_id,weapon_id,hp,mp,at,df;
     PImage img;
     for(int i=0; i<children.length; i++){
@@ -61,8 +61,10 @@ class Data{
       mp         = children[i].getChild("state").getInt("mp");
       at         = children[i].getChild("state").getInt("at");
       df         = children[i].getChild("state").getInt("df");  
+      text       = children[i].getChild("text").getContent();  
+      
 //      println(i);
-      o_enemies[i]=new Enemy(name,img,AI_id,weapon_id,hp,mp,at,df);
+      o_enemies[i]=new Enemy(name,img,AI_id,weapon_id,hp,mp,at,df,text);
     }
   }
   
