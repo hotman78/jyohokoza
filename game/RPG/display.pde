@@ -1,5 +1,5 @@
 class Display{
-  PImage front,left,back,right,title_img,end_img,die;
+  PImage front,left,back,right,title_img,end_img,die,muki_img;
   Window window;
   
   Display(){
@@ -77,7 +77,7 @@ class Display{
     if(my==-1)my=height/2;  //スクロール処理　  by ookuwa
     
     //image(player_img, mx, my, 60, 60);
-    PImage muki_img = back;
+    muki_img = back;
     switch(g.state.player_muki){
       
       case 0:
