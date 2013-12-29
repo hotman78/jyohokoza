@@ -105,8 +105,8 @@
 		<state hp="500" mp="40" at="350" df="640" />
 	</enemy>
 	<enemy id="16">
+		<img>dokupan.png</img>
 		<name>あんこブレッドまん</name>
-		<img>ampan.png</img>
 		<AI id="16" />
 		<weapon id="16" />
 		<state hp="5550" mp="10" at="350" df="570" />
