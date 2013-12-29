@@ -22,11 +22,14 @@ class Dict_item{
     rect(30, 30, width-60, height-60);
     for(int i=0; i<N; i++){
 //      println("item: "+i);
-      if(i==cursor) fill(255, 0, 0);
-      else fill(50);
       textFont(g.data.kishimoto);
       textSize(15);
-      text(g.data.items[i].name, 60, i*20+60);
+      if(i==cursor){
+        fill(255, 0, 0);
+      }else{
+        fill(50);
+      }
+        text(g.data.items[i].name, 60, i*20+120-cursor*15);
     }
     textSize(25);
     text(g.data.items[cursor].name, width/2, 60);
