@@ -5,10 +5,10 @@ class State{
   Dict_character dict_character;
   
   int map_id;
+  int player_x, player_y;
   int player_muki;//0up 1down 2 right 3 left
   int time,trans_num;
   int disp_dict;
-  int player_x,player_y;
   ArrayList trans;
   ArrayList items;
   ArrayList enemy;
@@ -23,13 +23,14 @@ class State{
     trans = new ArrayList();
     enemy=new ArrayList();
     items = new ArrayList();
+    player = new Player();
     dict_c = new Dict_character();
   }
   
   void init(Game g){
     player = new Player();
-    player_x=100;
-    player_y=100;
+    player_x=110;
+    player_y=120;
     map_id = 0;
     for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
       Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
@@ -57,7 +58,7 @@ class State{
     for(int i=0;i<pg.width;i++){
       for(int j=0;j<pg.height;j++){
         color c=mg.pixels[(y+vy-pg.height/2+j)*bg.width+x+vx-pg.width/2+i];
-        if(c==color(255)){
+        if(c==color(0)){
           return 0;
         }
       }
@@ -67,17 +68,6 @@ class State{
   }
   
   void update(Game g){
-    int mx=-1,my=-1;
-    int px=g.state.player_x;
-    int py=g.state.player_y;
-    if(px<width/2)mx=0;
-    else if(px>g.data.maps[map_id].background.width-width/2)mx=width-g.data.maps[map_id].background.width;
-    if(py<height/2)my=0;
-    else if(py>g.data.maps[map_id].background.height-height/2)my=height-g.data.maps[map_id].background.height;
-    
-    if(mx==-1)mx=width/2-px;    
-    if(my==-1)my=height/2-py;
-    
 //    if(game_state==3)game_state=0;
     
     // in game
@@ -163,13 +153,13 @@ class State{
             int x = (int)(((Item)items.get(i)).pos.x);
             int y = (int)(((Item)items.get(i)).pos.y);
             if(x>=0 && x<bg.width && y>=0 && y<bg.height){
-              if(mg.pixels[(int)(((Item)items.get(i)).pos.x) + mg.width*(int)(((Item)items.get(i)).pos.y)]==color(255)){
+              if(mg.pixels[(int)(((Item)items.get(i)).pos.x) + mg.width*(int)(((Item)items.get(i)).pos.y)]==color(0)){
                 ((Item)items.get(i)).num = -1;
                 for(int ix=-50; ix<=50; ix++){
                   for(int iy=-50; iy<=50; iy++){
                     if(sq(ix)+sq(iy)<sq(50) && x+ix>=0 && x+ix<bg.width && y+iy>=0 && y+iy<bg.height){
                       bg.pixels[(x+ix)+bg.width*(y+iy)] = color(255, 0, 0);
-                      mg.pixels[(x+ix)+mg.width*(y+iy)] = color(0, 0, 0);
+                      mg.pixels[(x+ix)+mg.width*(y+iy)] = color(255);
                     }
                   }
                 }
@@ -193,9 +183,8 @@ class State{
         if(player.items.size()>0){
 //          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
           Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
-          
           player.items.remove((player.items.size()-1));
-          float theta = atan2(mouseY-(player_y+my), mouseX-(player_x+mx));
+          float theta = atan2(mouseY-player_y, mouseX-player_x);
           float vel = 5.0;
           it.pos = new Position(player_x+50*cos(theta), player_y+50*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
           it.type = -1;
@@ -213,23 +202,29 @@ class State{
         PImage img = ((Enemy)enemy.get(i)).img;
         switch(id){
           case 0:
-            if(frameCount %3 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+            while(true){
+              float angle = random(TWO_PI);
+              vx = 3*cos(angle);
+              vy = 3*sin(angle);
+              if(han(g,img,2*(int)(x+vx),2*(int)(y+vy),0,0) == 0){
+                break;
+              }else break;
             }
             break;
           case 1:
             if(frameCount %10 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+                float angle = random(TWO_PI);
+                vx = 4*cos(angle);
+                vy = 4*sin(angle);
             }
             break;
           case 2:
             if(frameCount %15 == 0){
               if(dist(player_x,player_y,x,y) < 300){
                 if(frameCount %5 == 0){
-                  vx = 4*cos(random(TWO_PI));
-                  vy = 4*sin(random(TWO_PI));
+                float angle = random(TWO_PI);
+                vx = 5*cos(angle);
+                vy = 5*sin(angle);
                 }
               }else{
                 vx = 0;
@@ -251,8 +246,9 @@ class State{
             break;
           default:
             if(frameCount %8 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+                float angle = random(TWO_PI);
+                vx = 4*cos(angle);
+                vy = 4*sin(angle);
             }
             break;
         }
@@ -310,11 +306,10 @@ class State{
       // player attack by blue
       if(g.key_state.key_z%80<30){
         // attack effect?
-                        ellipse(player_x+10*cos(-QUARTER_PI-player_muki*HALF_PI),player_y+10*sin(-QUARTER_PI-player_muki*HALF_PI),50,50);
 
       }else if((g.key_state.key_z%80>=30&&g.key_state.key_z%80<40)||(g.key_state.key_z%80>50&&g.key_state.key_z%80<80)){
       
-      }else if(g.key_state.key_z%80==40){
+      }else if(g.key_state.attack==10){
         // attack enemy
         
         //println(player_muki);
