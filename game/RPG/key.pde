@@ -35,7 +35,7 @@ class Key{
     if(key_f>=1) key_f++;
     if(attack>=1) attack++;
     if(mouse_left>=1) mouse_left++;
-    println(attack);
+    //println(attack);
     if(attack>80&&key_z>=1) attack=1;
   }
   

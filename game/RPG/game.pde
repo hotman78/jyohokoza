@@ -21,16 +21,7 @@ class Game{
   
   void update(){
     state.update(this);
-    if(state.game_state==0&&state.player.status.hp<=0){
-      if(key_state.key_x>=1){
-        println("aaaaa");
-        //g.data=new Data();
-        data.load_all(this);
-        state=new State(this);
-        state.init(this);
-        state.game_state=1;
-      }
-    }
+    println("game_state="+state.game_state);
     display.draw(this);
 
   }

@@ -33,6 +33,9 @@ class State{
   Flag[] flag_state;
   
   State(Game g){
+  }
+  
+  void init(Game g){
     b=new PImage[g.data.N_maps];
     m=new PImage[g.data.N_maps];
     trans = new ArrayList();
@@ -41,9 +44,6 @@ class State{
     talk = new ArrayList();
     player = new Player();
     dict_c = new Dict_character();
-  }
-  
-  void init(Game g){
     player = new Player();
     player_x=110;
     player_y=120;
@@ -143,7 +143,7 @@ class State{
       ArrayList tl = g.data.maps[map_id].map_talk;
       for(int i=0;i<tl.size();i++){
         if(((TPos)tl.get(i)).trigger(g)){
-          game_state=4;
+          //game_state=4;
         }
       }
       
@@ -439,6 +439,16 @@ class State{
     }
         
 
+    if(game_state==0&&player.status.hp<=0){
+      if(g.key_state.key_x>=1){
+        println("aaaaa");
+        //g.data=new Data();
+        g.data.load_all(g);
+       // state=new State(this);
+        init(g);
+        game_state=1;
+      }
+    }
 
     // title
     else if(game_state==1){
