@@ -12,17 +12,17 @@
 		<enemy x="900" y="1110" id="0" />
 		<trans next="1" x="500" y="100" px="200" py="100" />
 		<item x="123" y="321" id="0" num="1" />
-		<item x="234" y="432" id="1" num="100" />
+		<item x="234" y="432" id="1" num="10" />
 		<item x="345" y="543" id="2" num="5000" />
 		<item x="456" y="210" id="3" num="2" />
 		<item x="12" y="109" id="4" num="3"/>
-	  <weapon x="33" y="344" id="0" />
-	  <weapon x="133" y="144" id="1" />
-	  <weapon x="233" y="444" id="2" />
-	  <weapon x="333" y="144" id="3" />
-	  <weapon x="433" y="544" id="4" />
-	  <weapon x="533" y="44" id="5" />
-	  <weapon x="633" y="244" id="6" />
+	  <weapon x="33" y="344" id="0" num="100" />
+	  <weapon x="133" y="144" id="1" num="101" />
+	  <weapon x="233" y="444" id="2" num="102" />
+	  <weapon x="333" y="144" id="3" num="103" />
+	  <weapon x="433" y="544" id="4" num="104" />
+	  <weapon x="533" y="44" id="5" num="105" />
+	  <weapon x="633" y="244" id="6" num="106" />
       <talk x="100" y="100" id="0" />
 	</map>
 	<map id="2">

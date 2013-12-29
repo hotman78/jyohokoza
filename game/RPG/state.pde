@@ -54,6 +54,7 @@ class State{
     }
     for(int j=0; j<g.data.maps[map_id].map_item.size(); j++){
       Item it = (Item)g.data.maps[map_id].map_item.get(j);
+      println("num:"+it.num);
       items.add(it.copy2());
     }
     for(int i=0;i<b.length;i++){
@@ -151,23 +152,7 @@ class State{
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
           Item it = ((Item)(items.get(i))).copy();
-          println("");
-          println("");
-          println("");
-          println("");
-          println("");
-          println("");
-          println("");
-          println("");
-          println(i+" "+it.num);
-          println("");
-          println("");
-          println("");
-          println("");
-          println("");
-          println("");
-          println("");
-          println("");
+          println("id:"+i+"&num:"+it.num);
           player.items.add(it);
           ((Item)items.get(i)).num = -1;
         }else{
@@ -247,7 +232,10 @@ class State{
 //          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
           Item it = ((Item)(player.items.get((player.items.size()-1))));
           if(it.num<=1) player.items.remove((player.items.size()-1));
-          else it.num--;
+          else{
+            println("num=="+it.num);
+            it.num--;
+          }
           it = it.copy();
           float theta = atan2(mouseY-(player_y+my), mouseX-(player_x+mx));
           float vel = 5.0;

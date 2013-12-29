@@ -84,6 +84,8 @@ class Map{
     for(int i=0; i<xml_items.length; i++){
       Item it = g.data.items[xml_items[i].getInt("id") + g.data.N_items].copy();
       it.pos = new Position(xml_items[i].getInt("x"), xml_items[i].getInt("y"));
+      it.num = xml_items[i].getInt("num");
+      println("num="+it.num);
       map_item.add(it);
     }
     

@@ -21,7 +21,7 @@ class Game{
   
   void update(){
     state.update(this);
-    println("game_state="+state.game_state);
+    //println("game_state="+state.game_state);
     display.draw(this);
 
   }

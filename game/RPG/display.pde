@@ -12,7 +12,7 @@ class Display{
     end_img=loadImage("./data/image/end.png");
     die=loadImage("./data/image/died.png");
     
-    window = new Window(0, height/4*3, width, height/4);
+    window = new Window(0, height/4*3, width, height/4,20);
   }
   
   void draw(Game g){

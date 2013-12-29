@@ -144,9 +144,9 @@ class Data{
         if(cld[j].getName().equals("text")){
           text.add(cld[j].getContent());
         }else if(cld[j].getName().equals("name")){
-          name.set(cld[j].getContent(), name.size());
+          name.set(cld[j].getContent(), text.size());
         }else if(cld[j].getName().equals("img")){
-          img.set(cld[j].getString("src"), img.size());
+          img.set(cld[j].getString("src"), text.size());
         }
       }
       
