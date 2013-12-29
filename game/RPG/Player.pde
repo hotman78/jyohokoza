@@ -34,6 +34,7 @@ class Player{
     items = new ArrayList();
     status= new Status(a0,d0,c0,mh0,mm0);
   }
+  
   /*
   void display_status(Game g){
     fill(200, 0, 0, 100);
@@ -72,6 +73,7 @@ class Player{
     , 250, 400);
   }
   */
+  
 }
 
 
