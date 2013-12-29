@@ -1,4 +1,4 @@
-Game game;
+csGame game;
 
 void setup(){
   size(600, 500);
