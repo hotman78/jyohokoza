@@ -1,4 +1,4 @@
-<enemys num="16">
+﻿<enemys num="16">
 	<enemy id="1">
 		<name>スライム</name>
 		<img>suraimuu.png</img>
@@ -37,7 +37,7 @@
 		<AI id="3" />
 		<weapon id="5" />
 		<state hp="100" mp="50000" at="100" df="800" />
-        <text>未来からやってきたパソコンダ君！怖いよ怖いよー</text>
+        <text>未来からやってきたパソコンダ君！怖いよ怖いよー?</text>
 	</enemy>
 	<enemy id="6">
 		<name>Mr.Brown</name>
@@ -69,7 +69,7 @@
 		<AI id="9" />
 		<weapon id="9" />
 		<state hp="8000" mp="5500" at="300" df="60000" />
-        <text>さて、なつかしのNバッグがあなたが小学生時代Nバッグを背負ってくれなかった恨みを・・・</text>
+        <text>さて、なつかしのNバッグがあなたが小学生時代にNバッグを背負ってくれなかった恨みを・・・</text>
 	</enemy>
 	<enemy id="10">
 		<name>猿</name>
@@ -85,7 +85,7 @@
 		<AI id="11" />
 		<weapon id="11" />
 		<state hp="6000" mp="800" at="490" df="680" />
-        <text>人気アニメ！「あなたんち」のおかあちゃん役が登場！！</text>
+        <text>人気アニメ！「あなたんち」のおかあちゃんが登場！！</text>
 	</enemy>
 	<enemy id="12">
 		<name>からす</name>
@@ -117,7 +117,7 @@
 		<AI id="15" />
 		<weapon id="15" />
 		<state hp="500" mp="40" at="350" df="640" />
-        <text>アッ○ルのマークが動き出すーー！！</text>
+        <text>アッ○ルマークが動き出すーー！！</text>
 	</enemy>
 	<enemy id="16">
 		<img>dokupan.png</img>

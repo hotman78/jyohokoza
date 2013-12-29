@@ -93,7 +93,7 @@ class Dict_enemy{
     rect(30, height-100, width-60, 70);
     fill(0);
     textSize(15);
-    text("敵説明的な", 40, height-60);
+    text(g.data.o_enemies[cursor].text, 40, height-60);
     text("hp: "+g.data.o_enemies[cursor].hp+"  mp: "+g.data.o_enemies[cursor].mp+"  at: "+g.data.o_enemies[cursor].at+"  df: "+g.data.o_enemies[cursor].df, 40, height-40);
   }
 }
