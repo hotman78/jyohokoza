@@ -27,8 +27,8 @@ class Player{
   int a0=90000000,
     d0=5000,
     c0=0,
-    mh0,
-    mm0;
+    mh0=300,
+    mm0=0;
   
   Player(){
     items = new ArrayList();

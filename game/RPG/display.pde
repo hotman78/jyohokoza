@@ -1,5 +1,5 @@
 class Display{
-  PImage front,left,back,right,title_img,end_img;
+  PImage front,left,back,right,title_img,end_img,die;
   Window window;
   
   Display(){
@@ -10,6 +10,7 @@ class Display{
     right = loadImage("./data/image/characters/right.png");
     title_img=loadImage("./data/image/title.png");
     end_img=loadImage("./data/image/end.png");
+    die=loadImage("./data/image/died.png");
     
     window = new Window(0, height/4*3, width, height/4);
   }
@@ -21,6 +22,16 @@ class Display{
       draw_map(g);
       draw_event(g);
       draw_player(g);
+      String hptext="hp:"+g.state.player.status.hp;
+      textFont(g.data.kishimoto);
+      textSize(25);
+      fill(255, 0, 0);
+      text(hptext, width-100, 50);
+      
+      if(g.state.player.status.hp==0){
+        imageMode(CORNERS);
+        image(die,0,0);
+      }
     }else if(g.state.game_state==1){//op
         draw_title(g);
     }else if(g.state.game_state==2){//ed
@@ -42,6 +53,7 @@ class Display{
   }
   
   void draw_map(Game g){
+    imageMode(CORNERS);
     g.data.maps[g.state.map_id].draw(g);
   }
   
