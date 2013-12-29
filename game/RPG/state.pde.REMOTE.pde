@@ -9,7 +9,7 @@ class State{
   int player_muki;//0up 1down 2 right 3 left
   int time,trans_num;
   int disp_dict;
-  Trans[] trans;
+  ArrayList trans;
   ArrayList items;
   ArrayList enemy;
   Player player;
@@ -20,7 +20,7 @@ class State{
   Flag[] flag_state;
   
   State(){
-    trans = new Trans[1];
+    trans = new ArrayList();
     enemy=new ArrayList();
     items = new ArrayList();
     player = new Player();
@@ -41,18 +41,22 @@ class State{
     }
   }
   
-  int han(Game g,int vx,int vy){
-    PImage pg=g.display.player_img;
+  int han(Game g,PImage pg,int x,int y,int vx,int vy){
+//    PImage pg=g.display.player_img;
     PImage bg=g.data.maps[map_id].background;
     PImage mg=g.data.maps[map_id].mask;
-    println(pg.width);
-    println(bg.width);
-    if(player_x+vx-pg.width/2>=0&&player_y+vy-pg.height/2>=0&&player_x+vx-bg.width+pg.height/2<=0&&player_y+vy-bg.height+pg.height/2<=0);else return 0;
+    println(x);
+    println("");
+    if(x+vx-pg.width/2>=0&&
+      y+vy-pg.height/2>=0&&
+      x+vx-bg.width+pg.height/2<=0&&
+      y+vy-bg.height+pg.height/2<=0);
+    else return 0;
     mg.loadPixels();
     int s=0;
     for(int i=0;i<pg.width;i++){
       for(int j=0;j<pg.height;j++){
-        color c=mg.pixels[(player_y+vy-pg.height/2+j)*bg.width+player_x+vx-pg.width/2+i];
+        color c=mg.pixels[(y+vy-pg.height/2+j)*bg.width+x+vx-pg.width/2+i];
         if(c==color(255)){
           return 0;
         }
@@ -67,13 +71,13 @@ class State{
     
     // in game
     if(game_state==0){
-      Trans[] t=g.data.maps[map_id].map_transition;
-      for(int i=0; i<t.length; i++){
+      ArrayList t=g.data.maps[map_id].map_transition;
+      for(int i=0; i<t.size(); i++){
         // map transition
-        if(t[0].trigger(g)==1){
-          map_id = t[0].next_map;
-          player_x=t[0].px;
-          player_y=t[0].py;
+        if(((Trans)t.get(i)).trigger(g)==1){
+          map_id = ((Trans)t.get(0)).next_map;
+          player_x=((Trans)t.get(0)).px;
+          player_y=((Trans)t.get(0)).py;
           trans_num++;
           if(trans_num>=5)game_state=2;
           // set enemy data for the new map
@@ -94,20 +98,22 @@ class State{
       // get item and move item
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
+//          println("aaaaaaaaaaaaaaaaaaaaaaaa");
           player.items.add(((Item)(items.get(i))).copy());
           ((Item)items.get(i)).num = -1;
         }else{
           ((Item)items.get(i)).move();
           
           if(((Item)items.get(i)).type==-1){
+//          println("cccccccccccccccccccccccccccc");
           // item hit player
             if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y)<25){
               Player[] ahyo = new Player[3];
-              println(ahyo[0].hp);
+              //println(ahyo[0].hp);
               ((Item)items.get(i)).num = -1;
             }
             // item hit monster
-            /*
+            
             for(int j=0;j<enemy.size();j++){
               float ex = ((Enemy)enemy.get(j)).x;
               float ey = ((Enemy)enemy.get(j)).y;
@@ -136,7 +142,7 @@ class State{
                 ((Item)items.get(i)).num = -1;
               }
             }
-            */
+            
             
             // item hit wall
             PImage bg = g.data.maps[map_id].background;
@@ -147,6 +153,7 @@ class State{
             int y = (int)(((Item)items.get(i)).pos.y);
             if(x>=0 && x<bg.width && y>=0 && y<bg.height){
               if(mg.pixels[(int)(((Item)items.get(i)).pos.x) + mg.width*(int)(((Item)items.get(i)).pos.y)]==color(255)){
+                ((Item)items.get(i)).num = -1;
                 for(int ix=-50; ix<=50; ix++){
                   for(int iy=-50; iy<=50; iy++){
                     if(sq(ix)+sq(iy)<sq(50) && x+ix>=0 && x+ix<bg.width && y+iy>=0 && y+iy<bg.height){
@@ -159,7 +166,6 @@ class State{
             }
             bg.updatePixels();
             mg.updatePixels();
-            ((Item)items.get(i)).num = -1;
           }
         }
       }
@@ -174,11 +180,12 @@ class State{
       // throw items
       if(g.key_state.key_c==1){
         if(player.items.size()>0){
+//          println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
           Item it = ((Item)(player.items.get((player.items.size()-1)))).copy();
           player.items.remove((player.items.size()-1));
-          float theta = random(0, 2*PI);
+          float theta = atan2(mouseY-player_y, mouseX-player_x);
           float vel = 5.0;
-          it.pos = new Position(player_x+30*cos(theta), player_y+30*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
+          it.pos = new Position(player_x+50*cos(theta), player_y+50*sin(theta), vel*cos(theta), vel*sin(theta), 0, random(-0.1, 0.1));
           it.type = -1;
           items.add(it);
         }
@@ -191,6 +198,7 @@ class State{
         float x = ((Enemy)enemy.get(i)).x;
         float y = ((Enemy)enemy.get(i)).y;
         int id = ((Enemy)enemy.get(i)).AI_id;
+        PImage img = ((Enemy)enemy.get(i)).img;
         switch(id){
           case 0:
             if(frameCount %3 == 0){
@@ -224,7 +232,7 @@ class State{
               Item it = ((Item)g.data.items[9]).copy();
               float theta = atan2(player_y - y, player_x - x);
               float vel = 5.0;
-              it.pos = new Position(x+30*cos(theta), y+30*sin(theta), vel*cos(theta), vel*sin(theta), theta+PI, 0);
+              it.pos = new Position(x+60*cos(theta), y+60*sin(theta), vel*cos(theta), vel*sin(theta), theta+PI, 0);
               it.type = -1;
               items.add(it);
             }
@@ -238,8 +246,13 @@ class State{
         }
         
         if(dist(player_x, player_y, x+vx, y+vy)<dist(player_x, player_y, x, y)){
-          x += vx;
-          y += vy;
+          if(han(g,img,(int)x,(int)y,(int)vx,(int)vy)==0){
+            if(han(g,img,(int)x,(int)y,(int)vx,0)==1)x+=vx;
+            else if(han(g,img,(int)x,(int)y,0,(int)vy)==1)y+=vy;
+          }else{
+            x += vx;
+            y += vy;
+          }
         }
         
         ((Enemy)enemy.get(i)).x = x;
@@ -250,30 +263,30 @@ class State{
     
       // player move
       int vx=0,vy=0;
+
+      if(g.key_state.key_right>=1){
+        if(han(g,g.display.right,player_x,player_y,2,0)==1)vx += 2;
+        player_muki = 3;
+      }
+      if(g.key_state.key_left>=1){
+        if(han(g,g.display.left,player_x,player_y,-2,0)==1)vx -= 2;
+        player_muki = 1;
+      }
       if(g.key_state.key_up>=1){
-        if(han(g,0,-2)==1)vy -= 2; 
+        if(han(g,g.display.back,player_x,player_y,0,-2)==1)vy -= 2; 
         player_muki = 0;
         
       }
-      if(g.key_state.key_left>=1){
-        if(han(g,-2,0)==1)vx -= 2;
-        player_muki = 1;
-      }
       if(g.key_state.key_down>=1){
-        if(han(g,0,2)==1)vy += 2;
+        if(han(g,g.display.front,player_x,player_y,0,2)==1)vy += 2;
         player_muki = 2;
       }
-      if(g.key_state.key_right>=1){
-        if(han(g,2,0)==1)vx += 2;
-        player_muki = 3;
-      }
-
-      if(vx!=0&&vy!=0&&han(g,vx,vy)==0);else{
+      if(vx!=0&&vy!=0&&han(g,g.display.front,player_x,player_y,vx,vy)==0);else{
         player_x+=vx;
         player_y+=vy;
       }
       
-      // remove dead enemy
+      // remove dead enemy by blue
       println(g.key_state.key_z);
       for(int i=0; i<enemy.size();i++){
         if(((Enemy)enemy.get(0)).hp>0){
@@ -282,14 +295,13 @@ class State{
         enemy.remove(0);
       }
       
-      // player attack
+      // player attack by blue
       if(g.key_state.key_z%80<30){
         // attack effect?
-                        ellipse(player_x+10*cos(-QUARTER_PI-player_muki*HALF_PI),player_y+10*sin(-QUARTER_PI-player_muki*HALF_PI),50,50);
 
       }else if((g.key_state.key_z%80>=30&&g.key_state.key_z%80<40)||(g.key_state.key_z%80>50&&g.key_state.key_z%80<80)){
       
-      }else if(g.key_state.key_z%80==40){
+      }else if(g.key_state.attack==10){
         // attack enemy
         
         //println(player_muki);

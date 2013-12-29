@@ -28,8 +28,9 @@ class State{
   }
   
   void init(Game g){
-    player_x = 100;
-    player_y = 100;
+    player = new Player();
+    player_x=110;
+    player_y=120;
     map_id = 0;
     for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
       Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
@@ -57,7 +58,7 @@ class State{
     for(int i=0;i<pg.width;i++){
       for(int j=0;j<pg.height;j++){
         color c=mg.pixels[(y+vy-pg.height/2+j)*bg.width+x+vx-pg.width/2+i];
-        if(c==color(255)){
+        if(c==color(0)){
           return 0;
         }
       }
@@ -152,13 +153,13 @@ class State{
             int x = (int)(((Item)items.get(i)).pos.x);
             int y = (int)(((Item)items.get(i)).pos.y);
             if(x>=0 && x<bg.width && y>=0 && y<bg.height){
-              if(mg.pixels[(int)(((Item)items.get(i)).pos.x) + mg.width*(int)(((Item)items.get(i)).pos.y)]==color(255)){
+              if(mg.pixels[(int)(((Item)items.get(i)).pos.x) + mg.width*(int)(((Item)items.get(i)).pos.y)]==color(0)){
                 ((Item)items.get(i)).num = -1;
                 for(int ix=-50; ix<=50; ix++){
                   for(int iy=-50; iy<=50; iy++){
                     if(sq(ix)+sq(iy)<sq(50) && x+ix>=0 && x+ix<bg.width && y+iy>=0 && y+iy<bg.height){
                       bg.pixels[(x+ix)+bg.width*(y+iy)] = color(255, 0, 0);
-                      mg.pixels[(x+ix)+mg.width*(y+iy)] = color(0, 0, 0);
+                      mg.pixels[(x+ix)+mg.width*(y+iy)] = color(255);
                     }
                   }
                 }
@@ -201,23 +202,29 @@ class State{
         PImage img = ((Enemy)enemy.get(i)).img;
         switch(id){
           case 0:
-            if(frameCount %3 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+            while(true){
+              float angle = random(TWO_PI);
+              vx = 3*cos(angle);
+              vy = 3*sin(angle);
+              if(han(g,img,2*(int)(x+vx),2*(int)(y+vy),0,0) == 0){
+                break;
+              }else break;
             }
             break;
           case 1:
             if(frameCount %10 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+                float angle = random(TWO_PI);
+                vx = 4*cos(angle);
+                vy = 4*sin(angle);
             }
             break;
           case 2:
             if(frameCount %15 == 0){
               if(dist(player_x,player_y,x,y) < 300){
                 if(frameCount %5 == 0){
-                  vx = 4*cos(random(TWO_PI));
-                  vy = 4*sin(random(TWO_PI));
+                float angle = random(TWO_PI);
+                vx = 5*cos(angle);
+                vy = 5*sin(angle);
                 }
               }else{
                 vx = 0;
@@ -239,8 +246,9 @@ class State{
             break;
           default:
             if(frameCount %8 == 0){
-              vx = 3*cos(random(TWO_PI));
-              vy = 3*sin(random(TWO_PI));
+                float angle = random(TWO_PI);
+                vx = 4*cos(angle);
+                vy = 4*sin(angle);
             }
             break;
         }
