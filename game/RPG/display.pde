@@ -63,35 +63,35 @@ class Display{
     if(mx==-1)mx=width/2;    
     if(my==-1)my=height/2;  //スクロール処理　  by ookuwa
     
-
     //image(player_img, mx, my, 60, 60);
-    PImage pg=null;
+    PImage muki_img = back;
     switch(g.state.player_muki){
+      
       case 0:
-        pg=back;
+        muki_img=back;
         break;
       case 1:
-        pg=left;
+        muki_img=left;
         break;
       case 2:
-        pg=front;
+        muki_img=front;
         break;
       case 3:
-        pg=right;
+        muki_img=right;
         break;
-      default:break;
+        
     }
-    image(pg,mx,my);
+    image(muki_img,mx,my);
         
 //    ellipse(g.state.player_x, g.state.player_y, 20, 20);
-    if(g.key_state.key_z%80<=30||g.key_state.key_z%80>=50){
+    if(g.key_state.attack>20){
       ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI),20,20);
     }else
-    if(g.key_state.key_z%80>30&&g.key_state.key_z%80<40){
-      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.key_z%80-30)*QUARTER_PI/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.key_z%80-30)*QUARTER_PI/10),20,20);
+    if(g.key_state.attack>0&&g.key_state.attack<10){
+      ellipse(mx+30*cos(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.attack)*QUARTER_PI/10),my+30*sin(-QUARTER_PI-g.state.player_muki*HALF_PI-(g.key_state.attack)*QUARTER_PI/10),20,20);
     }else
-    if(g.key_state.key_z%80>40&&g.key_state.key_z%80<50){
-      ellipse(mx+30*cos(-(g.state.player_muki+1)*HALF_PI+QUARTER_PI*((g.key_state.key_z%80-40))/10),my+30*sin(-(g.state.player_muki+1)*HALF_PI+(((g.key_state.key_z%80-40)))*QUARTER_PI/10),20,20);
+    if(g.key_state.attack>10&&g.key_state.attack<20){
+      ellipse(mx+30*cos(-(g.state.player_muki+1)*HALF_PI+QUARTER_PI*((g.key_state.attack-10))/10),my+30*sin(-(g.state.player_muki+1)*HALF_PI+(((g.key_state.attack-10)))*QUARTER_PI/10),20,20);
     }
 //  attack motion by blue
 

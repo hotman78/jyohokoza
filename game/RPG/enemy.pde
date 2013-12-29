@@ -5,8 +5,9 @@ class Enemy{
   int AI_id,w_id,hp,mp,at,df;
   float x,y;
   float vx,vy;
-  String name;
+  String name,text;
   PImage img;
+  
 //  Weapon w;
   
   Enemy(int debug){
@@ -44,7 +45,7 @@ class Enemy{
   
  // void load_file(){
 
-  Enemy(String _name,PImage _img,int _AI_id,int _w_id, int _hp, int _mp, int _at, int _df){
+  Enemy(String _name,PImage _img,int _AI_id,int _w_id, int _hp, int _mp, int _at, int _df,String _text){
     name = _name;
     img = _img;
     AI_id = _AI_id;
@@ -53,15 +54,16 @@ class Enemy{
     mp = _mp;
     at = _at;
     df = _df;
+    text = _text;
   }
   
   Enemy copy(){
-    return new Enemy(name,img,AI_id,w_id,hp,mp,at,df);
+    return new Enemy(name,img,AI_id,w_id,hp,mp,at,df,text);
   }
   
   Enemy copy2(){
     Enemy e;
-    e= new Enemy(name,img,AI_id,w_id,hp,mp,at,df);
+    e= new Enemy(name,img,AI_id,w_id,hp,mp,at,df,text);
     e.x=x;
     e.y=y;
     return e;

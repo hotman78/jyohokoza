@@ -49,7 +49,7 @@ class Data{
   }*/
   void set_enemy(){
     XML children[] = enemy.getChildren("enemy");
-    String name;
+    String name, text;
     int AI_id,weapon_id,hp,mp,at,df;
     PImage img;
     for(int i=0; i<children.length; i++){
@@ -61,8 +61,10 @@ class Data{
       mp         = children[i].getChild("state").getInt("mp");
       at         = children[i].getChild("state").getInt("at");
       df         = children[i].getChild("state").getInt("df");  
+      text       = children[i].getChild("text").getContent();  
+      
 //      println(i);
-      o_enemies[i]=new Enemy(name,img,AI_id,weapon_id,hp,mp,at,df);
+      o_enemies[i]=new Enemy(name,img,AI_id,weapon_id,hp,mp,at,df,text);
     }
   }
   
@@ -103,6 +105,7 @@ class Data{
     XML weapon   = loadXML("./data/weapon.xml");
     XML children[] = weapon.getChildren("weapon");
     String name;
+    String text;
     int id;
     PImage img;
     int at, df, cr;
@@ -110,13 +113,14 @@ class Data{
     for(int i=0; i<children.length; i++){
       id         = children[i].getInt("id");
       name       = children[i].getChild("name").getContent();
+      text       = children[i].getChild("text").getContent();
       at         = children[i].getChild("state").getInt("at");
       df         = children[i].getChild("state").getInt("df");
       cr         = children[i].getChild("state").getInt("cr");
       img        = loadImage("./data/image/weapons/"+children[i].getChild("img").getContent());
       
 //      println("set_weapons: "+(N_items+i));
-      items[N_items+i] = new Item(id, name, img, 2, new Status(at, df, cr, 0, 0, 0, 0),"");
+      items[N_items+i] = new Item(id, name, img, 2, new Status(at, df, cr, 0, 0, 0, 0),text);
     }
   }
 }
