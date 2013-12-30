@@ -12,7 +12,7 @@ class State{
   ArrayList trans;
   ArrayList items;
   ArrayList enemy;
-  ArrayList talk;
+  ArrayList<TPos> talk;
   Player player;
   
   PImage[] b;
@@ -21,14 +21,9 @@ class State{
   PImage bg;
   PImage mg;
   
-
-  
-
-  
   int z=0;
   
   Dict_character dict_c;
-
   
   Flag[] flag_state;
   
@@ -36,27 +31,30 @@ class State{
   }
   
   void init(Game g){
-    b=new PImage[g.data.N_maps];
-    m=new PImage[g.data.N_maps];
+    b = new PImage[g.data.N_maps];
+    m = new PImage[g.data.N_maps];
     trans = new ArrayList();
     enemy = new ArrayList();
     items = new ArrayList();
-    talk = new ArrayList();
+    talk = new ArrayList<TPos>();
     player = new Player();
     dict_c = new Dict_character();
     player = new Player();
     player_x=110;
     player_y=120;
     map_id = 0;
+    
     for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
       Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
       enemy.add(en.copy2());
     }
+    
     for(int j=0; j<g.data.maps[map_id].map_item.size(); j++){
       Item it = (Item)g.data.maps[map_id].map_item.get(j);
       println("num:"+it.num);
       items.add(it.copy2());
     }
+    
     for(int i=0;i<b.length;i++){
 //      println(i);
       b[i]=createImage(g.data.maps[i].background.width,g.data.maps[i].background.height,RGB);
@@ -93,25 +91,24 @@ class State{
     int mx=-1,my=-1;
     int px=g.state.player_x;
     int py=g.state.player_y;
-    if(px<width/2)mx=0;
-    else if(px>bg.width-width/2)mx=width-bg.width;
-    if(py<height/2)my=0;
-    else if(py>bg.height-height/2)my=height-bg.height;
+    if(px<width/2)mx = 0;
+    else if(px>bg.width-width/2)mx = width-bg.width;
+    if(py<height/2)my = 0;
+    else if(py>bg.height-height/2)my = height-bg.height;
     
     if(mx==-1)mx=width/2-px;    
     if(my==-1)my=height/2-py;
-//    if(game_state==3)game_state=0;
     
-    // in game
+    // main
     if(game_state==0){
       bg=b[map_id];
       mg=m[map_id];
       
-        if(z==1){
-          player.status.hp-=10;
-          z=0;
-        }
-    //  player.status.hp+=(int)random(-10,9.9);
+      if(z==1){
+        player.status.hp-=10;
+        z=0;
+      }
+      
       ArrayList t=g.data.maps[map_id].map_transition;
       for(int i=0; i<t.size(); i++){
         // map transition
