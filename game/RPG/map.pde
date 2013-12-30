@@ -53,6 +53,7 @@ class Map{
     map_transition = new ArrayList();
     XML[] xml_tr = xml[filename].getChildren("trans");
     for(int i=0; i<xml_tr.length; i++){
+//      println("trans: "+filename+" "+i);
       map_transition.add(new Trans(xml_tr[i].getInt("next"),
                                     xml_tr[i].getInt("x"),
                                     xml_tr[i].getInt("y"),
@@ -92,11 +93,12 @@ class Map{
     map_talk = new ArrayList();
     XML[] xml_talks = xml[filename].getChildren("talk");
     for(int i=0; i<xml_talks.length; i++){
+//      println("talk: "+filename+" "+i);
       int v=0;
       for(int j=0;j<g.data.talks.length;j++){
         if(g.data.talks[j].id.equals(xml_talks[j].getString("id")))v=j;
       }
-      TPos it = new TPos(g.data.talks[v], xml_items[i].getInt("x"), xml_items[i].getInt("y"));
+      TPos it = new TPos(g.data.talks[v], xml_talks[i].getInt("x"), xml_talks[i].getInt("y"));
       map_talk.add(it);
     }
     

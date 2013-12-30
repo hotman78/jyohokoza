@@ -22,6 +22,7 @@ class TPos extends Talk{
   }
   
   boolean trigger(Game g){
+//    println("trigger: "+x+" " + y + " " + g.state.player_x+" " + g.state.player_y);
     return (dist(x, y, g.state.player_x, g.state.player_y) < 50);
   }
 } 

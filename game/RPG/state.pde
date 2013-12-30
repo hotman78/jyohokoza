@@ -58,6 +58,7 @@ class State{
       items.add(it.copy2());
     }
     for(int i=0;i<b.length;i++){
+//      println(i);
       b[i]=createImage(g.data.maps[i].background.width,g.data.maps[i].background.height,RGB);
       m[i]=createImage(g.data.maps[i].mask.width,g.data.maps[i].mask.height,RGB);
       b[i].copy(g.data.maps[i].background,0,0,g.data.maps[i].background.width,g.data.maps[i].background.height,0,0,g.data.maps[i].background.width,g.data.maps[i].background.height);
@@ -115,9 +116,10 @@ class State{
       for(int i=0; i<t.size(); i++){
         // map transition
         if(((Trans)t.get(i)).trigger(g)==1){
-          map_id = ((Trans)t.get(0)).next_map;
-          player_x=((Trans)t.get(0)).px;
-          player_y=((Trans)t.get(0)).py;
+          map_id = ((Trans)t.get(i)).next_map;
+          println("trans to: "+map_id);
+          player_x=((Trans)t.get(i)).px;
+          player_y=((Trans)t.get(i)).py;
           trans_num++;
           if(trans_num>=5)game_state=2;
           // set enemy data for the new map
@@ -144,7 +146,8 @@ class State{
       ArrayList tl = g.data.maps[map_id].map_talk;
       for(int i=0;i<tl.size();i++){
         if(((TPos)tl.get(i)).trigger(g)){
-          //game_state=4;
+          println("talk id: "+i);
+          game_state=4;
         }
       }
       
@@ -472,7 +475,8 @@ class State{
       }
     }
     else if(game_state==4){
-      
+//      println("now talking!!!!");
+      game_state = 0;
     }
     
   }

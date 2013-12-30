@@ -40,10 +40,10 @@ class Data{
     set_talks();
 //    maps[0] = new Map(0,g);
 //    maps[1] = new Map(1,g);
-    maps[0] = new Map();
-    maps[1] = new Map();
-    maps[0].load_file(0, g);
-    maps[1].load_file(1, g);
+    for(int i=0; i<N_maps; i++){
+      maps[i] = new Map();
+      maps[i].load_file(i, g);
+    }
   }
  /* void make_enemies(int id,int x, int y){
       Enemy en = o_enemies[id];
