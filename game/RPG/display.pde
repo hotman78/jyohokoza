@@ -18,7 +18,8 @@ class Display{
   void draw(Game g){
     background(255);
     
-    if(g.state.game_state==0 || g.state.game_state==4 || (g.state.game_state==2 && g.state.player.status.hp<=0)){//main
+    if(g.state.game_state==0 || g.state.game_state==4 ||
+    (g.state.game_state==2 && g.state.player.status.hp<=0)){//main
       draw_map(g);
       draw_event(g);
       draw_player(g);

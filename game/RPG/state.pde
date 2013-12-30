@@ -103,7 +103,7 @@ class State{
 //    if(game_state==3)game_state=0;
     
     // in game
-    if(game_state==0&&player.status.hp>0){
+    if(game_state==0){
       bg=b[map_id];
       mg=m[map_id];
       
@@ -417,30 +417,16 @@ class State{
           disp_dict='d';
           dict_character = new Dict_character();
         }
-
-      
-
-      
-
+        
         if(g.key_state.key_f==1){
           game_state = 3;
           disp_dict='f';
         }
       }
+      
+      if(player.status.hp<1)game_state = 2;
+      
     }
-        
-
-    if(game_state==0&&player.status.hp<=0){
-      if(g.key_state.key_x>=1){
-        println("aaaaa");
-        //g.data=new Data();
-        g.data.load_all(g);
-       // state=new State(this);
-        init(g);
-        game_state=1;
-      }
-    }
-
     // title
     else if(game_state==1){
         println("a");
@@ -451,12 +437,23 @@ class State{
     }
     // ending
     else if(game_state==2){
-      time++;
-      if(time>200){
-        exit();
+      if(player.status.hp<1){
+        if(g.key_state.key_x>0){
+          println("aaaaa");
+          //g.data=new Data();
+          g.data.load_all(g);
+          //state=new State(this);
+          init(g);
+          game_state=1;
+        }
+      }else {
+        time++;
+        if(time>200){
+          exit();
+        }
       }
     }
-    // kaiwa window
+    //dictionary page
     else if(game_state==3){
       if(disp_dict=='a'){
         if(g.key_state.key_up==1) dict_item.switch_prev();
