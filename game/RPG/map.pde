@@ -7,13 +7,13 @@ class Map{
   ArrayList map_enemy;
   ArrayList map_item;
   int d;
-  ArrayList map_talk;
+  ArrayList<TPos> map_talk;
   
   Map(){
     map_transition = new ArrayList();
-    map_enemy=new ArrayList();
+    map_enemy =new ArrayList();
     map_item = new ArrayList();
-    map_talk = new ArrayList();
+    map_talk = new ArrayList<TPos>();
   }
   
   
@@ -29,7 +29,7 @@ class Map{
       map_transition.add(new Trans(1));
     }
     
-    map_enemy=new ArrayList();
+    map_enemy = new ArrayList();
     if(debug==0){
       Enemy en = g.data.o_enemies[0].copy();
       en.x = 300;
@@ -90,14 +90,17 @@ class Map{
       map_item.add(it);
     }
     
-    map_talk = new ArrayList();
+    map_talk = new ArrayList<TPos>();
     XML[] xml_talks = xml[filename].getChildren("talk");
-    for(int i=0; i<xml_talks.length; i++){
-//      println("talk: "+filename+" "+i);
+    for(int i=0; i<xml_talks.length; i++){//println("talk: "+filename+" "+i);
       int v=0;
       for(int j=0;j<g.data.talks.length;j++){
-        if(g.data.talks[j].id.equals(xml_talks[j].getString("id")))v=j;
-      }
+        if(g.data.talks[j].id.equals(xml_talks[i].getString("id"))){
+          v=j;
+          break;
+        }
+        println("id="+g.data.talks[j].id);
+      }println("length="+g.data.talks.length);
       TPos it = new TPos(g.data.talks[v], xml_talks[i].getInt("x"), xml_talks[i].getInt("y"));
       map_talk.add(it);
     }
@@ -131,6 +134,7 @@ class Map{
     for(int i=0; i<g.state.items.size(); i++){
       ((Item)g.state.items.get(i)).draw(g, mx, my);
     }
+    
   }
   
   Map copy(){

@@ -150,7 +150,7 @@ class Data{
         }
       }
       
-      talks[i] = new TData(id, text, name, img);
+      talks[i] = new TData(id+"", text, name, img);
       
     }
     

@@ -34,10 +34,13 @@ class Window {
   
   void draw(Game g){
     if(disp){
+      pushMatrix();
+      translate(75,0);
       imageMode(CORNERS);
       image(pct,width-pct.width,height-pct.height,width,height);
+      popMatrix();
       rectMode(CORNER);
-      stroke(0);fill(255);
+      stroke(0);fill(255,128);
       rect(px, py, px+wid, py+n_hei+hei, 10);
       stroke(0);fill(0);
       text(name, px, py, px+wid, py+n_hei);

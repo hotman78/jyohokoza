@@ -3,10 +3,12 @@
 
 class TPos extends Talk{
   int x, y;
+  int num;
   
   TPos(int x,int y){
     this.x = x;
     this.y = y;
+    this.num = 0;
     this.text = new ArrayList<String>();
     this.name = new IntDict();
     this.img = new IntDict();
@@ -15,6 +17,7 @@ class TPos extends Talk{
   TPos(TData talk,int x,int y){
     this.x = x;
     this.y = y;
+    this.num = 0;
     copyText(talk.text);
     copyName(talk.name);
     copyImg(talk.img);
@@ -22,9 +25,23 @@ class TPos extends Talk{
   }
   
   boolean trigger(Game g){
-//    println("trigger: "+x+" " + y + " " + g.state.player_x+" " + g.state.player_y);
     return (dist(x, y, g.state.player_x, g.state.player_y) < 50);
   }
+  
+  void update(Game g){
+    if(done()){
+      g.display.window.inter(text.get(num));
+      num++;
+    }else {
+      g.display.window.disp=false;
+      g.state.game_state=0;
+    }
+  }
+  
+  boolean done(){
+    return (num<text.size());
+  }
+  
 } 
 
 class TData extends Talk{
