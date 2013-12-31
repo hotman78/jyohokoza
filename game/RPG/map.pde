@@ -97,8 +97,7 @@ class Map{
           v=j;
           break;
         }
-        println("id="+g.data.talks[j].id);
-      }println("length="+g.data.talks.length);
+      }println("id="+g.data.talks[v].id+";text="+g.data.talks[v].text);
       TPos it = new TPos(g.data.talks[v], xml_talks[i].getInt("x"), xml_talks[i].getInt("y"));
       map_talk.add(it);
     }*/
