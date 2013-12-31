@@ -16,12 +16,14 @@ class Data{
   int N_enemies;
   int N_items;
   int N_weapons;
+  int N_talks;
   
   Data(){
     N_maps=map.getInt("num");
     N_enemies=enemy.getInt("num");
     N_items=item.getInt("num");
     N_weapons=weapon.getInt("num");
+    N_talks=talk.getInt("num");
 
     kishimoto = loadFont("HGPKisimotoKaishotai-25.vlw");
     maps    = new Map[N_maps];
@@ -30,7 +32,7 @@ class Data{
     items = new Item[N_items + N_weapons];
 //    println(N_items, N_weapons);
 //    weapons = new Weapon[N_weapons];
-    talks = new TData[talk.getChildren("talk").length];
+    talks = new TData[N_talks];
   }
   
   void load_all(Game g){
@@ -40,10 +42,10 @@ class Data{
     set_talks();
 //    maps[0] = new Map(0,g);
 //    maps[1] = new Map(1,g);
-    maps[0] = new Map();
-    maps[1] = new Map();
-    maps[0].load_file(0, g);
-    maps[1].load_file(1, g);
+    for(int i=0;i<N_maps;i++){
+      maps[i] = new Map();
+      maps[i].load_file(i, g);
+    }
   }
  /* void make_enemies(int id,int x, int y){
       Enemy en = o_enemies[id];
@@ -146,7 +148,7 @@ class Data{
         }else if(cld[j].getName().equals("name")){
           name.set(cld[j].getContent(), text.size());
         }else if(cld[j].getName().equals("img")){
-          img.set(cld[j].getString("src"), text.size());
+          img.set("./data/image/"+cld[j].getContent(), text.size());
         }
       }
       

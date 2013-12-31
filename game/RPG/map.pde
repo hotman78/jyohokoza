@@ -53,6 +53,7 @@ class Map{
     map_transition = new ArrayList();
     XML[] xml_tr = xml[filename].getChildren("trans");
     for(int i=0; i<xml_tr.length; i++){
+      println("next="+xml_tr[i].getInt("next"));
       map_transition.add(new Trans(xml_tr[i].getInt("next"),
                                     xml_tr[i].getInt("x"),
                                     xml_tr[i].getInt("y"),
@@ -129,6 +130,8 @@ class Map{
     for(int i=0; i<g.state.items.size(); i++){
       ((Item)g.state.items.get(i)).draw(g, mx, my);
     }
+    for(int i=0;i<map_talk.size();i++)
+      ellipse(((TPos)(map_talk.get(i))).x+mx,((TPos)(map_talk.get(i))).y+my,10,10);
   }
   
   Map copy(){

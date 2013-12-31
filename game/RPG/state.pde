@@ -103,6 +103,7 @@ class State{
     
     // in game
     if(game_state==0&&player.status.hp>0){
+      println("map_id:"+map_id);
       bg=b[map_id];
       mg=m[map_id];
       
