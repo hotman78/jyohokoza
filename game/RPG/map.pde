@@ -7,13 +7,13 @@ class Map{
   ArrayList map_enemy;
   ArrayList map_item;
   int d;
-  ArrayList map_talk;
+  ArrayList<TPos> map_talk;
   
   Map(){
     map_transition = new ArrayList();
-    map_enemy=new ArrayList();
+    map_enemy =new ArrayList();
     map_item = new ArrayList();
-    map_talk = new ArrayList();
+    map_talk = new ArrayList<TPos>();
   }
   
   
@@ -29,7 +29,7 @@ class Map{
       map_transition.add(new Trans(1));
     }
     
-    map_enemy=new ArrayList();
+    map_enemy = new ArrayList();
     if(debug==0){
       Enemy en = g.data.o_enemies[0].copy();
       en.x = 300;
@@ -53,7 +53,7 @@ class Map{
     map_transition = new ArrayList();
     XML[] xml_tr = xml[filename].getChildren("trans");
     for(int i=0; i<xml_tr.length; i++){
-      println("next="+xml_tr[i].getInt("next"));
+//      println("trans: "+filename+" "+i);
       map_transition.add(new Trans(xml_tr[i].getInt("next"),
                                     xml_tr[i].getInt("x"),
                                     xml_tr[i].getInt("y"),
@@ -76,7 +76,6 @@ class Map{
       Item it = g.data.items[xml_items[i].getInt("id")].copy();
       it.pos = new Position(xml_items[i].getInt("x"), xml_items[i].getInt("y"));
       it.num = xml_items[i].getInt("num");
-      println("num="+it.num);
       map_item.add(it);
     }
     
@@ -86,20 +85,23 @@ class Map{
       Item it = g.data.items[xml_items[i].getInt("id") + g.data.N_items].copy();
       it.pos = new Position(xml_items[i].getInt("x"), xml_items[i].getInt("y"));
       it.num = xml_items[i].getInt("num");
-      println("num="+it.num);
       map_item.add(it);
     }
     
-    map_talk = new ArrayList();
+/*    map_talk = new ArrayList<TPos>();
     XML[] xml_talks = xml[filename].getChildren("talk");
-    for(int i=0; i<xml_talks.length; i++){
+    for(int i=0; i<xml_talks.length; i++){//println("talk: "+filename+" "+i);
       int v=0;
       for(int j=0;j<g.data.talks.length;j++){
-        if(g.data.talks[j].id.equals(xml_talks[j].getString("id")))v=j;
-      }
-      TPos it = new TPos(g.data.talks[v], xml_items[i].getInt("x"), xml_items[i].getInt("y"));
+        if(g.data.talks[j].id.equals(xml_talks[i].getString("id"))){
+          v=j;
+          break;
+        }
+        println("id="+g.data.talks[j].id);
+      }println("length="+g.data.talks.length);
+      TPos it = new TPos(g.data.talks[v], xml_talks[i].getInt("x"), xml_talks[i].getInt("y"));
       map_talk.add(it);
-    }
+    }*/
     
     
     
@@ -120,7 +122,7 @@ class Map{
     if(my==-1)my=height/2-py;
     
     imageMode(CORNERS);
-    image(bg, mx, my);
+    image(mg, mx, my);
     for(int i=0; i<g.data.maps[g.state.map_id].map_transition.size(); i++){
       ((Trans)g.data.maps[g.state.map_id].map_transition.get(i)).draw(g,mx,my);
     }

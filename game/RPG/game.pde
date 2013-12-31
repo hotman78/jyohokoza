@@ -5,9 +5,13 @@ class Game{
   Key key_state;
   
   Game(){
+    println("system log///class of display loading");
     display = new Display();
+    println("system log///class of data loading");
     data = new Data();
+    println("system log///class of state loading");
     state = new State(this);
+    println("system log///class of key loading");
     key_state = new Key();
 
     // ファイルに書かれたデータを読み込む
@@ -15,8 +19,8 @@ class Game{
     
     // 状態の初期化
     state.init(this);
-    display.window.disp = false;
     
+    println("game start");
   }
   
   void update(){

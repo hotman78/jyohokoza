@@ -12,7 +12,8 @@ class State{
   ArrayList trans;
   ArrayList items;
   ArrayList enemy;
-  ArrayList talk;
+  ArrayList<TPos> talk;
+  int talk_num;
   Player player;
   
   PImage[] b;
@@ -21,14 +22,9 @@ class State{
   PImage bg;
   PImage mg;
   
-
-  
-
-  
   int z=0;
   
   Dict_character dict_c;
-
   
   Flag[] flag_state;
   
@@ -36,28 +32,32 @@ class State{
   }
   
   void init(Game g){
-    b=new PImage[g.data.N_maps];
-    m=new PImage[g.data.N_maps];
+    b = new PImage[g.data.N_maps];
+    m = new PImage[g.data.N_maps];
     trans = new ArrayList();
     enemy = new ArrayList();
     items = new ArrayList();
-    talk = new ArrayList();
+    talk = new ArrayList<TPos>();
+    talk_num=-1;
     player = new Player();
     dict_c = new Dict_character();
     player = new Player();
     player_x=110;
     player_y=120;
     map_id = 0;
+    
     for(int i=0;i<g.data.maps[map_id].map_enemy.size();i++){
       Enemy en = (Enemy)g.data.maps[map_id].map_enemy.get(i);
       enemy.add(en.copy2());
     }
+    
     for(int j=0; j<g.data.maps[map_id].map_item.size(); j++){
       Item it = (Item)g.data.maps[map_id].map_item.get(j);
-      println("num:"+it.num);
       items.add(it.copy2());
     }
+    
     for(int i=0;i<b.length;i++){
+      //println(i);
       b[i]=createImage(g.data.maps[i].background.width,g.data.maps[i].background.height,RGB);
       m[i]=createImage(g.data.maps[i].mask.width,g.data.maps[i].mask.height,RGB);
       b[i].copy(g.data.maps[i].background,0,0,g.data.maps[i].background.width,g.data.maps[i].background.height,0,0,g.data.maps[i].background.width,g.data.maps[i].background.height);
@@ -92,33 +92,32 @@ class State{
     int mx=-1,my=-1;
     int px=g.state.player_x;
     int py=g.state.player_y;
-    if(px<width/2)mx=0;
-    else if(px>bg.width-width/2)mx=width-bg.width;
-    if(py<height/2)my=0;
-    else if(py>bg.height-height/2)my=height-bg.height;
+    if(px<width/2)mx = 0;
+    else if(px>bg.width-width/2)mx = width-bg.width;
+    if(py<height/2)my = 0;
+    else if(py>bg.height-height/2)my = height-bg.height;
     
     if(mx==-1)mx=width/2-px;    
     if(my==-1)my=height/2-py;
-//    if(game_state==3)game_state=0;
     
-    // in game
-    if(game_state==0&&player.status.hp>0){
-      println("map_id:"+map_id);
+
+    // main
+    if(game_state==0){
       bg=b[map_id];
       mg=m[map_id];
       
-        if(z==1){
-          player.status.hp-=10;
-          z=0;
-        }
-    //  player.status.hp+=(int)random(-10,9.9);
-      ArrayList t=g.data.maps[map_id].map_transition;
+      if(z==1){
+        player.status.hp-=10;
+        z=0;
+      }
+      
+      ArrayList t = g.data.maps[map_id].map_transition;
       for(int i=0; i<t.size(); i++){
         // map transition
         if(((Trans)t.get(i)).trigger(g)==1){
-          map_id = ((Trans)t.get(0)).next_map;
-          player_x=((Trans)t.get(0)).px;
-          player_y=((Trans)t.get(0)).py;
+          map_id = ((Trans)t.get(i)).next_map;
+          player_x=((Trans)t.get(i)).px;
+          player_y=((Trans)t.get(i)).py;
           trans_num++;
           if(trans_num>=5)game_state=2;
           // set enemy data for the new map
@@ -142,10 +141,15 @@ class State{
         }
       }
       
-      ArrayList tl = g.data.maps[map_id].map_talk;
+      ArrayList<TPos> tl = g.data.maps[map_id].map_talk;
       for(int i=0;i<tl.size();i++){
-        if(((TPos)tl.get(i)).trigger(g)){
-          //game_state=4;
+         println(tl.get(i).text);
+        if(tl.get(i).trigger(g) && tl.get(i).done()){
+          println("talk id: "+i);
+          talk_num = i;
+          g.display.window.disp = true;
+          game_state=4;
+          break;
         }
       }
       
@@ -153,7 +157,7 @@ class State{
       for(int i=0; i<items.size(); i++){
         if(dist(((Item)items.get(i)).pos.x, ((Item)items.get(i)).pos.y, player_x, player_y) < 20){
           Item it = ((Item)(items.get(i))).copy();
-          println("id:"+i+"&num:"+it.num);
+          println("item get:"+it.name+"×"+it.num);
           player.items.add(it);
           ((Item)items.get(i)).num = -1;
         }else{
@@ -234,9 +238,9 @@ class State{
           Item it = ((Item)(player.items.get((player.items.size()-1))));
           if(it.num<=1) player.items.remove((player.items.size()-1));
           else{
-            println("num=="+it.num);
             it.num--;
           }
+          println("item throw:"+it.name);
           it = it.copy();
           float theta = atan2(mouseY-(player_y+my), mouseX-(player_x+mx));
           float vel = 5.0;
@@ -400,6 +404,7 @@ class State{
               break; 
           }
         }
+        
         if(g.key_state.key_a==1){
           game_state = 3;
           disp_dict='a';
@@ -415,46 +420,45 @@ class State{
           disp_dict='d';
           dict_character = new Dict_character();
         }
-
-      
-
-      
-
+        
         if(g.key_state.key_f==1){
           game_state = 3;
           disp_dict='f';
         }
       }
-    }
-        
-
-    if(game_state==0&&player.status.hp<=0){
-      if(g.key_state.key_x>=1){
-        println("aaaaa");
-        //g.data=new Data();
-        g.data.load_all(g);
-       // state=new State(this);
-        init(g);
-        game_state=1;
+      
+      if(player.status.hp<1){
+        game_state = 2;
+        println("player died");
       }
+      
     }
-
     // title
     else if(game_state==1){
-        println("a");
-      if(g.key_state.key_c>=1){
+      if(g.key_state.key_c>0){
+        //init(g);
         game_state=0;
-        println("a");
       }
     }
     // ending
     else if(game_state==2){
-      time++;
-      if(time>200){
-        exit();
+      if(player.status.hp<1){
+        if(g.key_state.key_x>0){
+          println("player relive");
+          //g.data=new Data();
+          //g.data.load_all(g);
+          //state=new State(this);
+          init(g);
+          game_state=1;
+        }
+      }else {
+        time++;
+        if(time>200){
+          exit();
+        }
       }
     }
-    // kaiwa window
+    //dictionary page
     else if(game_state==3){
       if(disp_dict=='a'){
         if(g.key_state.key_up==1) dict_item.switch_prev();
@@ -473,7 +477,12 @@ class State{
       }
     }
     else if(game_state==4){
-      
+      if(talk_num<0){
+      }else {
+        if(g.key_state.mouse_left%120==1){
+          g.data.maps[map_id].map_talk.get(talk_num).update(g);
+        }
+      }
     }
     
   }

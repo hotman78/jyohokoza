@@ -21,6 +21,12 @@ class Input {
         case DOWN:keys.set("down",subs);break;
         case LEFT:keys.set("left",subs);break;
         case RIGHT:keys.set("right",subs);break;
+        
+        case SHIFT:keys.set("shift",subs);break;
+        case CONTROL:keys.set("control",subs);break;
+        case TAB:keys.set("tab",subs);break;
+        case ALT:keys.set("alt",subs);break;
+        case ESC:keys.set("esc",subs);break;
       }
     }else {
       keys.set(""+key,subs);
@@ -35,9 +41,21 @@ class Input {
         case DOWN:keys.set("down",subs);break;
         case LEFT:keys.set("left",subs);break;
         case RIGHT:keys.set("right",subs);break;
+        
+        case SHIFT:keys.set("shift",subs);break;
+        case CONTROL:keys.set("control",subs);break;
+        case TAB:keys.set("tab",subs);break;
+        case ALT:keys.set("alt",subs);break;
+        case ESC:keys.set("esc",subs);break;
       }
     }else {
       keys.set(""+key,subs);
+    }
+  }
+  
+  void update(){
+    for (String k : keys.keys()) {
+      keys.set(k, keys.get(k)+1);
     }
   }
   

@@ -18,7 +18,8 @@ class Display{
   void draw(Game g){
     background(255);
     
-    if(g.state.game_state==0 || g.state.game_state==4 || (g.state.game_state==2 && g.state.player.status.hp<=0)){//main
+    if(g.state.game_state==0 || g.state.game_state==4 ||
+    (g.state.game_state==2 && g.state.player.status.hp<=0)){//main
       draw_map(g);
       draw_event(g);
       draw_player(g);
@@ -27,7 +28,7 @@ class Display{
       textSize(25);
       fill(255, 0, 0);
       text(hptext, width-100, 50);
-//      println(g.state.player.status.hp);
+      //println(g.state.player.status.hp);
       if(g.state.player.status.hp<=0){
         imageMode(CORNERS);
         image(die,0,0);

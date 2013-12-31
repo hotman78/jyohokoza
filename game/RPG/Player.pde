@@ -30,7 +30,7 @@ class Player{
   int a0=90000000,
     d0=5000,
     c0=0,
-    mh0=30,
+    mh0=30000,
     mm0=0;
   
   Player(){
