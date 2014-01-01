@@ -178,7 +178,7 @@ class State{
               int itx = (int)(((Item)items.get(i)).pos.x);
               int ity = (int)(((Item)items.get(i)).pos.y);
               if(dist(ex, ey, itx, ity) < 30){
-                ((Enemy)enemy.get(j)).hp-=90000000;
+                ((Enemy)enemy.get(j)).hp-=1;
                 bg.loadPixels();
                 mg.loadPixels();
                 int x = (int)(((Item)items.get(i)).pos.x);

@@ -7,7 +7,19 @@
 		<enemy x="300" y="650" id="2" />
 		<enemy x="400" y="250" id="3" />
 		<enemy x="600" y="350" id="3" />
-		<enemy x="700" y="550" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
+		<enemy x="300" y="250" id="2" />
 		<enemy x="800" y="350" id="1" />
 		<enemy x="900" y="1110" id="0" />
 		<trans next="1" x="500" y="100" px="200" py="100" />

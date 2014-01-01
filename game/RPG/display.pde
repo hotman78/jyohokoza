@@ -27,7 +27,7 @@ class Display{
       textFont(g.data.kishimoto);
       textSize(25);
       fill(255, 0, 0);
-      text(hptext, width-100, 50);
+      text(hptext, width-130, 35);
       //println(g.state.player.status.hp);
       if(g.state.player.status.hp<=0){
         imageMode(CORNERS);
