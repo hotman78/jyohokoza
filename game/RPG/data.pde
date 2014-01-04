@@ -4,24 +4,25 @@ class Data{
   Map[] maps;
   //ArrayList enemies;
   Enemy[] o_enemies; 
-  Talk[] talks;
   Item[] items;
+  TData[] talks;
 //  Item[] weapons;
   XML map   = loadXML("./data/map/map.xml");
   XML enemy   = loadXML("./data/event/enemy.xml");
   XML item   = loadXML("./data/item.xml");
   XML weapon   = loadXML("./data/weapon.xml");
+  XML talk = loadXML("./data/event/talk1.xml");
   int N_maps;
   int N_enemies;
   int N_items;
   int N_weapons;
+  int N_talks;
   
   Data(){
     N_maps=map.getInt("num");
     N_enemies=enemy.getInt("num");
     N_items=item.getInt("num");
     N_weapons=weapon.getInt("num");
-
     kishimoto = loadFont("HGPKisimotoKaishotai-25.vlw");
     maps    = new Map[N_maps];
     //enemies = new ArrayList();
@@ -29,18 +30,20 @@ class Data{
     items = new Item[N_items + N_weapons];
 //    println(N_items, N_weapons);
 //    weapons = new Weapon[N_weapons];
+//    talks = new TData[talk.getChildren("talk").length];
   }
   
   void load_all(Game g){
     set_enemy();
     set_items();
     set_weapons();
+//    set_talks();
 //    maps[0] = new Map(0,g);
 //    maps[1] = new Map(1,g);
-    maps[0] = new Map();
-    maps[1] = new Map();
-    maps[0].load_file(0, g);
-    maps[1].load_file(1, g);
+    for(int i=0; i<N_maps; i++){
+      maps[i] = new Map();
+      maps[i].load_file(i, g);
+    }
   }
  /* void make_enemies(int id,int x, int y){
       Enemy en = o_enemies[id];
@@ -50,6 +53,7 @@ class Data{
  
   }*/
   void set_enemy(){
+    print("system log///enemy data loading");
     XML children[] = enemy.getChildren("enemy");
     String name, text;
     int AI_id,weapon_id,hp,mp,at,df;
@@ -68,10 +72,12 @@ class Data{
 //      println(i);
       o_enemies[i]=new Enemy(name,img,AI_id,weapon_id,hp,mp,at,df,text);
     }
+    println("");
   }
   
   void set_items(){
-    XML item   = loadXML("./data/item.xml");
+    //XML item   = loadXML("./data/item.xml");
+    print("system log///item data loading");
     XML children[] = item.getChildren("item");
     String name;
     String text;
@@ -101,10 +107,12 @@ class Data{
       }
       items[i] = new Item(id, name, img, type, stat,text);
     }
+    println("");
   }
   
   void set_weapons(){
-    XML weapon   = loadXML("./data/weapon.xml");
+    //XML weapon   = loadXML("./data/weapon.xml");
+    print("system log///weapon data loading");
     XML children[] = weapon.getChildren("weapon");
     String name;
     String text;
@@ -124,6 +132,37 @@ class Data{
 //      println("set_weapons: "+(N_items+i));
       items[N_items+i] = new Item(id, name, img, 2, new Status(at, df, cr, 0, 0, 0, 0),text);
     }
+    println("");
   }
+  
+
+  void set_talks(){
+    print("system log///NPC data loading");
+    XML children[] = talk.getChildren("talk");
+    String id;
+    ArrayList<String> text = new ArrayList<String>();
+    IntDict name = new IntDict();
+    IntDict img = new IntDict();
+    
+    for(int i=0;i<children.length;i++){
+      id = children[i].getString("id");
+      XML[] cld = children[i].getChildren();
+      for(int j=0;j<cld.length;j++){
+        if(cld[j].getName().equals("text")){
+          text.add(cld[j].getContent());
+        }else if(cld[j].getName().equals("name")){
+          name.set(cld[j].getContent(), text.size());
+        }else if(cld[j].getName().equals("img")){
+          img.set("./data/image/"+cld[j].getContent(), text.size());
+        }
+      }
+      
+      talks[i] = new TData(id+"", text, name, img);
+      
+    }
+    println("");
+    
+  }
+  
 }
 

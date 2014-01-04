@@ -5,6 +5,7 @@ class Enemy{
   int AI_id,w_id,hp,mp,at,df;
   float x,y;
   float vx,vy;
+  float targetX,targetY;
   String name,text;
   PImage img;
   
@@ -40,7 +41,11 @@ class Enemy{
   void draw(Game g,int mx,int my){
     imageMode(CENTER);
     if(hp>0)image(img, mx+x, my+y);
+    fill(255,0,0);
     ellipse(mx+x,my+y,10,10);
+    fill(0,255,0);
+    textSize(20);
+    text(str(AI_id),mx+x-8,my+y+5);
   }
   
  // void load_file(){

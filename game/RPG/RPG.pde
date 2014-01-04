@@ -1,20 +1,25 @@
+
 import ddf.minim.*;
 
 Game game;
-AudioPlayer player;
-Minim minim;
+
+/*AudioPlayer player;
+Minim minim;*/
+
 void setup(){
   size(600, 500);
   game = new Game();
-  minim = new Minim(this);
+  
+  /*minim = new Minim(this);
   player = minim.loadFile("pi.mp3");
-  player.play();
+  player.play();*/
 }
-void stop(){
+
+/*void stop(){
   player.close();
   minim.stop();
   super.stop();
-}
+}*/
 
 void draw(){
   game.update();

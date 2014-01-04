@@ -1,5 +1,5 @@
 class Display{
-  PImage front,left,back,right,title_img,end_img,die;
+  PImage front,left,back,right,title_img,end_img,die,muki_img;
   Window window;
   
   Display(){
@@ -12,13 +12,14 @@ class Display{
     end_img=loadImage("./data/image/end.png");
     die=loadImage("./data/image/died.png");
     
-    window = new Window(0, height/4*3, width, height/4);
+    window = new Window(0, height/4*3, width, height/4,20);
   }
   
   void draw(Game g){
     background(255);
     
-    if(g.state.game_state==0){//main
+    if(g.state.game_state==0 || g.state.game_state==4 ||
+    (g.state.game_state==2 && g.state.player.status.hp<=0)){//main
       draw_map(g);
       draw_event(g);
       draw_player(g);
@@ -26,12 +27,15 @@ class Display{
       textFont(g.data.kishimoto);
       textSize(25);
       fill(255, 0, 0);
-      text(hptext, width-100, 50);
-      
+      text(hptext, width-130, 35);
+      //println(g.state.player.status.hp);
       if(g.state.player.status.hp<=0){
         imageMode(CORNERS);
         image(die,0,0);
       }
+     window.draw(g);
+     draw_menu(g);
+     
     }else if(g.state.game_state==1){//op
         draw_title(g);
     }else if(g.state.game_state==2){//ed
@@ -47,8 +51,6 @@ class Display{
         g.state.dict_character.display(g);
       }
     }
-     // window.draw(g);
-     // draw_menu(g);
       
   }
   
@@ -76,7 +78,7 @@ class Display{
     if(my==-1)my=height/2;  //スクロール処理　  by ookuwa
     
     //image(player_img, mx, my, 60, 60);
-    PImage muki_img = back;
+    muki_img = back;
     switch(g.state.player_muki){
       
       case 0:
@@ -111,10 +113,6 @@ if(g.state.player.status.hp>0){
 
     g.state.player.display_item_list(g);
      
-  }
-  
-  void draw_window(Game g){
-    window.draw(g);
   }
   
   void draw_menu(Game g){

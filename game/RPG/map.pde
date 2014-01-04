@@ -6,14 +6,19 @@ class Map{
   ArrayList map_transition;
   ArrayList map_enemy;
   ArrayList map_item;
+  int d;
+  ArrayList<TPos> map_talk;
   
   Map(){
     map_transition = new ArrayList();
-    map_enemy=new ArrayList();
+    map_enemy =new ArrayList();
     map_item = new ArrayList();
+    map_talk = new ArrayList<TPos>();
   }
   
+  
   Map(int debug,Game g){
+    d=debug;
     map_transition = new ArrayList();
     if(debug==0){
       background = loadImage("./data/image/maps/map_1_bg.png");
@@ -24,7 +29,7 @@ class Map{
       map_transition.add(new Trans(1));
     }
     
-    map_enemy=new ArrayList();
+    map_enemy = new ArrayList();
     if(debug==0){
       Enemy en = g.data.o_enemies[0].copy();
       en.x = 300;
@@ -48,6 +53,7 @@ class Map{
     map_transition = new ArrayList();
     XML[] xml_tr = xml[filename].getChildren("trans");
     for(int i=0; i<xml_tr.length; i++){
+//      println("trans: "+filename+" "+i);
       map_transition.add(new Trans(xml_tr[i].getInt("next"),
                                     xml_tr[i].getInt("x"),
                                     xml_tr[i].getInt("y"),
@@ -69,6 +75,7 @@ class Map{
     for(int i=0; i<xml_items.length; i++){
       Item it = g.data.items[xml_items[i].getInt("id")].copy();
       it.pos = new Position(xml_items[i].getInt("x"), xml_items[i].getInt("y"));
+      it.num = xml_items[i].getInt("num");
       map_item.add(it);
     }
     
@@ -77,24 +84,44 @@ class Map{
     for(int i=0; i<xml_items.length; i++){
       Item it = g.data.items[xml_items[i].getInt("id") + g.data.N_items].copy();
       it.pos = new Position(xml_items[i].getInt("x"), xml_items[i].getInt("y"));
+      it.num = xml_items[i].getInt("num");
       map_item.add(it);
     }
+    
+/*    map_talk = new ArrayList<TPos>();
+    XML[] xml_talks = xml[filename].getChildren("talk");
+    for(int i=0; i<xml_talks.length; i++){//println("talk: "+filename+" "+i);
+      int v=0;
+      for(int j=0;j<g.data.talks.length;j++){
+        if(g.data.talks[j].id.equals(xml_talks[i].getString("id"))){
+          v=j;
+          break;
+        }
+      }println("id="+g.data.talks[v].id+";text="+g.data.talks[v].text);
+      TPos it = new TPos(g.data.talks[v], xml_talks[i].getInt("x"), xml_talks[i].getInt("y"));
+      map_talk.add(it);
+    }*/
+    
+    
+    
   }
   
   void draw(Game g){
     int mx=-1,my=-1;
     int px=g.state.player_x;
     int py=g.state.player_y;
+    PImage bg=g.state.b[g.state.map_id];
+    PImage mg=g.state.m[g.state.map_id];
     if(px<width/2)mx=0;
-    else if(px>background.width-width/2)mx=width-background.width;
+    else if(px>bg.width-width/2)mx=width-bg.width;
     if(py<height/2)my=0;
-    else if(py>background.height-height/2)my=height-background.height;
+    else if(py>bg.height-height/2)my=height-bg.height;
     
     if(mx==-1)mx=width/2-px;    
     if(my==-1)my=height/2-py;
     
     imageMode(CORNERS);
-    image(background, mx, my);
+    image(mg, mx, my);
     for(int i=0; i<g.data.maps[g.state.map_id].map_transition.size(); i++){
       ((Trans)g.data.maps[g.state.map_id].map_transition.get(i)).draw(g,mx,my);
     }
@@ -104,6 +131,12 @@ class Map{
     for(int i=0; i<g.state.items.size(); i++){
       ((Item)g.state.items.get(i)).draw(g, mx, my);
     }
+    for(int i=0;i<map_talk.size();i++)
+      ellipse(((TPos)(map_talk.get(i))).x+mx,((TPos)(map_talk.get(i))).y+my,10,10);
+  }
+  
+  Map copy(){
+    return new Map();
   }
   
 }

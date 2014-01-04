@@ -16,6 +16,7 @@
 	<item x="345" y="543" id="2" num="5000" />
 	<item x="456" y="210" id="3" num="2" />
 	<item x="12" y="109" id="4" />
+    <talk x="300" y="300" id="0" />
 </map>
 <map id="2">
 	<img_bg>map_2.png</img_bg>
