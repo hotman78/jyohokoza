@@ -1,4 +1,4 @@
-<enemys>
+<enemys num="12">
 	<enemy id="1">
 		<name>スライム</name>
 		<img>suraimuu.png</img>
@@ -34,4 +34,54 @@
 		<weapon id="5" />
 		<state hp="100" mp="5000" at="100" df="800" />
 	</enemy>
+	<enemy id="6">
+		<name>Mr.Brown</name>
+		<img>mattyo.png</img>
+		<AI id="6" />
+		<weapon id="6" />
+		<state hp="10000" mp="50" at="90000" df="8000" />
+	</enemy>
+	<enemy id="7">
+		<name>C++マン</name>
+		<img>CClemon.png</img>
+		<AI id="7" />
+		<weapon id="7" />
+		<state hp="9000" mp="80" at="50000" df="6000" />
+	</enemy>
+	<enemy id="8">
+		<name>ルービック5000</name>
+		<img>cube.png</img>
+		<AI id="8" />
+		<weapon id="8" />
+		<state hp="3000" mp="5000" at="600" df="800" />
+	</enemy>
+	<enemy id="9">
+		<name>Nバッグマン</name>
+		<img>nbag.png</img>
+		<AI id="9" />
+		<weapon id="9" />
+		<state hp="8000" mp="5500" at="300" df="60000" />
+	</enemy>
+	<enemy id="10">
+		<name>Nバッグマン</name>
+		<img>nbag.png</img>
+		<AI id="10" />
+		<weapon id="10" />
+		<state hp="5000" mp="50" at="800" df="80" />
+	</enemy>
+	<enemy id="11">
+		<name>おかん</name>
+		<img>okan.png</img>
+		<AI id="11" />
+		<weapon id="11" />
+		<state hp="6000" mp="800" at="490" df="680" />
+	</enemy>
+	<enemy id="12">
+		<name>からす</name>
+		<img>karasu.png</img>
+		<AI id="12" />
+		<weapon id="12" />
+		<state hp="500" mp="8976" at="465" df="250" />
+	</enemy>
+	
 </enemys>

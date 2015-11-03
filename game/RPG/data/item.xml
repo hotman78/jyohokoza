@@ -1,83 +1,99 @@
-<items>
+<items num="23">
 	<item id="0">
-		<name>�₭����</name>
-		<img>yakusou.png</img>
+		<name>やくそう</name>
+		<img>photo/yakusou.png</img>
 	</item>
 	<item id="1">
-		<name>���@�̂�������</name>
+		<name>魔法のせいすい</name>
 		<img>photo/mahou_seisui.JPG</img>
 	</item>
 	<item id="2">
-		<name>�G���t�̈��ݖ�</name>
+		<name>エルフの飲み薬</name>
 		<img>behomaS.png</img>
 	</item>
 	<item id="3">
-		<name>�I���n���R���̉�</name>
-		<img>photo/oriharu.JPG</img>
+		<name>馬糞</name>
+		<img></img>
 	</item>
 	<item id="4">
-		<name>�Ђ̂��̂ڂ�</name>
-		<img>photo/hinoki_bou.JPG</img>
+		<name>抹茶の粉末</name>
+		<img>items/mattya.png</img>
 	</item>
 	<item id="5">
-		<name>�ÎE�i�C�t</name>
-		<img></img>
+		<name>ピルクル</name>
+		<img>items/pillcoll.png</img>
 	</item>
 	<item id="6">
-		<name>���m�̌�</name>
-		<img></img>
+		<name>出汁かおるロースかつ重</name>
+		<img>items/katsuju.png</img>
 	</item>
 	<item id="7">
-		<name>���g�̌�</name>
-		<img></img>
+		<name>オリハルコンの塊</name>
+		<img>photo/oriharu.JPG</img>
 	</item>
 	<item id="8">
-		<name>���[�j���O�X�^�[</name>
-		<img></img>
+		<name>ひのきのぼう</name>
+		<img>photo/hinoki_bou.JPG</img>
 	</item>
 	<item id="9">
-		<name>�ю��̕�</name>
+		<name>暗殺ナイフ</name>
 		<img></img>
 	</item>
 	<item id="10">
-		<name>�����l�̕�</name>
-		<img></img>
+		<name>兵士の剣</name>
+		<img>photo/sword.JPG</img>
 	</item>
 	<item id="11">
-		<name>�O�����K���̕�</name>
+		<name>ロトの剣</name>
 		<img></img>
 	</item>
 	<item id="12">
-		<name>���@�g���̏�</name>
+		<name>モーニングスター</name>
 		<img></img>
 	</item>
 	<item id="13">
-		<name>�}�O�}�̏�</name>
-		<img></img>
-	</item>	
+		<name>毛糸の鞭</name>
+		<img>photo/keito.JPEG</img>
+	</item>
 	<item id="14">
-		<name>�X�̏�</name>
+		<name>女王様の鞭</name>
 		<img></img>
-	</item>	
+	</item>
 	<item id="15">
-		<name>�K�т���</name>
-		<img></img>
-	</item>	
+		<name>グリーンの鞭</name>
+		<img>photo/green_muchi.JPEG</img>
+	</item>
 	<item id="16">
-		<name>�e�t�������H�̕�</name>
-		<img></img>
-	</item>	
+		<name>魔法使いの杖</name>
+		<img>photo/maho-_tsue.JPG</img>
+	</item>
 	<item id="17">
-		<name>���l�̕�</name>
-		<img></img>
+		<name>マグマの杖</name>
+		<img>photo/maguma_tsue.JPG</img>
 	</item>	
 	<item id="18">
-		<name></name>
+		<name>氷の杖</name>
 		<img></img>
 	</item>	
 	<item id="19">
-		<name></name>
+		<name>錆びた斧</name>
+		<img>photo/sabita_ono.JPEG</img>
+	</item>	
+	<item id="20">
+		<name>テフロン加工の斧</name>
+		<img>photo/tehuron_ono.JPG</img>
+	</item>	
+	<item id="21">
+		<name>魔人の斧</name>
+		<img>photo/tehuron.JPG</img>
+	</item>	
+	<item id="22">
+		<name>手榴弾</name>
 		<img></img>
+	</item>
+	<item id="23">
+		<name>破滅の盾</name>
+		<img>photo/hametsu_tate.JPEG</img>
 	</item>
 	
 </items>

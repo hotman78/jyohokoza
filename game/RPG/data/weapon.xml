@@ -1,4 +1,4 @@
-<weapons>
+<weapons num="3">
 	<weapon id="0">
 		<name>無所持</name>
 		<state at="0" df="0" cr="0" />
@@ -8,7 +8,55 @@
 		<state at="3" df="0" cr="0" />
 	</weapon>
 	<weapon id="2">
+		<name>暗殺ナイフ</name>
+		<state at="1" df="0" cr="50"/>
+	</weapon>
+	<weapon id="3">
+		<name>兵士の剣</name>
+		<state at="20" df="0" cr="0"/>
+	</weapon>
+	<weapon id="4">
 		<name>ロトの剣</name>
 		<state at="108" df="50" cr="10" />
+	</weapon>
+	<weapon id="5">
+		<name>モーニングスター</name>
+		<state at="40" df="0" cr="0"/>
+	</weapon>
+	<weapon id="6">
+		<name>毛糸の鞭</name>
+		<state at="5" df="0" cr="0"/>
+	</weapon>
+	<weapon id="7">
+		<name>女王様の鞭</name>
+		<state at="50" df="0" cr="0"/>
+	</weapon>
+	<weapon id="8">
+		<name>グリーンの鞭</name>
+		<state at="100" df="0" cr="0"/>
+	</weapon>
+	<weapon id="9">
+		<name>魔法使いの杖</name>
+		<state at="10" df="0" cr="0"/>
+	</weapon>	
+	<weapon id="10">
+		<name>マグマの杖</name>
+		<state at="30" df="0" cr="0"/>
+	</weapon>	
+	<weapon id="11">
+		<name>氷の杖</name>
+		<state at="30" df="0" cr="0"/>
+	</weapon>	
+	<weapon id="12">
+		<name>錆びた斧</name>
+		<state at="3" df="0" cr="0"/>
+	</weapon>
+	<weapon id="13">
+		<name>テフロン加工の斧</name>
+		<state at="30" df="0" cr="0"/>
+	</weapon>	
+	<weapon id="14">
+		<name>魔人の斧</name>
+		<state at="100" df="0" cr="20"/>
 	</weapon>
 </weapons>
